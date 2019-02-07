@@ -1,0 +1,71 @@
+$colors: (
+    body_color: #d4d4d4,
+    primary: rgb(245, 223, 24),
+    text_color: #5e5e5e,
+);
+$sizes: (
+    mobile: 540px,
+);
+
+header {
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    .logo {
+        ul {
+            .logo-li {
+                width: 4rem;
+            }
+        }
+    }
+    .menu {
+        margin: 0 2em 0 0;
+        .menu-bars {
+            padding: 0.5rem 1rem;
+            display: none;
+            div {
+                width: 1.5em;
+                height: 0.1em;
+                background: map-get($map: $colors, $key: text_color);
+                &:nth-child(2) {
+                    margin: 0.4em 0;
+                }
+            }
+            &:hover + .menu-items {
+                display: block;
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                display: block;
+            }
+        }
+        .menu-items {
+            ul {
+                display: flex;
+                padding: 0;
+                background: map-get($map: $colors, $key: body_color);
+                li {
+                    padding: 0.5rem 1rem;
+                    border-bottom: 1px solid transparent;
+                    a {
+                        color: map-get($map: $colors, $key: text_color);
+                    }
+                    &:hover {
+                        border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                    }
+                }
+                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                    display: block;
+                }
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                display: none;
+                position: absolute;
+                right: 0;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+}

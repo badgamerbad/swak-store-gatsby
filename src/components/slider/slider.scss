@@ -1,0 +1,179 @@
+$colors: (
+    primary: rgb(245, 223, 24),
+    font_color: #ffffff,
+);
+$sizes: (
+    mobile: 540px,
+    hd: 1500px,
+);
+
+.slider {
+    height: 90vh;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    padding-top: calc(40px + 1rem + 1rem);
+    @media only screen and (max-width: map-get($map: $sizes, $key: hd)) {
+        height: 80vh;
+    }
+    @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+        height: 75vh;
+    }
+    .slide {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        .image {
+            width: 100%;
+            height: auto;
+            position: relative;
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                width: 200%;
+                left: -50%;
+            }
+            &:after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8) 60%);
+            }
+        }
+        left: 100%;
+    }
+    .centered-slide {
+        left: 0%;
+    }
+    .move-right-center {
+        animation: move-right-center 3s 0s 1 forwards;
+    }
+    .move-center-left {
+        animation: move-center-left 3s 0s 1 forwards;
+    }
+    .move-left-center {
+        animation: move-left-center 3s 0s 1 forwards;
+    }
+    .move-center-right {
+        animation: move-center-right 3s 0s 1 forwards;
+    }
+    .text {
+        position: absolute;
+        font-size: 3em;
+        color: map-get($map: $colors, $key: font_color);
+        bottom: 6em;
+        left: 4em;
+        h1 {
+            margin: 0;
+        }
+        .underLine {
+            height: 0.1em;
+            background: map-get($map: $colors, $key: font_color);
+        }
+        .ul-width-l {
+            width: 13em;
+        }
+        .ul-width-m {
+            width: 10em;
+        }
+        .ul-width-s {
+            width: 3em;
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: hd)) {
+            font-size: 2em;
+            bottom: 5em;
+            left: 3em;
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            font-size: 0.7em;
+            bottom: 18em;
+            left: 3em;
+        }
+    }
+    .navigator {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        margin: 0em 2em;
+        button {
+            z-index: 1;
+            position: relative;
+            width: 3em;
+            height: 6em;
+            span {
+                // background: map-get($map: $colors, $key: font_color);
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                margin: 1em;
+            }
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            align-items: flex-end;
+            margin: 0;
+        }
+    }
+    .highlighter {
+        display: flex;
+        position: absolute;
+        bottom: 2em;
+        right: 1em;
+        .image {
+            position: relative;
+            margin: 0 1em;
+            border: none;
+            background: none;
+            img {
+                border: 0.5em solid map-get($map: $colors, $key: font_color);
+                width: 7em;
+                height: auto;
+                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                    border: 0.3em solid map-get($map: $colors, $key: font_color);
+                    width: 3em;
+                }
+            }
+            .img-div {
+                position: absolute;
+                width: 0;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                &.active {
+                    animation: trigger-highlighter 9s 0s 1 forwards;
+                }
+            }
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            right: 0;
+            width: 100%;
+            justify-content: center;
+        }
+    }
+}
+
+@keyframes move-right-center {
+    0% {left: 100%}
+    30% {left: 0%}
+    100% {left: 0%}
+}
+@keyframes move-center-left {
+    0% {left: 0%}
+    30% {left: -100%}
+    100% {left: -100%}
+}
+@keyframes move-left-center {
+    0% {left: -100%}
+    30% {left: 0%}
+    100% {left: 0%}
+}
+@keyframes move-center-right {
+    0% {left: 0%}
+    30% {left: 100%}
+    100% {left: 100%} 
+}
+
+@keyframes trigger-highlighter {
+    0% {width: 0%}
+    100% {width: 100%}
+}

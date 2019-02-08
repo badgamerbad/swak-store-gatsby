@@ -1,0 +1,21 @@
+backend:
+  name: github
+  repo: badgamerbad/swak-store-gatsby
+  branch: master
+publish_mode: editorial_workflow
+media_folder: static/images
+collections:
+  - name: product
+    label: Product
+    folder: src/products
+    extension: md
+    format: frontmatter
+    create: true
+    identifier_field: name
+    fields:
+      - { name: name, label: "Name of the product" }
+      - { name: app, label: Application, widget: "number" }
+      - { name: pr, label: "Power Rating" }
+      - { name: topo, label: Topology }
+      - { name: form, label: "Form Factor" }
+      - { name: feat, label: Features }

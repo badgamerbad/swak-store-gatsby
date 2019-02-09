@@ -1,12 +1,24 @@
-import PropTypes from "prop-types"
-import React from "react"
+import React, { Component }from "react"
 
 import ImageCatElectrical from "../../images/cat_electrical"
 import ImageCatUps from "../../images/cat_ups"
 
 import "./slider.scss"
 
-const Slider = () => (
+class Slider extends Component {
+  constructor(props) {
+    super(props)
+    this.imageNumber = 0
+    this.timerPointer = null
+    this.timeInterval = 9000
+  }
+  componentDidMount(){
+    this.slideArray = document.getElementsByClassName('slide')
+    this.imgDivArray = document.getElementsByClassName('img-div')
+    this.sliderTimer()
+  }
+  render() {
+    return (
     <div className="slider">
         <div className="slide centered-slide">
             <div className="image">
@@ -31,99 +43,86 @@ const Slider = () => (
             </div>
         </div>
         <div className="navigator">
-            <button onClick={ () => previousSlider() }><span>&lt;</span></button>
-            <button onClick={ () => nextSlider() }><span>&gt;</span></button>
+            <button onClick={ () => this.previousSlider() }><span>&lt;</span></button>
+            <button onClick={ () => this.nextSlider() }><span>&gt;</span></button>
         </div>
         <div className="highlighter">
-            <button className="image" onClick={ () => setSlider(0) }>
+            <button className="image" onClick={ () => this.setSlider(0) }>
               <div className="img-div"/>
               <ImageCatElectrical /> 
             </button>
-            <button className="image" onClick={ () => setSlider(1) }>
+            <button className="image" onClick={ () => this.setSlider(1) }>
               <div className="img-div"/>
               <ImageCatUps />
             </button>
         </div>
     </div>
-)
-
-Slider.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Slider.defaultProps = {
-  siteTitle: ``,
-}
-
-let slideArray = document.getElementsByClassName('slide')
-let imgDivArray = document.getElementsByClassName('img-div')
-let imageNumber = 0
-let timerPointer = null
-const timeInterval = 9000
-const previousSlider = () => {
-  let centeredSlide = document.querySelector('.centered-slide')
-  centeredSlide.classList.remove('centered-slide', 'move-right-center', 'move-left-center')
-  centeredSlide.classList.add('move-center-right')
-
-  --imageNumber
-  if(imageNumber <= -1) 
-    imageNumber = slideArray.length - 1
+    )
+  }
+  previousSlider() {
+    let centeredSlide = document.querySelector('.centered-slide')
+    centeredSlide.classList.remove('centered-slide', 'move-right-center', 'move-left-center')
+    centeredSlide.classList.add('move-center-right')
   
-  let previousSlide = slideArray[imageNumber]
-  previousSlide.classList.remove('move-center-left', 'move-center-right')
-  previousSlide.classList.add('centered-slide', 'move-left-center')
-
-  setHighlighter()
-
-  clearInterval(timerPointer)
-  sliderTimer()
-}
-const nextSlider = () => {
-  let centeredSlide = document.querySelector('.centered-slide')
-  centeredSlide.classList.remove('centered-slide', 'move-left-center', 'move-right-center')
-  centeredSlide.classList.add('move-center-left')
-  ++imageNumber
-  if(imageNumber >= slideArray.length) 
-    imageNumber = 0
-
-  let nextSlide = slideArray[imageNumber]
-  nextSlide.classList.remove('move-center-right', 'move-center-left')
-  nextSlide.classList.add('centered-slide', 'move-right-center')
-
-  setHighlighter()
-
-  clearInterval(timerPointer)
-  sliderTimer()
-}
-const setSlider = (index) => {
-  let selectedIndex = parseInt(index);
-  let currentIndex = imageNumber;
-
-  if( selectedIndex > currentIndex ) {
-      for (let i = currentIndex; i < selectedIndex; i++) {
-          nextSlider();
-      }
+    --this.imageNumber
+    if(this.imageNumber <= -1) 
+      this.imageNumber = this.slideArray.length - 1
+    
+    let previousSlide = this.slideArray[this.imageNumber]
+    previousSlide.classList.remove('move-center-left', 'move-center-right')
+    previousSlide.classList.add('centered-slide', 'move-left-center')
+  
+    this.setHighlighter()
+  
+    clearInterval(this.timerPointer)
+    this.sliderTimer()
   }
-  else {
-      for (let i = selectedIndex; i < currentIndex; i++) {
-          previousSlider();
-      }
+  nextSlider() {
+    let centeredSlide = document.querySelector('.centered-slide')
+    centeredSlide.classList.remove('centered-slide', 'move-left-center', 'move-right-center')
+    centeredSlide.classList.add('move-center-left')
+    ++this.imageNumber
+    if(this.imageNumber >= this.slideArray.length) 
+      this.imageNumber = 0
+  
+    let nextSlide = this.slideArray[this.imageNumber]
+    nextSlide.classList.remove('move-center-right', 'move-center-left')
+    nextSlide.classList.add('centered-slide', 'move-right-center')
+  
+    this.setHighlighter()
+  
+    clearInterval(this.timerPointer)
+    this.sliderTimer()
   }
-
-  clearInterval(timerPointer)
-  sliderTimer()
-}
-const setHighlighter = () => {
-  for(let i = 0; i < imgDivArray.length; i++) {
-    imgDivArray[i].classList.remove('active')
+  setSlider(index) {
+    let selectedIndex = parseInt(index);
+    let currentIndex = this.imageNumber;
+  
+    if( selectedIndex > currentIndex ) {
+        for (let i = currentIndex; i < selectedIndex; i++) {
+            this.nextSlider();
+        }
+    }
+    else {
+        for (let i = selectedIndex; i < currentIndex; i++) {
+            this.previousSlider();
+        }
+    }
+  
+    clearInterval(this.timerPointer)
+    this.sliderTimer()
   }
-  imgDivArray[imageNumber].classList.add('active')
+  setHighlighter() {
+    for(let i = 0; i < this.imgDivArray.length; i++) {
+      this.imgDivArray[i].classList.remove('active')
+    }
+    this.imgDivArray[this.imageNumber].classList.add('active')
+  }
+  sliderTimer(){
+    this.timerPointer = setInterval( () => {
+      this.nextSlider()
+    }, this.timeInterval )
+  }
 }
-const sliderTimer = () => {
-  timerPointer = setInterval( () => {
-    nextSlider()
-  }, timeInterval )
-}
-sliderTimer()
 
 export default Slider

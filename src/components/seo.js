@@ -8,8 +8,8 @@ function SEO({ description, lang, meta, keywords, title }) {
     <StaticQuery
       query={detailsQuery}
       render={data => {
-        const metaDescription =
-          description || data.site.siteMetadata.description
+        const metaDescription = description || data.site.siteMetadata.description
+        const googleSiteVerification = '' || data.site.siteMetadata.googleSiteVerification
         return (
           <Helmet
             htmlAttributes={{
@@ -49,6 +49,10 @@ function SEO({ description, lang, meta, keywords, title }) {
               {
                 name: `twitter:description`,
                 content: metaDescription,
+              },
+              {
+                name: `google-site-verification`,
+                content: googleSiteVerification,
               },
             ]
               .concat(
@@ -90,6 +94,7 @@ const detailsQuery = graphql`
         title
         description
         author
+        googleSiteVerification
       }
     }
   }

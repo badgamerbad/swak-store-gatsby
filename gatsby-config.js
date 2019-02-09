@@ -2,7 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `SWAK`,
     description: `This is the SWAK store, we have a range of Electrical Products fitting your needs and requirements.`,
-    author: `@gatsbyjs`,
+    author: `BadGAMERbaD`,
+    googleSiteVerification: '3CXnajmQF2ySaDl8R4L4UdKagco966VeoX6CRmLumrw'
   },
   plugins: [
     `gatsby-plugin-sass`,

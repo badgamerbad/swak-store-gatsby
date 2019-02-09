@@ -117,9 +117,6 @@ $sizes: (
             position: relative;
             width: 3em;
             height: 6em;
-            span {
-                // background: map-get($map: $colors, $key: font_color);
-            }
             @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                 margin: 1em;
             }

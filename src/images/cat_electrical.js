@@ -19,14 +19,14 @@ const Image_cat_electrical = () => (
       query {
         placeholderImage: file(relativePath: { eq: "cat_electrical.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 300) {
-              ...GatsbyImageSharpFluid
+            sizes(maxWidth: 1280) {
+              ...GatsbyImageSharpSizes
             }
           }
         }
       }
     `}
-    render={data => <Img fluid={data.placeholderImage.childImageSharp.fluid} />}
+    render={data => <Img sizes={data.placeholderImage.childImageSharp.sizes} />}
   />
 )
 export default Image_cat_electrical

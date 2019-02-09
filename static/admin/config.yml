@@ -15,7 +15,7 @@ collections:
     fields:
       - { name: name, label: "Name of the product" }
       - { name: app, label: Application, widget: "number" }
-      - { name: pr, label: "Power Rating" }
-      - { name: topo, label: Topology }
-      - { name: form, label: "Form Factor" }
-      - { name: feat, label: Features }
+      - { name: pr, label: "Power Rating", widget: "number" }
+      - { name: topo, label: Topology, widget: "number" }
+      - { name: form, label: "Form Factor", widget: "number" }
+      - { name: feat, label: Features, widget: "number" }

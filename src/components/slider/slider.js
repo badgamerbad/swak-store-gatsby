@@ -36,12 +36,12 @@ const Slider = () => (
         </div>
         <div className="highlighter">
             <button className="image" onClick={ () => setSlider(0) }>
-                <div className="img-div"/>
-                <ImageCatElectrical />
+              <div className="img-div"/>
+              <ImageCatElectrical /> 
             </button>
             <button className="image" onClick={ () => setSlider(1) }>
-                <div className="img-div"/>
-                <ImageCatUps />
+              <div className="img-div"/>
+              <ImageCatUps />
             </button>
         </div>
     </div>
@@ -58,8 +58,8 @@ Slider.defaultProps = {
 let slideArray = document.getElementsByClassName('slide')
 let imgDivArray = document.getElementsByClassName('img-div')
 let imageNumber = 0
-// let timerPointer = null
-// const timeInterval = 9000
+let timerPointer = null
+const timeInterval = 9000
 const previousSlider = () => {
   let centeredSlide = document.querySelector('.centered-slide')
   centeredSlide.classList.remove('centered-slide', 'move-right-center', 'move-left-center')
@@ -75,8 +75,8 @@ const previousSlider = () => {
 
   setHighlighter()
 
-  // clearInterval(timerPointer)
-  // sliderTimer()
+  clearInterval(timerPointer)
+  sliderTimer()
 }
 const nextSlider = () => {
   let centeredSlide = document.querySelector('.centered-slide')
@@ -92,8 +92,8 @@ const nextSlider = () => {
 
   setHighlighter()
 
-  // clearInterval(timerPointer)
-  // sliderTimer()
+  clearInterval(timerPointer)
+  sliderTimer()
 }
 const setSlider = (index) => {
   let selectedIndex = parseInt(index);
@@ -110,8 +110,8 @@ const setSlider = (index) => {
       }
   }
 
-  // clearInterval(timerPointer)
-  // sliderTimer()
+  clearInterval(timerPointer)
+  sliderTimer()
 }
 const setHighlighter = () => {
   for(let i = 0; i < imgDivArray.length; i++) {
@@ -119,10 +119,11 @@ const setHighlighter = () => {
   }
   imgDivArray[imageNumber].classList.add('active')
 }
-// const sliderTimer = () => {
-//   timerPointer = setInterval( () => {
-//     nextSlider()
-//   }, timeInterval )
-// }
+const sliderTimer = () => {
+  timerPointer = setInterval( () => {
+    nextSlider()
+  }, timeInterval )
+}
+sliderTimer()
 
 export default Slider

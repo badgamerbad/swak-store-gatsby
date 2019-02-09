@@ -4,6 +4,7 @@ $colors: (
 );
 $sizes: (
     mobile: 540px,
+    tablet: 1000px,
     hd: 1500px,
 );
 
@@ -28,6 +29,14 @@ $sizes: (
             width: 100%;
             height: auto;
             position: relative;
+            @media only screen and (max-width: map-get($map: $sizes, $key: hd)) {
+                width: 150%;
+                left: -25%;
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                width: 200%;
+                left: -40%;
+            }
             @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                 width: 200%;
                 left: -50%;
@@ -82,9 +91,14 @@ $sizes: (
             width: 3em;
         }
         @media only screen and (max-width: map-get($map: $sizes, $key: hd)) {
-            font-size: 2em;
-            bottom: 5em;
-            left: 3em;
+            font-size: 1.5em;
+            bottom: 9em;
+            left: 5em;
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+            font-size: 1em;
+            bottom: 14em;
+            left: 4em;
         }
         @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
             font-size: 0.7em;
@@ -123,19 +137,18 @@ $sizes: (
         .image {
             position: relative;
             margin: 0 1em;
-            border: none;
+            border: 0.5em solid map-get($map: $colors, $key: font_color);
             background: none;
-            img {
-                border: 0.5em solid map-get($map: $colors, $key: font_color);
-                width: 7em;
-                height: auto;
-                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-                    border: 0.3em solid map-get($map: $colors, $key: font_color);
-                    width: 3em;
-                }
+            height: auto;
+            padding: 0;
+            width: 7em;
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                border: 0.3em solid map-get($map: $colors, $key: font_color);
+                width: 3em;
             }
             .img-div {
                 position: absolute;
+                z-index: 1;
                 width: 0;
                 height: 100%;
                 background: rgba(0, 0, 0, 0.5);

@@ -4,18 +4,86 @@ backend:
   branch: master
 publish_mode: editorial_workflow
 media_folder: static/images
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "_"
+display_url: https://www.swak.co.in
 collections:
-  - name: product
-    label: Product
-    folder: src/products
+  - name: ups
+    label: UPS
+    folder: src/products/ups
     extension: md
     format: frontmatter
     create: true
     identifier_field: name
+    slug: "{{slug}}"
     fields:
-      - { name: name, label: "Name of the product" }
-      - { name: app, label: Application, widget: "number" }
-      - { name: pr, label: "Power Rating", widget: "number" }
-      - { name: topo, label: Topology, widget: "number" }
-      - { name: form, label: "Form Factor", widget: "number" }
-      - { name: feat, label: Features, widget: "number" }
+      - { name: id, label: ID, widget: "number" }
+      - { name: name, label: "Name of the UPS", widget: "string" }
+      - { 
+          name: phase,
+          label: Phase,
+          widget: "select", 
+          options: 
+            - { label: "Single", value: 0 }
+            - { label: "Three", value: 1 }  
+        }
+      - { 
+          name: application, 
+          label: Application, 
+          widget: "select", 
+          options: 
+            - { label: "Home", value: 0 }
+            - { label: "Network and server", value: 1 }
+            - { label: "Data Center", value: 2 }  
+        }
+      - { 
+          name: power_rating, 
+          label: "Power Rating", 
+          widget: "select", 
+          options: 
+            - { label: "0-1 kVA", value: 0 } 
+            - { label: "1-10 kVA", value: 1 }
+            - { label: "10-50 kVA", value: 2 }
+            - { label: "50-500 kVA", value: 2 }
+            - { label: "500 - 2000 kVA", value: 2 }  
+        }
+      - { name: power_rating_label, label: "Power Label", widget: "string" }
+      - { 
+          name: voltage, 
+          label: "Voltage", 
+          widget: "select", 
+          options: 
+            - { label: "220-240V", value: 0 } 
+            - { label: "300-1000V", value: 1 }
+        }
+      - { name: voltage_label, label: "Voltage Label", widget: "string" }
+      - { 
+          name: frequency, 
+          label: "Frequency", 
+          widget: "select", 
+          options: 
+            - { label: "50Hz", value: 0 } 
+            - { label: "50/60Hz", value: 1 }
+            - { label: "40/70hz", value: 2 }
+        }
+      - { name: frequency_label, label: "Frequency Label", widget: "string" }
+      - { 
+          name: form_factor, 
+          label: "Form Factor", 
+          widget: "select", 
+          options: 
+            - { label: "Tower", value: 0 } 
+            - { label: "Rackmount", value: 1 }
+            - { label: "Rack/Tower", value: 2 }
+        }
+      - { 
+          name: topology, 
+          label: "Topology", 
+          widget: "select", 
+          options: 
+            - { label: "Line interactive", value: 0 } 
+            - { label: "Double convention", value: 1 }
+            - { label: "Static Transfer Switch", value: 2 }
+        }

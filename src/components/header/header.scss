@@ -13,6 +13,7 @@ header {
     justify-content: space-between;
     position: fixed;
     width: 100%;
+    background: map-get($map: $colors, $key: body_color);
     .logo {
         ul {
             .logo-li {

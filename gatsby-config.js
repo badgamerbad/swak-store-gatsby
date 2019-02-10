@@ -37,7 +37,7 @@ module.exports = {
         name: `products`,
         path: `${__dirname}/src/products`
       }
-    },
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',

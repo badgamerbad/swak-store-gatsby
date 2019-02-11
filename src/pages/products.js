@@ -14,18 +14,14 @@ class Products extends Component {
     super(props)
     this.state = {
       allProducts: [],
-      displayProducts: [],
       phase: -1,
       application: -1,
       power_rating: -1
     }
   }
-  componentDidMount(){
+  componentDidMount() {
     this.setState({
       allProducts: get(this.props, "data.allMarkdownRemark.edges").map(
-        edge => edge.node.frontmatter
-      ),
-      displayProducts: get(this.props, "data.allMarkdownRemark.edges").map(
         edge => edge.node.frontmatter
       )
     })
@@ -66,27 +62,27 @@ class Products extends Component {
           <div className="content">
             <div className="count"></div>
             <div className="listing">
-              { this.state.displayProducts.map( (elem, index) => <Product key={index} elem={elem}/> ) }
+              { 
+                this.state.allProducts.filter( elem => {
+                  let flag = true
+                  if(this.state.phase !== -1 && elem.phase !== this.state.phase)
+                    flag = false
+                  if(this.state.application !== -1 && elem.application !== this.state.application)
+                    flag = false
+                  if(this.state.power_rating !== -1 && elem.power_rating !== this.state.power_rating)
+                    flag = false
+                  return flag
+                }).map( (elem, index) => <Product key={index} elem={elem}/> ) 
+              }
             </div>
           </div>
         </div>
       </Layout>
     )
   }
-  triggerSearch() {
-    let finalList = this.state.allProducts.filter( elem => {
-      let flag = true
-      if(this.state.phase !== -1 && elem.phase !== this.state.phase)
-        flag = false
-      if(this.state.application !== -1 && elem.application !== this.state.application)
-        flag = false
-      if(this.state.power_rating !== -1 && elem.power_rating !== this.state.power_rating)
-        flag = false
-      return flag
-    })
-
+  triggerSearch() { 
     this.setState({
-      displayProducts: finalList
+      
     })
   }
   onPhaseChanged(e) {

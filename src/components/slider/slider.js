@@ -12,10 +12,13 @@ class Slider extends Component {
     this.timerPointer = null
     this.timeInterval = 9000
   }
-  componentDidMount(){
+  componentDidMount() {
     this.slideArray = document.getElementsByClassName('slide')
     this.imgDivArray = document.getElementsByClassName('img-div')
     this.sliderTimer()
+  }
+  componentWillUnmount() {
+    clearInterval(this.timerPointer)
   }
   render() {
     return (

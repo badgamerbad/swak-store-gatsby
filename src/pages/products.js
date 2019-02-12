@@ -106,7 +106,7 @@ export default Products
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/ups/" } }) {
+    allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/products/ups/" } }) {
       edges {
         node {
           html

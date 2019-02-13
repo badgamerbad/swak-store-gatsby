@@ -9,6 +9,8 @@ import './products.scss'
 import { graphql } from "gatsby"
 import get from "lodash/get"
 
+import UpsFilters from "../components/filters/upsFilters/upsFilters"
+
 class Products extends Component {
   constructor(props) {
     super(props)
@@ -32,31 +34,7 @@ class Products extends Component {
         <SEO title="Products" />
         <div className="products">
           <div className="filters">
-            <label>Name:</label>
-            <input type="text"/>
-            <br/>
-            <label>Phase:</label>
-            <br/>
-            All<input type="radio" value={-1} checked={this.state.phase === -1} onChange={this.onPhaseChanged.bind(this)} name="phase"/>
-            single<input type="radio" value={0} checked={this.state.phase === 0} onChange={this.onPhaseChanged.bind(this)} name="phase"/>
-            three<input type="radio" value={1} checked={this.state.phase === 1} onChange={this.onPhaseChanged.bind(this)} name="phase"/>
-            <br/>
-            <label>Application:</label>
-            <br/>
-            All<input type="radio" value={-1} checked={this.state.application === -1} onChange={this.onApplicationChanged.bind(this)} name="application"/>
-            home<input type="radio" value={0} checked={this.state.application === 0} onChange={this.onApplicationChanged.bind(this)} name="application"/>
-            Network and server<input type="radio" value={1} checked={this.state.application === 1} onChange={this.onApplicationChanged.bind(this)} name="application"/>
-            Data Center<input type="radio" value={2} checked={this.state.application === 2} onChange={this.onApplicationChanged.bind(this)} name="application"/>
-            <br/>
-            <label>Power:</label>
-            <br/>
-            All<input type="radio" value={-1} checked={this.state.power_rating === -1} onChange={this.onPowerChanged.bind(this)} name="power_rating"/>
-            0-1<input type="radio" value={0} checked={this.state.power_rating === 0} onChange={this.onPowerChanged.bind(this)} name="power_rating"/>
-            1-10<input type="radio" value={1} checked={this.state.power_rating === 1} onChange={this.onPowerChanged.bind(this)} name="power_rating"/>
-            10-50<input type="radio" value={2} checked={this.state.power_rating === 2} onChange={this.onPowerChanged.bind(this)} name="power_rating"/>
-            50-500<input type="radio" value={3} checked={this.state.power_rating === 3} onChange={this.onPowerChanged.bind(this)} name="power_rating"/>
-            500-2000<input type="radio" value={4} checked={this.state.power_rating === 4} onChange={this.onPowerChanged.bind(this)} name="power_rating"/>
-            <br/>
+            <UpsFilters />
             <button onClick={ () => this.triggerSearch() }>Search</button>
           </div>
           <div className="content">
@@ -132,4 +110,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

@@ -16,10 +16,9 @@ class Products extends Component {
     super(props)
     this.state = {
       allProducts: [],
-      phase: -1,
-      application: -1,
-      power_rating: -1
+      filters: {}
     }
+    this.onChange = this.onChange.bind(this)
   }
   componentDidMount() {
     this.setState({
@@ -34,7 +33,7 @@ class Products extends Component {
         <SEO title="Products" />
         <div className="products">
           <div className="filters">
-            <UpsFilters />
+            <UpsFilters onChange={this.onChange}/>
             <button onClick={ () => this.triggerSearch() }>Search</button>
           </div>
           <div className="content">
@@ -43,12 +42,13 @@ class Products extends Component {
               { 
                 this.state.allProducts.filter( elem => {
                   let flag = true
-                  if(this.state.phase !== -1 && elem.phase !== this.state.phase)
-                    flag = false
-                  if(this.state.application !== -1 && elem.application !== this.state.application)
-                    flag = false
-                  if(this.state.power_rating !== -1 && elem.power_rating !== this.state.power_rating)
-                    flag = false
+                  console.log(this.state.filters)
+                  // if(this.state.phase !== -1 && elem.phase !== this.state.phase)
+                  //   flag = false
+                  // if(this.state.application !== -1 && elem.application !== this.state.application)
+                  //   flag = false
+                  // if(this.state.power_rating !== -1 && elem.power_rating !== this.state.power_rating)
+                  //   flag = false
                   return flag
                 }).map( (elem, index) => <Product key={index} elem={elem}/> ) 
               }
@@ -63,19 +63,13 @@ class Products extends Component {
       
     })
   }
-  onPhaseChanged(e) {
-    this.setState({
-      phase: parseInt(e.currentTarget.value)
-    })
-  }
-  onApplicationChanged(e) {
-    this.setState({
-      application: parseInt(e.currentTarget.value)
-    })
-  }
-  onPowerChanged(e) {
-    this.setState({
-      power_rating: parseInt(e.currentTarget.value)
+  onChange(filterName, value) {
+    let {filters} = this.state
+    this.setState({ 
+      filters: {
+        ...filters,
+        [filterName]: value
+      }
     })
   }
 }

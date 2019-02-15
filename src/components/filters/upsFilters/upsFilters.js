@@ -5,7 +5,7 @@ import get from "lodash/get"
 import './upsFilter.scss'
 import UpsFilter from "./upsFilter"
 
-export default () => (
+export default (onChange) => (
   <StaticQuery
     query={graphql`
         query {
@@ -28,7 +28,7 @@ export default () => (
       `
     }
     render={ 
-      data => get(data, "allMarkdownRemark.edges").map( (filter, index) => <UpsFilter key={index} filter={filter} /> ) 
+      data => get(data, "allMarkdownRemark.edges").map( (filter, index) => <UpsFilter key={index} filter={filter} onChange={onChange} /> ) 
     }
   />
 )

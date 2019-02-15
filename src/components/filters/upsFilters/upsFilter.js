@@ -36,9 +36,10 @@ class UpsFilter extends Component {
             </div>
         )
     }
-    onChanged(e, i) {
+    onChanged(index, e) {
+        this.props.onChange.onChange(e.currentTarget.name , index)
         this.setState({
-            index: parseInt(e)
+            index: parseInt(index)
         })
     }
 }

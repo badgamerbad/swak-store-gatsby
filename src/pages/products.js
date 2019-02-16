@@ -42,13 +42,10 @@ class Products extends Component {
               { 
                 this.state.allProducts.filter( elem => {
                   let flag = true
-                  console.log(this.state.filters)
-                  // if(this.state.phase !== -1 && elem.phase !== this.state.phase)
-                  //   flag = false
-                  // if(this.state.application !== -1 && elem.application !== this.state.application)
-                  //   flag = false
-                  // if(this.state.power_rating !== -1 && elem.power_rating !== this.state.power_rating)
-                  //   flag = false
+                  for(var key in this.state.filters) {
+                    if( this.state.filters[key] !== -1 && this.state.filters[key] !== elem[key] )
+                      flag = false
+                  }
                   return flag
                 }).map( (elem, index) => <Product key={index} elem={elem}/> ) 
               }

@@ -9,7 +9,10 @@ export default (onChange) => (
   <StaticQuery
     query={graphql`
         query {
-          allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/filters/ups/" } }) {
+          allMarkdownRemark(
+            filter: { fileAbsolutePath: { regex: "/filters/ups/" } },
+            sort: { fields: [frontmatter___id], order: ASC }
+          ) {
             edges {
               node {
                 html
@@ -19,7 +22,10 @@ export default (onChange) => (
                 }
                 frontmatter {
                   name
+                  label
                   value
+                  type
+                  id
                 }
               }
             }

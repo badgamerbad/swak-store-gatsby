@@ -39,7 +39,7 @@ collections:
             - { label: "Data Center", value: 2 }  
         }
       - { 
-          name: power_rating, 
+          name: powerRating, 
           label: "Power Rating", 
           widget: "select", 
           options: 
@@ -49,7 +49,7 @@ collections:
             - { label: "50-500 kVA", value: 2 }
             - { label: "500 - 2000 kVA", value: 2 }  
         }
-      - { name: power_rating_label, label: "Power Label", widget: "string" }
+      - { name: powerRatingLabel, label: "Power Label", widget: "string" }
       - { 
           name: voltage, 
           label: "Voltage", 
@@ -58,7 +58,7 @@ collections:
             - { label: "220-240V", value: 0 } 
             - { label: "300-1000V", value: 1 }
         }
-      - { name: voltage_label, label: "Voltage Label", widget: "string" }
+      - { name: voltageLabel, label: "Voltage Label", widget: "string" }
       - { 
           name: frequency, 
           label: "Frequency", 
@@ -68,9 +68,9 @@ collections:
             - { label: "50/60Hz", value: 1 }
             - { label: "40/70hz", value: 2 }
         }
-      - { name: frequency_label, label: "Frequency Label", widget: "string" }
+      - { name: frequencyLabel, label: "Frequency Label", widget: "string" }
       - { 
-          name: form_factor, 
+          name: formFactor, 
           label: "Form Factor", 
           widget: "select", 
           options: 

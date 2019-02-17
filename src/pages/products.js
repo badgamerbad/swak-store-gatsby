@@ -88,13 +88,13 @@ export const pageQuery = graphql`
             name
             phase
             application
-            power_rating
-            power_rating_label
+            powerRating
+            powerRatingLabel
             voltage
-            voltage_label
+            voltageLabel
             frequency
-            frequency_label
-            form_factor
+            frequencyLabel
+            formFactor
             topology
           }
         }

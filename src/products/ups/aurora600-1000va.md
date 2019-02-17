@@ -1,5 +1,5 @@
 ---
-id: 0
+id: 13
 name: Eaton Aurora 600-1000 VA Line Interactive UPS
 phase: 0
 application: 0

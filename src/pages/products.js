@@ -66,7 +66,7 @@ class Products extends Component {
                       flag = false
                   }
                   return flag
-                }).map( (elem, index) => <UpsProduct key={index} ups={elem} filters={this.allFilters}/> ) 
+                }).map( (elem, index) => <UpsProduct key={index} index={index} ups={elem} filters={this.allFilters}/> ) 
               }
             </div>
           </div>

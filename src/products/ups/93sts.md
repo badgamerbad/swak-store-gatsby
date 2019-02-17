@@ -1,4 +1,5 @@
 ---
+id: 7
 name: Eaton 93 STS 100/250/400/630/800/1000 &1250 Amps - Static Transfer Switch
 phase: 0
 application: 1

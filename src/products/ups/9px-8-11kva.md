@@ -1,5 +1,5 @@
 ---
-id: 1
+id: 3
 name: Eaton 9PX 8-11 kVA Rack and Tower Convertible Online Double Conversion UPS
 phase: 0
 application: 1

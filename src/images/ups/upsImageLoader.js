@@ -13,50 +13,40 @@ import Img from "gatsby-image"
  * - `StaticQuery`: https://gatsby.app/staticquery
  */
 
-const UpsImageLoader = (imageUrl) => {
-  // if(imageUrl.imageUrl.indexOf('9E-IN-6-10K') > -1 ){
-  //   return (
-  //     <StaticQuery
-  //       query={graphql`
-  //         query {
-  //           placeholderImage: file(relativePath: { regex: "/ups/ups-9E-IN-6-10K.jpg/" }) {
-  //             childImageSharp {
-  //               sizes(maxWidth: 1280) {
-  //               ...GatsbyImageSharpSizes
-  //               }
-  //             }
-  //           }
-  //         }
-  //       `}
-  //       render={data => {
-  //         return (
-  //           <Img sizes={data.placeholderImage.childImageSharp.sizes} />
-  //         )
-  //       }}
-  //     />
-  //   )
-  // }
-  // else if(imageUrl.imageUrl.indexOf('aurora-600-1000va') > -1 ){
+class UpsImageLoader extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+  render() {
     return (
-      <StaticQuery
+      <StaticQuery 
         query={graphql`
           query {
-            placeholderImage: file(relativePath: { regex: "/ups/ups-aurora-600-1000va.jpg/" }) {
-              childImageSharp {
-                sizes(maxWidth: 1280) {
-                ...GatsbyImageSharpSizes
+            allFile(filter: { extension:{regex:"/(jpeg|jpg|gif|png)/"} } ) {
+              edges {
+                node {
+                  childImageSharp {
+                    sizes(maxWidth: 2000) {
+                      ...GatsbyImageSharpSizes
+                    }
+                  }
                 }
               }
             }
           }
         `}
-        render={data => {
-          return (
-            <Img sizes={data.placeholderImage.childImageSharp.sizes} />
-          )
+        render={ data => {
+          return data.allFile.edges.filter( edge => {
+            if( edge.node.childImageSharp.sizes.src.indexOf(this.props.imageUrl) > -1 )
+              return true
+            else 
+              return false
+          }).map( (edge, index) => <Img key={index} sizes={edge.node.childImageSharp.sizes} /> )
         }}
       />
     )
-  // }
-} 
+  }
+}
+
 export default UpsImageLoader

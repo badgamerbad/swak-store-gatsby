@@ -15,9 +15,7 @@ class UpsProduct extends React.Component {
         return (
             <div className="upsProduct">
                 <ul>
-                    <li>
-                        <UpsImageLoader imageUrl={ups.imageUrl}/>
-                    </li>
+                    <UpsImageLoader imageUrl={ups.imageUrl}/>
                     <li>
                         <ul>
                             <li>Name : {ups.name}</li>

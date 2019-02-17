@@ -34,6 +34,7 @@ class UpsFilters extends React.Component {
                       value
                       type
                       id
+                      selected
                     }
                   }
                 }
@@ -43,14 +44,17 @@ class UpsFilters extends React.Component {
         }
         render={ 
           data => {
+            this.props.getAllUpsFilters( get(data, "allMarkdownRemark.edges") )
             return (
               <>
                 <div className="ups-filter">
-                  <label>Search</label>
-                  <ul>
-                      <li><input type="text" name="searchUps" onChange={this.onChange.bind(this)}/></li>
-                      <li><button onClick={ () => this.props.triggerSearch(this.state.searchText) }>Search</button></li>
-                  </ul>
+                  <div className="searchBox">
+                    <label>Search</label>
+                    <ul>
+                        <li><input type="text" name="searchUps" onChange={this.onChange.bind(this)}/></li>
+                        <li><button onClick={ () => this.props.triggerSearch(this.state.searchText) }>Search</button></li>
+                    </ul>
+                  </div>
                 </div>
                 {
                   get(data, "allMarkdownRemark.edges").map( (filter, index) => <UpsFilter key={index} filter={filter} onChange={this.props.onChange} /> )

@@ -11,4 +11,5 @@ frequency: 0
 frequencyLabel: 50Hz
 formFactor: 0
 topology: 0
+imageUrl: ups-aurora-600-1000va.jpg
 ---

@@ -5,40 +5,43 @@ class UpsFilter extends Component {
         super(props)
         this.state = {
             filter: props.filter.node.frontmatter,
-            index: -1
+            index: props.filter.node.frontmatter.selected
         }
     }
     render() {
+        let filter = this.state.filter
         let html
-        if(this.state.filter.type === "radio") {
-            html = <ul>
-                <li>
-                    <ul>
-                        <li>All</li>
-                        <li><input type="radio" value={-1} checked={this.state.index === -1} onChange={this.onChanged.bind(this, -1)} name={this.state.filter.name} /></li>
-                    </ul>
-                </li>
-                {
-                    this.state.filter.value.map(
-                        (item, index) =>
-                            <li key={index}>
-                                <ul>
-                                    <li>{item}</li>
-                                    <li><input type="radio" value={index} checked={this.state.index === index} onChange={this.onChanged.bind(this, index)} name={this.state.filter.name} /></li>
-                                </ul>
-                            </li>
-                    )
-                }
-            </ul>
+        if(filter.type === "radio") {
+            html = <div className="radioBox">
+                <label>{filter.label}</label>
+                <ul>
+                    <li>
+                        <ul>
+                            <li><input type="radio" value={-1} checked={this.state.index === -1} onChange={this.onChanged.bind(this, -1)} name={filter.name} /></li>
+                            <li>All</li>
+                        </ul>
+                    </li>
+                    {
+                        filter.value.map(
+                            (item, index) =>
+                                <li key={index}>
+                                    <ul>
+                                        <li><input type="radio" value={index} checked={this.state.index === index} onChange={this.onChanged.bind(this, index)} name={filter.name} /></li>
+                                        <li>{item}</li>
+                                    </ul>
+                                </li>
+                        )
+                    }
+                </ul>
+            </div>
         }
         else {
             html = <ul>
-                <li><input type="text" name={this.state.filter.name} /></li>
+                <li><input type="text" name={filter.name} /></li>
             </ul>
         }
         return (
             <div className="ups-filter">
-                <label>{this.state.filter.label}</label>
                 { html }
             </div>
         )

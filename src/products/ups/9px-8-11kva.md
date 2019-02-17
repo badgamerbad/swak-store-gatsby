@@ -11,4 +11,5 @@ frequency: 1
 frequencyLabel: 50/60hz
 formFactor: 2
 topology: 1
+imageUrl: 9E-IN-6-10K.jpg
 ---

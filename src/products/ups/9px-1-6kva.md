@@ -11,4 +11,5 @@ frequency: 1
 frequencyLabel: 50/60hz
 formFactor: 2
 topology: 1
+imageUrl: aurora-600-1000va.jpg
 ---

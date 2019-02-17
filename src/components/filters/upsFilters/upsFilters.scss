@@ -1,8 +1,19 @@
-.filters {
-    .ups-filter{
+.ups-filter{
+    margin: 1em;
+    .searchBox {
         ul {
             margin: 0;
             padding: 0;
         }
     }
+    .radioBox {
+        ul {
+            margin: 0;
+            padding: 0;
+            ul {
+                display: flex;
+            }
+        }
+    }
+    
 }

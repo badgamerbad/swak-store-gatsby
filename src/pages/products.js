@@ -16,10 +16,12 @@ class Products extends Component {
     super(props)
     this.state = {
       allProducts: [],
-      filters: {}
+      setFilters: {},
     }
     this.onChange = this.onChange.bind(this)
     this.triggerSearch = this.triggerSearch.bind(this)
+    this.getAllUpsFilters = this.getAllUpsFilters.bind(this)
+    this.allFilters = []
   }
   componentDidMount() {
     this.setState({
@@ -34,15 +36,29 @@ class Products extends Component {
         <SEO title="Products" />
         <div className="products">
           <div className="filters">
-            <UpsFilters onChange={this.onChange} triggerSearch={this.triggerSearch}/>
+            <UpsFilters onChange={this.onChange} triggerSearch={this.triggerSearch} getAllUpsFilters={this.getAllUpsFilters}/>
           </div>
           <div className="content">
-            <div className="count"></div>
+            <div className="count">
+            {
+              this.state.allProducts.filter( elem => {
+                let flag = true
+                let stateFiltersObject = this.state.setFilters
+                for(var key in stateFiltersObject) {
+                  if(key === "searchText" && stateFiltersObject[key].trim() !== "" && elem.name.toLowerCase().indexOf(stateFiltersObject[key].trim().toLowerCase()) === -1)
+                    flag = false
+                  else if( key !== "searchText" && stateFiltersObject[key] !== -1 && stateFiltersObject[key] !== elem[key] )
+                    flag = false
+                }
+                return flag
+              }).map( elem => elem ).length
+            } Results
+            </div>
             <div className="listing">
               { 
                 this.state.allProducts.filter( elem => {
                   let flag = true
-                  let stateFiltersObject = this.state.filters
+                  let stateFiltersObject = this.state.setFilters
                   for(var key in stateFiltersObject) {
                     if(key === "searchText" && stateFiltersObject[key].trim() !== "" && elem.name.toLowerCase().indexOf(stateFiltersObject[key].trim().toLowerCase()) === -1)
                       flag = false
@@ -50,7 +66,7 @@ class Products extends Component {
                       flag = false
                   }
                   return flag
-                }).map( (elem, index) => <UpsProduct key={index} elem={elem}/> ) 
+                }).map( (elem, index) => <UpsProduct key={index} ups={elem} filters={this.allFilters}/> ) 
               }
             </div>
           </div>
@@ -59,22 +75,29 @@ class Products extends Component {
     )
   }
   triggerSearch(searchText) { 
-    let {filters} = this.state
+    let {setFilters} = this.state
     this.setState({ 
-      filters: {
-        ...filters,
+      setFilters: {
+        ...setFilters,
         searchText: searchText
       }
     })
   }
   onChange(filterName, value) {
-    let {filters} = this.state
+    let {setFilters} = this.state
     this.setState({ 
-      filters: {
-        ...filters,
+      setFilters: {
+        ...setFilters,
         [filterName]: value
       }
     })
+  }
+  getAllUpsFilters(data) {
+    this.allFilters = data.map( edge => { 
+      return { [edge.node.frontmatter.name]: {value: edge.node.frontmatter.value, label: edge.node.frontmatter.label} } 
+    }).reduce( (acc, cur, i) => { 
+      return {...acc, ...cur} 
+    } )
   }
 }
 
@@ -103,6 +126,7 @@ export const pageQuery = graphql`
             frequencyLabel
             formFactor
             topology
+            imageUrl
           }
         }
       }

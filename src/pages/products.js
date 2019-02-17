@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import Product from "../components/product/product"
+import UpsProduct from "../components/product/ups/upsProduct"
 import './products.scss'
 
 import { graphql } from "gatsby"
@@ -19,6 +19,7 @@ class Products extends Component {
       filters: {}
     }
     this.onChange = this.onChange.bind(this)
+    this.triggerSearch = this.triggerSearch.bind(this)
   }
   componentDidMount() {
     this.setState({
@@ -33,8 +34,7 @@ class Products extends Component {
         <SEO title="Products" />
         <div className="products">
           <div className="filters">
-            <UpsFilters onChange={this.onChange}/>
-            <button onClick={ () => this.triggerSearch() }>Search</button>
+            <UpsFilters onChange={this.onChange} triggerSearch={this.triggerSearch}/>
           </div>
           <div className="content">
             <div className="count"></div>
@@ -42,12 +42,15 @@ class Products extends Component {
               { 
                 this.state.allProducts.filter( elem => {
                   let flag = true
-                  for(var key in this.state.filters) {
-                    if( this.state.filters[key] !== -1 && this.state.filters[key] !== elem[key] )
+                  let stateFiltersObject = this.state.filters
+                  for(var key in stateFiltersObject) {
+                    if(key === "searchText" && stateFiltersObject[key].trim() !== "" && elem.name.toLowerCase().indexOf(stateFiltersObject[key].trim().toLowerCase()) === -1)
+                      flag = false
+                    else if( key !== "searchText" && stateFiltersObject[key] !== -1 && stateFiltersObject[key] !== elem[key] )
                       flag = false
                   }
                   return flag
-                }).map( (elem, index) => <Product key={index} elem={elem}/> ) 
+                }).map( (elem, index) => <UpsProduct key={index} elem={elem}/> ) 
               }
             </div>
           </div>
@@ -55,9 +58,13 @@ class Products extends Component {
       </Layout>
     )
   }
-  triggerSearch() { 
-    this.setState({
-      
+  triggerSearch(searchText) { 
+    let {filters} = this.state
+    this.setState({ 
+      filters: {
+        ...filters,
+        searchText: searchText
+      }
     })
   }
   onChange(filterName, value) {

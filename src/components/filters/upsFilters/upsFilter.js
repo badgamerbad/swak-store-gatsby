@@ -1,6 +1,4 @@
 import React, { Component } from "react"
-import './upsFilter.scss'
-
 
 class UpsFilter extends Component {
     constructor(props) {
@@ -46,7 +44,7 @@ class UpsFilter extends Component {
         )
     }
     onChanged(index, e) {
-        this.props.onChange.onChange(e.currentTarget.name , index)
+        this.props.onChange(e.currentTarget.name , index)
         this.setState({
             index: parseInt(index)
         })

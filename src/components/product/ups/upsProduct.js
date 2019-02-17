@@ -1,8 +1,8 @@
 import React from "react"
 
-import './product.scss'
+import './upsProduct.scss'
 
-const Product = ({elem}) => (
+const UpsProduct = ({elem}) => (
     <div className="product">
         <ul>
             <li>{elem.name}</li>
@@ -10,4 +10,4 @@ const Product = ({elem}) => (
     </div>
 )
 
-export default Product
+export default UpsProduct

@@ -1,10 +1,58 @@
+$colors: (
+    content_color: #ffffff,
+    filters_color: #666666,
+    filters_font_color: #d4d4d4,
+);
+$sizes: (
+    mobile: 540px,
+    tablet: 1000px,
+    hd: 1500px,
+);
+
 .products {
     padding-top: calc(40px + 1rem + 1rem);
     display: flex;
+    .filter-button {
+        position: absolute;
+        width: 100%;
+        button {
+            display: none;
+            float: right;
+            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                display: block;
+            }
+        }
+        &:hover + .filters {
+            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                display: block;
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                display: block;
+            }
+        }
+    }
     .filters {
-
+        color: map-get($map: $colors, $key: filters_font_color);
+        background: map-get($map: $colors, $key: filters_color);
+        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+            position: absolute;
+            display: none;
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            position: absolute;
+            display: none;
+        }
+        z-index: 1;
     }
     .content {
-
+        width: 100%;
+        padding: 1.5em;
+        background: map-get($map: $colors, $key: content_color);
+        .count {
+            font-size: 1.5em;
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            width: auto;
+        }
     }
 }

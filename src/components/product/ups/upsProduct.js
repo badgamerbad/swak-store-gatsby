@@ -15,20 +15,65 @@ class UpsProduct extends React.Component {
         return (
             <div className="upsProduct">
                 <ul>
-                    <li><UpsImageLoader imageUrl={ups.imageUrl}/></li>
-                    <li>
+                    <li className="image"><UpsImageLoader imageUrl={ups.imageUrl}/></li>
+                    <li className="specification">
                         <ul>
-                            <li>Name : {ups.name}</li>
-                            <li>{filters.powerRating.label}: {ups.powerRatingLabel}</li>
-                            <li>{filters.voltage.label}: {ups.voltageLabel}</li>
-                            <li>{filters.frequency.label}: {ups.frequencyLabel}</li>
-                            <li>{filters.formFactor.label}: {filters.formFactor.value[ups.formFactor]}</li>
-                            <li>{filters.phase.label}: {filters.phase.value[ups.phase]}</li>
-                            <li>{filters.topology.label}: {filters.topology.value[ups.topology]}</li>
-                            <li>{filters.application.label}: {filters.application.value[ups.application]}</li>
+                            <li className="name">{ups.name}</li>
+                            <div className="underline underline-large">
+                                <hr/>
+                                <hr/>
+                            </div>
+                            <li className="spec-header">Product Snapshot</li>
+                            <div className="underline underline-medium">
+                                <hr/>
+                                <hr/>
+                            </div>
+                            <li>
+                                <ul className="attribute">
+                                    <li className="title">{filters.powerRating.label}</li>
+                                    <li className="value">{ups.powerRatingLabel}</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul className="attribute">
+                                    <li className="title">{filters.voltage.label}</li>
+                                    <li className="value">{ups.voltageLabel}</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul className="attribute">
+                                    <li className="title">{filters.frequency.label}</li>
+                                    <li className="value">{ups.frequencyLabel}</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul className="attribute">
+                                    <li className="title">{filters.formFactor.label}</li>
+                                    <li className="value">{filters.formFactor.value[ups.formFactor]}</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul className="attribute">
+                                    <li className="title">{filters.phase.label}</li>
+                                    <li className="value">{filters.phase.value[ups.phase]}</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul className="attribute">
+                                    <li className="title">{filters.topology.label}</li>
+                                    <li className="value">{filters.topology.value[ups.topology]}</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul className="attribute">
+                                    <li className="title">{filters.application.label}</li>
+                                    <li className="value">{filters.application.value[ups.application]}</li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                 </ul>
+                <hr className="seperator"/>
             </div>
         )
     }

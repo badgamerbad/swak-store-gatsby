@@ -1,9 +1,26 @@
+$colors: (
+    button_color: #ffffff,
+    button_font_color: #333333,
+);
+$sizes: (
+    mobile: 540px,
+    tablet: 1000px,
+    hd: 1500px,
+);
 .ups-filter{
     margin: 1em;
     .searchBox {
         ul {
             margin: 0;
             padding: 0;
+            li {
+                text-align: center;
+            }
+        }
+        .button {
+            background: map-get($map: $colors, $key: button_color);
+            border: none;
+            padding: 0.25em 2em;
         }
     }
     .radioBox {

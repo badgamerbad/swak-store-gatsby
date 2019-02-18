@@ -35,6 +35,9 @@ class Products extends Component {
       <Layout>
         <SEO title="Products" />
         <div className="products">
+          <div className="filter-button">
+            <button>Filters</button>
+          </div>
           <div className="filters">
             <UpsFilters onChange={this.onChange} triggerSearch={this.triggerSearch} getAllUpsFilters={this.getAllUpsFilters}/>
           </div>
@@ -54,6 +57,7 @@ class Products extends Component {
               }).map( elem => elem ).length
             } Results
             </div>
+            <hr />
             <div className="listing">
               { 
                 this.state.allProducts.filter( elem => {

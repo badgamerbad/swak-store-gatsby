@@ -52,7 +52,7 @@ class UpsFilters extends React.Component {
                     <label>Search</label>
                     <ul>
                         <li><input type="text" name="searchUps" onChange={this.onChange.bind(this)}/></li>
-                        <li><button onClick={ () => this.props.triggerSearch(this.state.searchText) }>Search</button></li>
+                        <li><button className="button" onClick={ () => this.props.triggerSearch(this.state.searchText) }>Search</button></li>
                     </ul>
                   </div>
                 </div>

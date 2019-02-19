@@ -17,6 +17,7 @@ class Products extends Component {
     this.state = {
       allProducts: [],
       setFilters: {},
+      activateFilters: false,
     }
     this.onChange = this.onChange.bind(this)
     this.triggerSearch = this.triggerSearch.bind(this)
@@ -31,31 +32,38 @@ class Products extends Component {
     })
   }
   render() {
+    let filtersClasses = ["filters"]
+    if(this.state.activateFilters)
+      filtersClasses.push("active")
     return (
       <Layout>
         <SEO title="Products" />
         <div className="products">
-          <div className="filter-button">
-            <button>Filters</button>
-          </div>
-          <div className="filters">
+          <div className={ filtersClasses.join(' ') }>
             <UpsFilters onChange={this.onChange} triggerSearch={this.triggerSearch} getAllUpsFilters={this.getAllUpsFilters}/>
           </div>
           <div className="content">
             <div className="count">
-            {
-              this.state.allProducts.filter( elem => {
-                let flag = true
-                let stateFiltersObject = this.state.setFilters
-                for(var key in stateFiltersObject) {
-                  if(key === "searchText" && stateFiltersObject[key].trim() !== "" && elem.name.toLowerCase().indexOf(stateFiltersObject[key].trim().toLowerCase()) === -1)
-                    flag = false
-                  else if( key !== "searchText" && stateFiltersObject[key] !== -1 && stateFiltersObject[key] !== elem[key] )
-                    flag = false
-                }
-                return flag
-              }).map( elem => elem ).length
-            } Results
+              <ul>
+                <li>
+                  {
+                    this.state.allProducts.filter( elem => {
+                      let flag = true
+                      let stateFiltersObject = this.state.setFilters
+                      for(var key in stateFiltersObject) {
+                        if(key === "searchText" && stateFiltersObject[key].trim() !== "" && elem.name.toLowerCase().indexOf(stateFiltersObject[key].trim().toLowerCase()) === -1)
+                          flag = false
+                        else if( key !== "searchText" && stateFiltersObject[key] !== -1 && stateFiltersObject[key] !== elem[key] )
+                          flag = false
+                      }
+                      return flag
+                    }).map( elem => elem ).length
+                  } Results
+                </li>
+                <li className="filter-button">
+                  <button onClick={ this.toggle.bind(this) }>Filters</button>
+                </li>
+              </ul>
             </div>
             <hr />
             <div className="listing">
@@ -77,6 +85,9 @@ class Products extends Component {
         </div>
       </Layout>
     )
+  }
+  toggle() {
+    this.setState( {activateFilters: !this.state.activateFilters} )
   }
   triggerSearch(searchText) { 
     let {setFilters} = this.state

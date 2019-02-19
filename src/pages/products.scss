@@ -12,17 +12,32 @@ $sizes: (
 .products {
     padding-top: calc(40px + 1rem + 1rem);
     display: flex;
+    z-index: 0;
+    position: relative;
     .filter-button {
-        position: absolute;
+        display: none;
         width: 100%;
-        button {
-            display: none;
-            float: right;
-            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
-                display: block;
-            }
+        
+        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+            display: block;
         }
-        &:hover + .filters {
+    }
+    .filters {
+        color: map-get($map: $colors, $key: filters_font_color);
+        background: map-get($map: $colors, $key: filters_color);
+        height: 100%;
+        z-index: 1;
+        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+            position: fixed;
+            display: none;
+            overflow: auto;
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            position: fixed;
+            display: none;
+            overflow: auto;
+        }
+        &.active {
             @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
                 display: block;
             }
@@ -31,28 +46,27 @@ $sizes: (
             }
         }
     }
-    .filters {
-        color: map-get($map: $colors, $key: filters_font_color);
-        background: map-get($map: $colors, $key: filters_color);
-        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
-            position: absolute;
-            display: none;
-        }
-        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-            position: absolute;
-            display: none;
-        }
-        z-index: 1;
-    }
     .content {
         width: 100%;
         padding: 1.5em;
         background: map-get($map: $colors, $key: content_color);
         .count {
             font-size: 1.5em;
+            .filter-button {
+                display: none;
+                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                    display: block;
+                }
+            }
         }
         @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
             width: auto;
         }
+    }
+    @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+        display: block;
+    }
+    @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+        display: block;
     }
 }

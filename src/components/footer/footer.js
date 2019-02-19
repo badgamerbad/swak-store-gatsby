@@ -14,7 +14,7 @@ class Footer extends Component {
             <footer className="footer">
                 © { this.state.date }, Built with
                 {` `}
-                <a href="https://www.gatsbyjs.org">Gatsby</a>
+                <a href="https://www.gatsbyjs.org" target="_blank" rel="noopener noreferrer">Gatsby</a>
             </footer>
         )
     }

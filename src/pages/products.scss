@@ -10,32 +10,25 @@ $sizes: (
 );
 
 .products {
-    padding-top: calc(40px + 1rem + 1rem);
+    padding-top: calc(35px + 1rem + 1rem);
     display: flex;
     z-index: 0;
     position: relative;
-    .filter-button {
-        display: none;
-        width: 100%;
-        
-        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
-            display: block;
-        }
-    }
     .filters {
+        z-index: 1;
         color: map-get($map: $colors, $key: filters_font_color);
         background: map-get($map: $colors, $key: filters_color);
-        height: 100%;
-        z-index: 1;
         @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
             position: fixed;
             display: none;
             overflow: auto;
+            height: calc(100% - ( 35px + 1rem + 1rem) );
         }
         @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
             position: fixed;
             display: none;
             overflow: auto;
+            height: calc(100% - ( 35px + 1rem + 1rem) );
         }
         &.active {
             @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
@@ -52,8 +45,22 @@ $sizes: (
         background: map-get($map: $colors, $key: content_color);
         .count {
             font-size: 1.5em;
+            &> ul {
+                display: flex;
+                margin: 0;
+                padding: 0;
+                justify-content: space-between;
+                align-items: center;
+            }
             .filter-button {
                 display: none;
+                &> button {
+                    background: none;
+                    border: none;
+                    width: 2.5em;
+                    height: 2.5em;
+                    padding: 0
+                }
                 @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                     display: block;
                 }

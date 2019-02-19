@@ -1,5 +1,4 @@
 $colors: (
-    primary: rgb(245, 223, 24),
     font_color: #ffffff,
 );
 $sizes: (
@@ -13,7 +12,7 @@ $sizes: (
     position: relative;
     overflow: hidden;
     z-index: 0;
-    padding-top: calc(40px + 1rem + 1rem);
+    padding-top: calc(35px + 1rem + 1rem);
     @media only screen and (max-width: map-get($map: $sizes, $key: hd)) {
         height: 80vh;
     }

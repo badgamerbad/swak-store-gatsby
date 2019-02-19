@@ -11,6 +11,8 @@ import get from "lodash/get"
 
 import UpsFilters from "../components/filters/upsFilters/upsFilters"
 
+import FilterIcon from '../images/filter'
+
 class Products extends Component {
   constructor(props) {
     super(props)
@@ -61,7 +63,7 @@ class Products extends Component {
                   } Results
                 </li>
                 <li className="filter-button">
-                  <button onClick={ this.toggle.bind(this) }>Filters</button>
+                  <button onClick={ this.toggle.bind(this) }><FilterIcon /></button>
                 </li>
               </ul>
             </div>

@@ -1,6 +1,6 @@
 $colors: (
     button_color: #ffffff,
-    button_font_color: #333333,
+    button_font_color: #d4d4d4,
 );
 $sizes: (
     mobile: 540px,
@@ -9,6 +9,20 @@ $sizes: (
 );
 .ups-filter{
     margin: 1em;
+    .filterCloser {
+        display: none;
+        width: 100%;
+        text-align: right;
+        background: transparent;
+        color: map-get($map: $colors, $key: button_font_color);
+        border: none;
+        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+            display: block;
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            display: block;
+        }
+    }
     .searchBox {
         ul {
             margin: 0;
@@ -28,7 +42,29 @@ $sizes: (
             margin: 0;
             padding: 0;
             ul {
+                
+            }
+        }
+        .label {
+            &> ul {
                 display: flex;
+                justify-content: space-between;
+            }
+            button {
+                background: transparent;
+                border: none;
+                color: map-get($map: $colors, $key: button_font_color);
+            }
+            &.active + .values {
+                display: block;
+            }
+        }
+        .values {
+            display: none;
+            &> ul {
+                ul {
+                    display: flex;
+                }
             }
         }
     }

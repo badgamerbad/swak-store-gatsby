@@ -19,11 +19,12 @@ class Products extends Component {
     this.state = {
       allProducts: [],
       setFilters: {},
-      activateFilters: false,
+      showFilters: false,
     }
     this.onChange = this.onChange.bind(this)
     this.triggerSearch = this.triggerSearch.bind(this)
     this.getAllUpsFilters = this.getAllUpsFilters.bind(this)
+    this.closeFilters = this.closeFilters.bind(this)
     this.allFilters = []
   }
   componentDidMount() {
@@ -35,14 +36,18 @@ class Products extends Component {
   }
   render() {
     let filtersClasses = ["filters"]
-    if(this.state.activateFilters)
+    let filtersCloserClasses = ["filterCloser"]
+    if(this.state.showFilters) {
       filtersClasses.push("active")
+      filtersCloserClasses.push("active")
+    }
+      
     return (
       <Layout>
         <SEO title="Products" />
         <div className="products">
           <div className={ filtersClasses.join(' ') }>
-            <UpsFilters onChange={this.onChange} triggerSearch={this.triggerSearch} getAllUpsFilters={this.getAllUpsFilters}/>
+            <UpsFilters onChange={this.onChange} closeFilters={this.closeFilters} triggerSearch={this.triggerSearch} getAllUpsFilters={this.getAllUpsFilters}/>
           </div>
           <div className="content">
             <div className="count">
@@ -63,7 +68,7 @@ class Products extends Component {
                   } Results
                 </li>
                 <li className="filter-button">
-                  <button onClick={ this.toggle.bind(this) }><FilterIcon /></button>
+                  <button onClick={ this.openFilters.bind(this) }><FilterIcon /></button>
                 </li>
               </ul>
             </div>
@@ -83,13 +88,17 @@ class Products extends Component {
                 }).map( (elem, index) => <UpsProduct key={index} index={index} ups={elem} filters={this.allFilters}/> ) 
               }
             </div>
+            <div className={filtersCloserClasses.join(' ')} onClick={ this.closeFilters.bind(this) }></div>
           </div>
         </div>
       </Layout>
     )
   }
-  toggle() {
-    this.setState( {activateFilters: !this.state.activateFilters} )
+  openFilters() {
+    this.setState( {showFilters: true} )
+  }
+  closeFilters() {
+    this.setState( {showFilters: false} )
   }
   triggerSearch(searchText) { 
     let {setFilters} = this.state

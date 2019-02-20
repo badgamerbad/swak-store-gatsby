@@ -48,6 +48,7 @@ class UpsFilters extends React.Component {
             return (
               <>
                 <div className="ups-filter">
+                  <button className="filterCloser" onClick={ () => this.props.closeFilters() }>X</button>
                   <div className="searchBox">
                     <label>Search</label>
                     <ul>

@@ -66,6 +66,20 @@ $sizes: (
                 }
             }
         }
+        .filterCloser {
+            display: none;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            &.active {
+                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                    display: block;
+                }
+            }
+        }
         @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
             width: auto;
         }

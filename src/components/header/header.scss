@@ -4,6 +4,8 @@ $colors: (
 );
 $sizes: (
     mobile: 540px,
+    tablet: 1000px,
+    hd: 1500px,
 );
 
 header {
@@ -13,60 +15,64 @@ header {
     position: fixed;
     width: 100%;
     background: map-get($map: $colors, $key: body_color);
-    .logo {
-        ul {
-            .logo-li {
-                width: 4rem;
-            }
-        }
-    }
     .menu {
-        margin: 0 2em 0 0;
-        .menu-bars {
-            padding: 0.5rem 1rem;
-            display: none;
-            margin: 1em 0;
-            div {
-                width: 1.5em;
-                height: 0.1em;
-                background: map-get($map: $colors, $key: text_color);
-                &:nth-child(2) {
-                    margin: 0.4em 0;
-                }
+        display: none;
+    }
+    .menu-mobile {
+        .menuBody {
+            &> ul {
+                display: flex;
+                justify-content: space-between;
             }
-            &.active  {
+            .menu-bars {
+                padding: 0.5rem 1rem;
+                display: none;
+                margin: 1em 0;
                 div {
-                    &:nth-child(1) {
-                        position: absolute;
-                        animation: move-down 1s 0s 1 forwards;
+                    width: 1.5em;
+                    height: 0.1em;
+                    background: map-get($map: $colors, $key: text_color);
+                    &:nth-child(2) {
+                        margin: 0.4em 0;
                     }
-                    &:nth-child(even) {
-                        animation: anti-clockwise 1s 500ms 1 forwards;
-                        &:after {
-                            content: "";
+                }
+                &.active  {
+                    div {
+                        &:nth-child(1) {
                             position: absolute;
-                            width: 1.5em;
-                            height: 0.1em;
-                            background: map-get($map: $colors, $key: text_color);
-                            animation: clockwise 1s 500ms 1 forwards;
+                            animation: move-down 1s 0s 1 forwards;
+                        }
+                        &:nth-child(even) {
+                            animation: anti-clockwise 1s 500ms 1 forwards;
+                            &:after {
+                                content: "";
+                                position: absolute;
+                                width: 1.5em;
+                                height: 0.1em;
+                                background: map-get($map: $colors, $key: text_color);
+                                animation: clockwise 1s 500ms 1 forwards;
+                            }
+                        }
+                        &:nth-child(3) {
+                            position: absolute;
+                            animation: move-up 1s 0s 1 forwards;
                         }
                     }
-                    &:nth-child(3) {
-                        position: absolute;
-                        animation: move-up 1s 0s 1 forwards;
+                    &+ .menu-dropdown {
+                        display: block;
                     }
                 }
-                &+ .menu-items {
+                @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                    display: block;
+                }
+                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                     display: block;
                 }
             }
-            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-                display: block;
-            }
         }
-        .menu-items {
+        
+        .menu-dropdown {
             ul {
-                display: flex;
                 padding: 0;
                 background: map-get($map: $colors, $key: body_color);
                 li {
@@ -79,9 +85,19 @@ header {
                         border-bottom: 1px solid map-get($map: $colors, $key: text_color);
                     }
                 }
+                @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                    display: block;
+                }
                 @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                     display: block;
                 }
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                display: none;
+                position: absolute;
+                right: 0;
+                width: 100%;
+                text-align: center;
             }
             @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                 display: none;

@@ -13,31 +13,52 @@ class Header extends React.Component {
     }
   }
   render() {
-    let menuItemClasses = ["menu-bars"]
+    let menuDropDownClasses = ["menu-dropdown"]
     if(this.state.active) 
-      menuItemClasses.push('active')
+      menuDropDownClasses.push('active')
     return (
       <header>
-        <div className="logo">
-          <ul>
-            <li className="logo-li"><ImageLogo /></li>
-          </ul>
-        </div>
         <div className="menu">
           <ul>
-            <div className={menuItemClasses.join(' ')} onClick={ this.toggle.bind(this) }>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-            <div className="menu-items">
-              <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/products/">Products</Link></li>
-                <li><Link to="/about/">About</Link></li>
-              </ul>
-            </div>
+            <li className="logo"><ImageLogo /></li>
           </ul>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/products/">Products</Link></li>
+            <li><Link to="/about/">About</Link></li>
+          </ul>
+        </div>
+        <div className="menu-mobile">
+          <div className="menuBody">
+            <ul>
+              <li>
+                <ul>
+                  <li className="logo"><ImageLogo /></li>
+                </ul>
+              </li>
+              <li>
+                <ul>
+                  <li>
+                    <button>Search</button>
+                  </li>
+                  <li>
+                    <div className="menu-bars" onClick={ this.toggle.bind(this) }>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div className={menuDropDownClasses.join(' ')}>
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/products/">Products</Link></li>
+              <li><Link to="/about/">About</Link></li>
+            </ul>
+          </div>
         </div>
       </header>
     )

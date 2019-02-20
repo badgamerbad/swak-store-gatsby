@@ -78,6 +78,9 @@ $sizes: (
             top: 0;
             left: 0;
             &.active {
+                @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                    display: block;
+                }
                 @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                     display: block;
                 }

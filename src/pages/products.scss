@@ -43,6 +43,7 @@ $sizes: (
         width: 100%;
         padding: 1.5em;
         background: map-get($map: $colors, $key: content_color);
+        position: relative;
         .count {
             font-size: 1.5em;
             &> ul {

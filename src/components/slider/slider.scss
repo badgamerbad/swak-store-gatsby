@@ -116,9 +116,16 @@ $sizes: (
             position: relative;
             width: 3em;
             height: 6em;
+            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                margin: 1em;
+            }
             @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                 margin: 1em;
             }
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+            align-items: flex-end;
+            margin: 0;
         }
         @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
             align-items: flex-end;
@@ -152,6 +159,11 @@ $sizes: (
                     animation: trigger-highlighter 9s 0s 1 forwards;
                 }
             }
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+            right: 0;
+            width: 100%;
+            justify-content: center;
         }
         @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
             right: 0;

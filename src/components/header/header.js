@@ -6,6 +6,7 @@ import ImageLogo from "../../images/logo"
 import "./header.scss"
 
 import SearchIcon from "../../images/searchIcon"
+import CloseIcon from "../../images/closeIcon"
 
 class Header extends React.Component {
   constructor(props) {
@@ -44,11 +45,18 @@ class Header extends React.Component {
               <li className="logo"><ImageLogo /></li>
               <li className={menuItemsClasses.join(' ')}>
                 <ul>
-                  <li className="searchText">
-                    <input type="text" />
-                  </li>
                   <li>
-                    <button onClick={ this.toggleSearch.bind(this) } className="searchButton"><SearchIcon /></button>
+                    <button onClick={ this.toggleSearch.bind(this) } className="searchButton">
+                      <div className={ this.state.showSearch ? "" : "active" }>
+                        <SearchIcon />
+                      </div>
+                      <div className={ this.state.showSearch ? "active" : "" }>
+                        <CloseIcon />
+                      </div>
+                      </button>
+                  </li>
+                  <li className="searchText">
+                    <input type="text" placeholder="Search" onKeyDown={ this.submitProduct.bind(this) }/>
                   </li>
                   <li>
                     <div className={menuBarsClasses.join(' ')} onClick={ this.toggle.bind(this) }>
@@ -77,6 +85,12 @@ class Header extends React.Component {
   }
   toggleSearch() {
     this.setState( {showSearch: !this.state.showSearch} )
+  }
+  submitProduct(e) {
+    if(e.key === "Enter") {
+      // this.props.history.push('/products')
+      console.log(`Will take "${e.currentTarget.value}" and navigate to products`)
+    }
   }
 }
 

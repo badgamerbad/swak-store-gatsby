@@ -79,10 +79,21 @@ header {
                             margin: 0 1em;
                             input {
                                 width: 100%;
+                                height: 2.5em;
+                                background: transparent;
+                                border: none;
+                                border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                                text-align: right;
                             }
                         }
                         .searchButton {
                             width: 2.5em;
+                            &> div {
+                                display: none;
+                            }
+                            .active {
+                                display: block;
+                            }
                         }
                         .menu-bars {
                             padding: 0.5rem 1rem;

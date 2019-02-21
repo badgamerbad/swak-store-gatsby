@@ -56,11 +56,9 @@ $sizes: (
             .filter-button {
                 display: none;
                 &> button {
-                    background: none;
-                    border: none;
                     width: 2.5em;
                     height: 2.5em;
-                    padding: 0
+                    padding: 0;
                 }
                 @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
                     display: block;

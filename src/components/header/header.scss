@@ -16,68 +16,131 @@ header {
     width: 100%;
     background: map-get($map: $colors, $key: body_color);
     .menu {
-        display: none;
-    }
-    .menu-mobile {
-        .menuBody {
-            &> ul {
-                display: flex;
-                justify-content: space-between;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1em;
+        &> ul {
+            padding: 0 0 0 1em;
+            display: flex;
+            .logo {
+                width: 4em;
             }
-            .menu-bars {
+            .link {
                 padding: 0.5rem 1rem;
-                display: none;
-                margin: 1em 0;
-                div {
-                    width: 1.5em;
-                    height: 0.1em;
-                    background: map-get($map: $colors, $key: text_color);
-                    &:nth-child(2) {
-                        margin: 0.4em 0;
-                    }
+                border-bottom: 1px solid transparent;
+                a {
+                    color: map-get($map: $colors, $key: text_color);
                 }
-                &.active  {
-                    div {
-                        &:nth-child(1) {
-                            position: absolute;
-                            animation: move-down 1s 0s 1 forwards;
-                        }
-                        &:nth-child(even) {
-                            animation: anti-clockwise 1s 500ms 1 forwards;
-                            &:after {
-                                content: "";
-                                position: absolute;
-                                width: 1.5em;
-                                height: 0.1em;
-                                background: map-get($map: $colors, $key: text_color);
-                                animation: clockwise 1s 500ms 1 forwards;
-                            }
-                        }
-                        &:nth-child(3) {
-                            position: absolute;
-                            animation: move-up 1s 0s 1 forwards;
-                        }
-                    }
-                    &+ .menu-dropdown {
-                        display: block;
-                    }
-                }
-                @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
-                    display: block;
-                }
-                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-                    display: block;
+                &:hover {
+                    border-bottom: 1px solid map-get($map: $colors, $key: text_color);
                 }
             }
         }
-        
+        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+            display: none;
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            display: none;
+        }
+    }
+    .menu-mobile {
+        display: none;
+        width: 100%;
+        .menuBody {
+            position: relative;
+            z-index: 1;
+            background: map-get($map: $colors, $key: body_color);
+            padding: 1em 0;
+            &> ul {
+                padding: 0 0 0 1em;
+                margin: 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .logo {
+                    width: 4em;
+                }
+                .menu-items {
+                    &.showSearch {
+                        width: 75%;
+                        .searchText {
+                            display: block;
+                        }
+                    }
+                    &> ul {
+                        display: flex;
+                        align-items: center;
+                        padding: 0;
+                        .searchText {
+                            display: none;
+                            width: 100%;
+                            margin: 0 1em;
+                            input {
+                                width: 100%;
+                            }
+                        }
+                        .searchButton {
+                            width: 2.5em;
+                        }
+                        .menu-bars {
+                            padding: 0.5rem 1rem;
+                            display: none;
+                            div {
+                                width: 1.5em;
+                                height: 0.1em;
+                                background: map-get($map: $colors, $key: text_color);
+                                &:nth-child(2) {
+                                    margin: 0.4em 0;
+                                }
+                            }
+                            &.active  {
+                                div {
+                                    &:nth-child(1) {
+                                        position: absolute;
+                                        animation: move-down 1s 0s 1 forwards;
+                                    }
+                                    &:nth-child(even) {
+                                        animation: anti-clockwise 1s 500ms 1 forwards;
+                                        &:after {
+                                            content: "";
+                                            position: absolute;
+                                            width: 1.5em;
+                                            height: 0.1em;
+                                            background: map-get($map: $colors, $key: text_color);
+                                            animation: clockwise 1s 500ms 1 forwards;
+                                        }
+                                    }
+                                    &:nth-child(3) {
+                                        position: absolute;
+                                        animation: move-up 1s 0s 1 forwards;
+                                    }
+                                }
+                            }
+                            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                                display: block;
+                            }
+                            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
         .menu-dropdown {
+            position: relative;
+            z-index: 0;
             ul {
                 padding: 0;
-                background: map-get($map: $colors, $key: body_color);
+                margin: 0;
                 li {
                     padding: 0.5rem 1rem;
                     border-bottom: 1px solid transparent;
+                    background: map-get($map: $colors, $key: body_color);
+                    margin-top: -30%;
+                    position: relative;
                     a {
                         color: map-get($map: $colors, $key: text_color);
                     }
@@ -85,27 +148,40 @@ header {
                         border-bottom: 1px solid map-get($map: $colors, $key: text_color);
                     }
                 }
-                @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
-                    display: block;
-                }
-                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-                    display: block;
+            }
+            &.active {
+                li {
+                    margin-top: -30%;
+                    z-index: 1;
+                    &:nth-child(1) {
+                        animation: show-menu-dropdown 150ms 0s forwards;
+                    }
+                    &:nth-child(2) {
+                        animation: show-menu-dropdown 150ms 150ms forwards;
+                    }
+                    &:nth-child(3) {
+                        animation: show-menu-dropdown 150ms 300ms forwards;
+                    }
                 }
             }
             @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
-                display: none;
-                position: absolute;
+                position: relative;
                 right: 0;
                 width: 100%;
                 text-align: center;
             }
             @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-                display: none;
-                position: absolute;
+                position: relative;
                 right: 0;
                 width: 100%;
                 text-align: center;
             }
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+            display: block;
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            display: block;
         }
     }
 }
@@ -124,4 +200,8 @@ header {
 @keyframes move-up {
     0% { margin-top: 0; opacity: 1; }
     100% { margin-top: -0.5em; opacity: 0; }
+}
+@keyframes show-menu-dropdown {
+    0% { margin-top: -30%; z-index: 0;}
+    100% { margin-top: 0%; z-index: 1; }
 }

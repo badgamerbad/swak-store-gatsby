@@ -9,6 +9,7 @@ $sizes: (
 );
 .ups-filter{
     margin: 1em;
+    white-space: nowrap;
     .filterCloser {
         display: none;
         width: 100%;
@@ -33,6 +34,7 @@ $sizes: (
             }
             button {
                 color: map-get($map: $colors, $key: button_font_color);
+                margin: 0 0 0 6em;
             }
             &.active + .values {
                 display: block;

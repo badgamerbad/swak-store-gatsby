@@ -19,13 +19,13 @@ class Header extends React.Component {
   render() {
     let menuDropDownClasses = ["menu-dropdown"]
     let menuBarsClasses = ["menu-bars"]
-    let menuItemsClasses = ["menu-items"]
+    let menuBodyClasses = ["menu-body"]
     if(this.state.active) {
       menuDropDownClasses.push('active')
       menuBarsClasses.push("active")
     }
     if(this.state.showSearch) {
-      menuItemsClasses.push("showSearch")
+      menuBodyClasses.push("showSearch")
     }
     return (
       <header>
@@ -40,23 +40,23 @@ class Header extends React.Component {
           </ul>
         </div>
         <div className="menu-mobile">
-          <div className="menuBody">
+          <div className={menuBodyClasses.join(' ')}>
             <ul>
               <li className="logo"><ImageLogo /></li>
-              <li className={menuItemsClasses.join(' ')}>
+              <li className="menu-items">
                 <ul>
                   <li>
-                    <button onClick={ this.toggleSearch.bind(this) } className="searchButton">
-                      <div className={ this.state.showSearch ? "" : "active" }>
-                        <SearchIcon />
-                      </div>
-                      <div className={ this.state.showSearch ? "active" : "" }>
-                        <CloseIcon />
-                      </div>
-                      </button>
+                    <button onClick={ this.closeSearch.bind(this) } className="searchButton">
+                      <CloseIcon />
+                    </button>
                   </li>
                   <li className="searchText">
                     <input type="text" placeholder="Search" onKeyDown={ this.submitProduct.bind(this) }/>
+                  </li>
+                  <li>
+                    <button onClick={ this.openSearch.bind(this) } className="searchButton">
+                      <SearchIcon />
+                    </button>
                   </li>
                   <li>
                     <div className={menuBarsClasses.join(' ')} onClick={ this.toggle.bind(this) }>
@@ -83,8 +83,11 @@ class Header extends React.Component {
   toggle() {
     this.setState( {active: !this.state.active} )
   }
-  toggleSearch() {
-    this.setState( {showSearch: !this.state.showSearch} )
+  openSearch() {
+    this.setState( {showSearch: true} )
+  }
+  closeSearch() {
+    this.setState( {showSearch: false} )
   }
   submitProduct(e) {
     if(e.key === "Enter") {

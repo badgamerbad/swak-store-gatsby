@@ -48,11 +48,30 @@ header {
     .menu-mobile {
         display: none;
         width: 100%;
-        .menuBody {
+        .menu-body {
             position: relative;
             z-index: 1;
             background: map-get($map: $colors, $key: body_color);
             padding: 1em 0;
+            &.showSearch {
+                width: 100%;
+                .logo {
+                    display: none;
+                }
+                .menu-items {
+                    .searchText {
+                        display: block;
+                    }
+                    li {
+                        &:nth-child(1) {
+                            border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                        }
+                        &:nth-child(2) {
+                            border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                        }
+                    }
+                }
+            }
             &> ul {
                 padding: 0 0 0 1em;
                 margin: 0;
@@ -63,20 +82,6 @@ header {
                     width: 4em;
                 }
                 .menu-items {
-                    &.showSearch {
-                        width: 75%;
-                        .searchText {
-                            display: block;
-                        }
-                        li {
-                            &:nth-child(1) {
-                                border-bottom: 1px solid map-get($map: $colors, $key: text_color);
-                            }
-                            &:nth-child(2) {
-                                border-bottom: 1px solid map-get($map: $colors, $key: text_color);
-                            }
-                        }
-                    }
                     &> ul {
                         display: flex;
                         align-items: center;
@@ -96,12 +101,6 @@ header {
                         .searchButton {
                             width: 2.5em;
                             height: 2.5em;
-                            &> div {
-                                display: none;
-                            }
-                            .active {
-                                display: block;
-                            }
                         }
                         .menu-bars {
                             padding: 0.5rem 1rem;

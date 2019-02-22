@@ -69,6 +69,9 @@ header {
                         &:nth-child(2) {
                             border-bottom: 1px solid map-get($map: $colors, $key: text_color);
                         }
+                        .closeButton {
+                            display: block;
+                        }
                     }
                 }
             }
@@ -84,8 +87,15 @@ header {
                 .menu-items {
                     &> ul {
                         display: flex;
-                        align-items: center;
+                        align-items: flex-end;
                         padding: 0;
+                        button {
+                            width: 2.5em;
+                            height: 2.5em;
+                            &.closeButton {
+                                display: none;
+                            }
+                        }
                         .searchText {
                             display: none;
                             width: 100%;
@@ -97,10 +107,6 @@ header {
                                 border: 1px solid transparent;
                                 text-align: right;
                             }
-                        }
-                        .searchButton {
-                            width: 2.5em;
-                            height: 2.5em;
                         }
                         .menu-bars {
                             padding: 0.5rem 1rem;

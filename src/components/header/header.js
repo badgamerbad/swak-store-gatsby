@@ -46,7 +46,7 @@ class Header extends React.Component {
               <li className="menu-items">
                 <ul>
                   <li>
-                    <button onClick={ this.closeSearch.bind(this) } className="searchButton">
+                    <button onClick={ this.closeSearch.bind(this) } className="closeButton">
                       <CloseIcon />
                     </button>
                   </li>

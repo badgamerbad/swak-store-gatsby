@@ -9,8 +9,8 @@ import SearchIcon from "../../images/searchIcon"
 import CloseIcon from "../../images/closeIcon"
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor(props, context) {
+    super(props, context)
     this.state = {
       active: false,
       showSearch: false,
@@ -88,8 +88,7 @@ class Header extends React.Component {
   }
   submitProduct(e) {
     if(e.key === "Enter") {
-      // this.props.history.push('/products')
-      console.log(`Will take "${e.currentTarget.value}" and navigate to products`)
+      window.location = '/products?searchText=' + e.currentTarget.value
     }
   }
 }

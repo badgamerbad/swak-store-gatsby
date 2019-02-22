@@ -8,9 +8,7 @@ import UpsFilter from "./upsFilter"
 class UpsFilters extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      searchText: ""
-    }
+    this.state = {}
   }
   render() {
     return (
@@ -49,13 +47,6 @@ class UpsFilters extends React.Component {
               <>
                 <div className="ups-filter">
                   <button className="filterCloser" onClick={ () => this.props.closeFilters() }>X</button>
-                  <div className="searchBox">
-                    <label>Search</label>
-                    <ul>
-                        <li><input type="text" name="searchUps" onChange={this.onChange.bind(this)}/></li>
-                        <li><button className="button" onClick={ () => this.props.triggerSearch(this.state.searchText) }>Search</button></li>
-                    </ul>
-                  </div>
                 </div>
                 {
                   get(data, "allMarkdownRemark.edges").map( (filter, index) => <UpsFilter key={index} filter={filter} onChange={this.props.onChange} /> )
@@ -66,11 +57,6 @@ class UpsFilters extends React.Component {
         }
       />
     )
-  }
-  onChange(e) {
-    this.setState({
-      searchText: e.currentTarget.value
-    })
   }
 }
 

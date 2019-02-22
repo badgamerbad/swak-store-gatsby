@@ -16,22 +16,32 @@ import FilterIcon from '../images/filter'
 class Products extends Component {
   constructor(props) {
     super(props)
+    const paramsString = props.location.search
+    const params = new URLSearchParams(paramsString)
+    const searchText = params.get('searchText')
     this.state = {
       allProducts: [],
-      setFilters: {},
+      setFilters: {
+        searchText: searchText
+      },
       showFilters: false,
     }
     this.onChange = this.onChange.bind(this)
-    this.triggerSearch = this.triggerSearch.bind(this)
     this.getAllUpsFilters = this.getAllUpsFilters.bind(this)
     this.closeFilters = this.closeFilters.bind(this)
     this.allFilters = []
+    
   }
   componentDidMount() {
+    let {setFilters} = this.state
+    for(var key in this.allFilters) {
+      setFilters[key] = this.allFilters[key].selected
+    }
     this.setState({
       allProducts: get(this.props, "data.allMarkdownRemark.edges").map(
         edge => edge.node.frontmatter
-      )
+      ),
+      setFilters: setFilters
     })
   }
   render() {
@@ -47,7 +57,7 @@ class Products extends Component {
         <SEO title="Products" />
         <div className="products">
           <div className={ filtersClasses.join(' ') }>
-            <UpsFilters onChange={this.onChange} closeFilters={this.closeFilters} triggerSearch={this.triggerSearch} getAllUpsFilters={this.getAllUpsFilters}/>
+            <UpsFilters onChange={this.onChange} closeFilters={this.closeFilters} getAllUpsFilters={this.getAllUpsFilters}/>
           </div>
           <div className="content">
             <div className="count">
@@ -100,15 +110,6 @@ class Products extends Component {
   closeFilters() {
     this.setState( {showFilters: false} )
   }
-  triggerSearch(searchText) { 
-    let {setFilters} = this.state
-    this.setState({ 
-      setFilters: {
-        ...setFilters,
-        searchText: searchText
-      }
-    })
-  }
   onChange(filterName, value) {
     let {setFilters} = this.state
     this.setState({ 
@@ -120,7 +121,7 @@ class Products extends Component {
   }
   getAllUpsFilters(data) {
     this.allFilters = data.map( edge => { 
-      return { [edge.node.frontmatter.name]: {value: edge.node.frontmatter.value, label: edge.node.frontmatter.label} } 
+      return { [edge.node.frontmatter.name]: { value: edge.node.frontmatter.value, label: edge.node.frontmatter.label, selected: edge.node.frontmatter.selected } } 
     }).reduce( (acc, cur, i) => { 
       return {...acc, ...cur} 
     } )

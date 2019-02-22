@@ -68,6 +68,14 @@ header {
                         .searchText {
                             display: block;
                         }
+                        li {
+                            &:nth-child(1) {
+                                border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                            }
+                            &:nth-child(2) {
+                                border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                            }
+                        }
                     }
                     &> ul {
                         display: flex;
@@ -76,18 +84,18 @@ header {
                         .searchText {
                             display: none;
                             width: 100%;
-                            margin: 0 1em;
+                            padding: 0 1em;
                             input {
                                 width: 100%;
                                 height: 2.5em;
                                 background: transparent;
-                                border: none;
-                                border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                                border: 1px solid transparent;
                                 text-align: right;
                             }
                         }
                         .searchButton {
                             width: 2.5em;
+                            height: 2.5em;
                             &> div {
                                 display: none;
                             }
@@ -98,6 +106,8 @@ header {
                         .menu-bars {
                             padding: 0.5rem 1rem;
                             display: none;
+                            border-left: 1px solid map-get($map: $colors, $key: text_color);
+                            margin: 0 0 0 0.5em;
                             div {
                                 width: 1.5em;
                                 height: 0.1em;

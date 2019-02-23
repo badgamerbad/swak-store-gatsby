@@ -52,9 +52,9 @@ class Products extends Component {
       filtersClasses.push("active")
       filtersCloserClasses.push("active")
     }
-    let searchTextClasses = "hide"
+    let searchTextClasses = ["hide"]
     if(this.state.setFilters.searchText)
-      searchTextClasses = "search-text"
+      searchTextClasses = ["search-text"]
     return (
       <Layout>
         <SEO title="Products" />
@@ -85,7 +85,7 @@ class Products extends Component {
                 </li>
               </ul>
               <hr />
-              <ul className={searchTextClasses}>
+              <ul className={searchTextClasses.join(' ')}>
                 <li>
                   <button onClick={this.clearSearchText.bind(this)}>
                     "{ this.state.setFilters.searchText }" <FontAwesomeIcon icon="times-circle" />

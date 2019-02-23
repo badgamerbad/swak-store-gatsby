@@ -31,7 +31,6 @@ class Products extends Component {
     this.closeFilters = this.closeFilters.bind(this)
     this.resetFilters = this.resetFilters.bind(this)
     this.allFilters = []
-    
   }
   componentDidMount() {
     let {setFilters} = this.state
@@ -53,7 +52,7 @@ class Products extends Component {
       filtersCloserClasses.push("active")
     }
     let searchTextClasses = ["hide"]
-    if(this.state.setFilters.searchText)
+    if(this.state.setFilters.searchText.length > 0)
       searchTextClasses = ["search-text"]
     return (
       <Layout>

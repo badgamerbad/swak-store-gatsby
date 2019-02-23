@@ -4,5 +4,5 @@ type: radio
 name: phase
 label: Phase
 value: ['Single', 'Three']
-selected: 0
+selected: -1
 ---

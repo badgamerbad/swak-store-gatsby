@@ -6,6 +6,11 @@ import Header from "./header/header"
 import Footer from "./footer/footer"
 import "./layout.scss"
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faFilter, faSort, faSearch, faUndo, faWindowClose, faTimesCircle, faAngleRight, faAngleLeft, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
+library.add( fab, faFilter, faSort, faSearch, faUndo, faWindowClose, faTimesCircle, faAngleRight, faAngleLeft, faAngleDown, faAngleUp )
+
 const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`

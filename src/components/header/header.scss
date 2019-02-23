@@ -16,25 +16,82 @@ header {
     width: 100%;
     background: map-get($map: $colors, $key: body_color);
     .menu {
-        display: flex;
         width: 100%;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 1em;
-        &> ul {
-            padding: 0 0 0 1em;
-            display: flex;
-            .logo {
-                width: 4em;
-            }
-            .link {
-                padding: 0.5rem 1rem;
-                border-bottom: 1px solid transparent;
-                a {
-                    color: map-get($map: $colors, $key: text_color);
+        .menu-body {
+            padding: 1em 0;
+            ul {
+                padding: 0 0 0 1em;
+                margin: 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .logo {
+                    width: 4em;
                 }
-                &:hover {
-                    border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                .menu-items {
+                    .menu-search {
+                        ul {
+                            button {
+                                width: 2.5em;
+                                height: 2.5em;
+                                &.closeButton {
+                                    display: none;
+                                }
+                            }
+                            .searchText {
+                                display: none;
+                                width: 100%;
+                                padding: 0 1em;
+                                input {
+                                    width: 100%;
+                                    height: 2.5em;
+                                    background: transparent;
+                                    border: 1px solid transparent;
+                                    text-align: right;
+                                }
+                            }
+                        }
+                    }
+                    .menu-name {
+                        ul {
+                            li {
+                                padding: 0.5rem 1rem;
+                                border-bottom: 1px solid transparent;
+                                a {
+                                    color: map-get($map: $colors, $key: text_color);
+                                }
+                                &:hover {
+                                    border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                                }
+                                &:nth-child(1) {
+                                    border-left: 1px solid map-get($map: $colors, $key: text_color);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.showSearch {
+                .menu-items {
+                    .menu-search {
+                        ul {
+                            li {
+                                &:nth-child(1) {
+                                    border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                                    align-self: flex-end;
+                                }
+                                &:nth-child(2) {
+                                    border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                                }
+                                .closeButton {
+                                    display: block;
+                                }
+                            }
+                            .searchText {
+                                display: block;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -59,23 +116,33 @@ header {
                     display: none;
                 }
                 .menu-items {
-                    .searchText {
-                        display: block;
-                    }
-                    li {
-                        &:nth-child(1) {
-                            border-bottom: 1px solid map-get($map: $colors, $key: text_color);
-                        }
-                        &:nth-child(2) {
-                            border-bottom: 1px solid map-get($map: $colors, $key: text_color);
-                        }
-                        .closeButton {
-                            display: block;
+                    width: 100%;
+                    ul {
+                        padding: 0;
+                        .menu-search {
+                            width: 100%;
+                            ul {
+                                li {
+                                    &:nth-child(1) {
+                                        border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                                        align-self: flex-end;
+                                    }
+                                    &:nth-child(2) {
+                                        border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                                    }
+                                    .closeButton {
+                                        display: block;
+                                    }
+                                }
+                                .searchText {
+                                    display: block;
+                                }
+                            }
                         }
                     }
                 }
             }
-            &> ul {
+            ul {
                 padding: 0 0 0 1em;
                 margin: 0;
                 display: flex;
@@ -85,30 +152,30 @@ header {
                     width: 4em;
                 }
                 .menu-items {
-                    &> ul {
-                        display: flex;
-                        align-items: flex-end;
-                        padding: 0;
-                        button {
-                            width: 2.5em;
-                            height: 2.5em;
-                            &.closeButton {
-                                display: none;
-                            }
-                        }
-                        .searchText {
-                            display: none;
-                            width: 100%;
-                            padding: 0 1em;
-                            input {
-                                width: 100%;
+                    ul {
+                        .menu-search {
+                            padding: 0;
+                            button {
+                                width: 2.5em;
                                 height: 2.5em;
-                                background: transparent;
-                                border: 1px solid transparent;
-                                text-align: right;
+                                &.closeButton {
+                                    display: none;
+                                }
+                            }
+                            .searchText {
+                                display: none;
+                                width: 100%;
+                                padding: 0 1em;
+                                input {
+                                    width: 100%;
+                                    height: 2.5em;
+                                    background: transparent;
+                                    border: 1px solid transparent;
+                                    text-align: right;
+                                }
                             }
                         }
-                        .menu-bars {
+                        .menu-name {
                             padding: 0.5rem 1rem;
                             display: none;
                             border-left: 1px solid map-get($map: $colors, $key: text_color);

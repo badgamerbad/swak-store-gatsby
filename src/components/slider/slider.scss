@@ -114,14 +114,13 @@ $sizes: (
         button {
             z-index: 1;
             position: relative;
-            width: 3em;
-            height: 6em;
             color: map-get($map: $colors, $key: font_color);
+            font-size: 4em;
             @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
-                margin: 1em;
+                margin: 0.2em;
             }
             @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-                margin: 1em;
+                margin: 0.1em;
             }
         }
         @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {

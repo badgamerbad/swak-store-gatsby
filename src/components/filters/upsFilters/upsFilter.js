@@ -1,11 +1,12 @@
 import React, { Component } from "react"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 class UpsFilter extends Component {
     constructor(props) {
         super(props)
         this.state = {
             filter: props.filter.node.frontmatter,
-            index: props.filter.node.frontmatter.selected,
             showRadioValues: false,
         }
     }
@@ -18,17 +19,20 @@ class UpsFilter extends Component {
                 radioValuesClasses.push("active")
             html = <div className="radioBox">
                 <ul>
-                    <li className={radioValuesClasses.join(' ')}>
+                    <li className={radioValuesClasses.join(' ')} onClick={ this.showRadioValues.bind(this)}>
                         <ul>
                             <li><label>{filter.label}</label></li>
-                            <li><button onClick={ this.showRadioValues.bind(this)  }>V</button></li>
+                            <li>
+                                <div className="angle-down"><FontAwesomeIcon icon="angle-down" /></div>
+                                <div className="angle-up"><FontAwesomeIcon icon="angle-up" /></div>
+                            </li>
                         </ul>
                     </li>
                     <li className="values">
                         <ul>
                             <li>
                                 <ul>
-                                    <li><input type="radio" value={-1} checked={this.state.index === -1} onChange={this.onChanged.bind(this, -1)} name={filter.name} /></li>
+                                    <li><input type="radio" value={-1} checked={filter.selected === -1} onChange={this.onChanged.bind(this, -1)} name={filter.name} /></li>
                                     <li>All</li>
                                 </ul>
                             </li>
@@ -37,7 +41,7 @@ class UpsFilter extends Component {
                                     (item, index) =>
                                         <li key={index}>
                                             <ul>
-                                                <li><input type="radio" value={index} checked={this.state.index === index} onChange={this.onChanged.bind(this, index)} name={filter.name} /></li>
+                                                <li><input type="radio" value={index} checked={filter.selected === index} onChange={this.onChanged.bind(this, index)} name={filter.name} /></li>
                                                 <li>{item}</li>
                                             </ul>
                                         </li>
@@ -67,8 +71,10 @@ class UpsFilter extends Component {
     }
     onChanged(index, e) {
         this.props.onChange(e.currentTarget.name , index)
+        let {filter} = this.state
+        filter.selected = index
         this.setState({
-            index: parseInt(index)
+            filter: filter
         })
     }
 }

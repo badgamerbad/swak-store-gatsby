@@ -5,6 +5,8 @@ import ImageCatUps from "../../images/cat_ups"
 
 import "./slider.scss"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 class Slider extends Component {
   constructor(props) {
     super(props)
@@ -46,8 +48,8 @@ class Slider extends Component {
             </div>
         </div>
         <div className="navigator">
-            <button onClick={ () => this.previousSlider() }><span>&lt;</span></button>
-            <button onClick={ () => this.nextSlider() }><span>&gt;</span></button>
+            <button onClick={ () => this.previousSlider() }><FontAwesomeIcon icon="angle-left" /></button>
+            <button onClick={ () => this.nextSlider() }><FontAwesomeIcon icon="angle-right" /></button>
         </div>
         <div className="highlighter">
             <button className="image" onClick={ () => this.setSlider(0) }>

@@ -2,6 +2,7 @@ $colors: (
     content_color: #ffffff,
     filters_color: #666666,
     filters_font_color: #d4d4d4,
+    search_text_color: #ffffff,
 );
 $sizes: (
     mobile: 540px,
@@ -53,13 +54,31 @@ $sizes: (
                 justify-content: space-between;
                 align-items: center;
             }
+            button {
+                width: 2.5em;
+                height: 2.5em;
+                padding: 0;
+            }
+            hr {
+                margin: 0.2em 0;
+            }
+            .search-text {
+                button {
+                    width: 100%;
+                    height: auto;
+                    font-size: 0.5em;
+                    background: map-get($map: $colors, $key: filters_color);
+                    color: map-get($map: $colors, $key: search_text_color);
+                    padding: 0.2em 1em;
+                    border-radius: 1em;
+                    margin: 0.5em;
+                }
+            }
+            .hide {
+                display: none;
+            }
             .filter-button {
                 display: none;
-                &> button {
-                    width: 2.5em;
-                    height: 2.5em;
-                    padding: 0;
-                }
                 @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
                     display: block;
                 }

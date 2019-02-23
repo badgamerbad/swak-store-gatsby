@@ -5,10 +5,16 @@ import get from "lodash/get"
 import './upsFilters.scss'
 import UpsFilter from "./upsFilter"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 class UpsFilters extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
+    this.resetOnce = false
+  }
+  componentDidUpdate() {
+    this.resetOnce = false
   }
   render() {
     return (
@@ -42,14 +48,22 @@ class UpsFilters extends React.Component {
         }
         render={ 
           data => {
-            this.props.getAllUpsFilters( get(data, "allMarkdownRemark.edges") )
+            let allFilters = get(data, "allMarkdownRemark.edges")
+            this.props.getAllUpsFilters( allFilters )
             return (
               <>
                 <div className="ups-filter">
-                  <button className="filterCloser" onClick={ () => this.props.closeFilters() }>X</button>
+                  <div className="filters-buttons">
+                    <button className="filterReset" onClick={ () => this.resetChildFilters() }><FontAwesomeIcon icon="undo"/></button>
+                    <button className="filterCloser" onClick={ () => this.props.closeFilters() }><FontAwesomeIcon icon="window-close"/></button>
+                  </div>
                 </div>
                 {
-                  get(data, "allMarkdownRemark.edges").map( (filter, index) => <UpsFilter key={index} filter={filter} onChange={this.props.onChange} /> )
+                  allFilters.map( (filter, index) => {
+                    if(this.resetOnce)
+                      filter.node.frontmatter.selected = -1
+                    return <UpsFilter key={index} filter={filter} onChange={this.props.onChange} />
+                  })
                 }
               </>
             )
@@ -57,6 +71,11 @@ class UpsFilters extends React.Component {
         }
       />
     )
+  }
+  resetChildFilters() {
+    this.props.resetFilters()
+    this.resetOnce = true
+    this.setState()
   }
 }
 

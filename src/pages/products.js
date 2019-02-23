@@ -11,14 +11,14 @@ import get from "lodash/get"
 
 import UpsFilters from "../components/filters/upsFilters/upsFilters"
 
-import FilterIcon from '../images/filter'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Products extends Component {
   constructor(props) {
     super(props)
     const paramsString = props.location.search
     const params = new URLSearchParams(paramsString)
-    const searchText = params.get('searchText')
+    const searchText = params.get('searchText') ? params.get('searchText') : ""
     this.state = {
       allProducts: [],
       setFilters: {
@@ -29,6 +29,7 @@ class Products extends Component {
     this.onChange = this.onChange.bind(this)
     this.getAllUpsFilters = this.getAllUpsFilters.bind(this)
     this.closeFilters = this.closeFilters.bind(this)
+    this.resetFilters = this.resetFilters.bind(this)
     this.allFilters = []
     
   }
@@ -51,13 +52,15 @@ class Products extends Component {
       filtersClasses.push("active")
       filtersCloserClasses.push("active")
     }
-      
+    let searchTextClasses = "hide"
+    if(this.state.setFilters.searchText)
+      searchTextClasses = "search-text"
     return (
       <Layout>
         <SEO title="Products" />
         <div className="products">
           <div className={ filtersClasses.join(' ') }>
-            <UpsFilters onChange={this.onChange} closeFilters={this.closeFilters} getAllUpsFilters={this.getAllUpsFilters}/>
+            <UpsFilters onChange={this.onChange} resetFilters={this.resetFilters} closeFilters={this.closeFilters} getAllUpsFilters={this.getAllUpsFilters}/>
           </div>
           <div className="content">
             <div className="count">
@@ -78,11 +81,18 @@ class Products extends Component {
                   } Results
                 </li>
                 <li className="filter-button">
-                  <button onClick={ this.openFilters.bind(this) }><FilterIcon /></button>
+                  <button onClick={ this.openFilters.bind(this) }><FontAwesomeIcon icon="filter" /></button>
+                </li>
+              </ul>
+              <hr />
+              <ul className={searchTextClasses}>
+                <li>
+                  <button onClick={this.clearSearchText.bind(this)}>
+                    "{ this.state.setFilters.searchText }" <FontAwesomeIcon icon="times-circle" />
+                  </button>
                 </li>
               </ul>
             </div>
-            <hr />
             <div className="listing">
               { 
                 this.state.allProducts.filter( elem => {
@@ -110,6 +120,15 @@ class Products extends Component {
   closeFilters() {
     this.setState( {showFilters: false} )
   }
+  resetFilters() {
+    let {setFilters} = this.state
+    for(var key in this.allFilters) {
+      setFilters[key] = -1
+    }
+    this.setState({
+      setFilters: setFilters
+    })
+  }
   onChange(filterName, value) {
     let {setFilters} = this.state
     this.setState({ 
@@ -125,6 +144,13 @@ class Products extends Component {
     }).reduce( (acc, cur, i) => { 
       return {...acc, ...cur} 
     } )
+  }
+  clearSearchText() {
+    let {setFilters} = this.state
+    setFilters.searchText = "" 
+    this.setState({
+      setFilters: setFilters
+    })
   }
 }
 

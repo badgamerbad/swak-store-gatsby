@@ -10,16 +10,25 @@ $sizes: (
 .ups-filter{
     margin: 1em;
     white-space: nowrap;
-    .filterCloser {
-        display: none;
-        width: 100%;
-        text-align: right;
-        color: map-get($map: $colors, $key: button_font_color);
-        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
-            display: block;
+    .filters-buttons {
+        display: flex;
+        button {
+            color: map-get($map: $colors, $key: button_font_color);
+            padding: 0.5em 0;
+            width: 50%;
         }
-        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-            display: block;
+        .filterCloser {
+            text-align: right;
+            display: none;
+            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                display: block;
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                display: block;
+            }
+        }
+        .filterReset {
+            text-align: left;
         }
     }
     .radioBox {
@@ -36,8 +45,22 @@ $sizes: (
                 color: map-get($map: $colors, $key: button_font_color);
                 margin: 0 0 0 6em;
             }
-            &.active + .values {
-                display: block;
+            &.active {
+                & + .values {
+                    display: block;
+                }
+                .angle-up {
+                    display: block;
+                }
+                .angle-down {
+                    display: none;
+                }
+            }
+            .angle-up {
+                display: none;
+            }
+            .angle-up, .angle-down {
+                margin: 0 0 0 6em;
             }
         }
         .values {

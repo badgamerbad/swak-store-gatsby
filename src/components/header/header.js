@@ -16,7 +16,10 @@ class Header extends React.Component {
     }
   }
   componentDidUpdate() {
-    document.querySelector(".menu-mobile .searchText input").focus()
+    if(document.body.offsetWidth < 1000) 
+      document.querySelector(".menu-mobile .searchText input").focus()
+    else
+      document.querySelector(".menu .searchText input").focus()
   }
   render() {
     let menuDropDownClasses = ["menu-dropdown"]

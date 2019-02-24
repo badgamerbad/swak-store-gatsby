@@ -51,9 +51,12 @@ class Products extends Component {
       filtersClasses.push("active")
       filtersCloserClasses.push("active")
     }
-    let searchTextClasses = ["search-text"]
-    if(this.state.setFilters.searchText.length === 0)
-      searchTextClasses.push("hide")
+    
+    let searchTextClasses = ["hide"]
+    for(var key in this.state.setFilters) {
+      if(key === "searchText" && this.state.setFilters[key] !== "")
+        searchTextClasses = ["search-text"]
+    }
 
     let filteredProducts = this.state.allProducts.filter( elem => {
       let flag = true

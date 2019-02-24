@@ -46,8 +46,8 @@ class Footer extends Component {
                 <li>Follow us On</li>
                 <li>
                   <ul className="icons">
-                    <li><a href="https://www.facebook.com/pg/swak.co.in/about/" target="_blank" tilte="SWAK | Facebook" ><FontAwesomeIcon icon={icon({ prefix: 'fab', iconName: 'facebook' })} /></a></li>
-                    <li><a href="https://www.facebook.com/pg/swak.co.in/about/" target="_blank" tilte="SWAK | Twitter" ><FontAwesomeIcon icon={icon({ prefix: 'fab', iconName: 'twitter' })} /></a></li>
+                    <li><a href="https://www.facebook.com/pg/swak.co.in/about/" target="_blank" tilte="SWAK | Facebook" rel="noopener noreferrer"><FontAwesomeIcon icon={icon({ prefix: 'fab', iconName: 'facebook' })} /></a></li>
+                    <li><a href="https://www.facebook.com/pg/swak.co.in/about/" target="_blank" tilte="SWAK | Twitter" rel="noopener noreferrer"><FontAwesomeIcon icon={icon({ prefix: 'fab', iconName: 'twitter' })} /></a></li>
                   </ul>
                 </li>
               </ul>

@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `SWAK`,
-    description: `This is the SWAK store, we have a range of Electrical Products fitting your needs and requirements.`,
+    description: `We feel proud in announcing that we are official partners for EATON. We possess a team of skilled professionals who are well versed with the industry knowledge, quality standards, logical and technical skills, which they implement to acquire utmost customer satisfaction.`,
     author: `BadGAMERbaD`,
     googleSiteVerification: '3CXnajmQF2ySaDl8R4L4UdKagco966VeoX6CRmLumrw'
   },

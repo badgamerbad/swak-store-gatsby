@@ -56,13 +56,13 @@ class Footer extends Component {
             </ul>
           </div>
           <div className="enquiry">
-            <form name="contact" method="post" data-netlify="true">
-              <ul>
-                <li className="title">Enquiry Form</li>
-                <li>
-                  <div className="underLine" />
-                  <div className="underLine ul-width-s" />
-                </li>
+            <ul>
+              <li className="title">Enquiry Form</li>
+              <li>
+                <div className="underLine" />
+                <div className="underLine ul-width-s" />
+              </li>
+              <form name="contact" method="POST" data-netlify="true">
                 <li>
                   <ul className="field">
                     <li><label>Name</label></li>
@@ -88,8 +88,8 @@ class Footer extends Component {
                   </ul>
                 </li>
                 <li><button type="submit">Submit</button></li>
-              </ul>
-            </form>
+              </form>
+            </ul>
           </div>
         </div>
         <div className="developer">

@@ -24,7 +24,6 @@ class Products extends Component {
       setFilters: {
         searchText: searchText
       },
-      searchText: searchText !== "" ? true : false,
       showFilters: false,
     }
     this.onChange = this.onChange.bind(this)
@@ -54,7 +53,7 @@ class Products extends Component {
     }
 
     let searchTextCancelor = ""
-    if(this.state.searchText) {
+    if(this.state.setFilters.searchText.length > 0) {
       searchTextCancelor = <ul className="search-text">
         <li>
           <button onClick={this.clearSearchText.bind(this)}>

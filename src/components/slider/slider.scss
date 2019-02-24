@@ -28,13 +28,9 @@ $sizes: (
             width: 100%;
             height: auto;
             position: relative;
-            @media only screen and (max-width: map-get($map: $sizes, $key: hd)) {
+            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
                 width: 150%;
                 left: -25%;
-            }
-            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
-                width: 200%;
-                left: -40%;
             }
             @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                 width: 200%;

@@ -53,9 +53,16 @@ class Products extends Component {
       filtersCloserClasses.push("active")
     }
 
-    let searchTextClasses = ["search-text"]
-    if(this.state.searchText)
-      searchTextClasses.push("active")
+    let searchTextCancelor = ""
+    if(this.state.searchText) {
+      searchTextCancelor = <ul className="search-text">
+        <li>
+          <button onClick={this.clearSearchText.bind(this)}>
+            "{ this.state.setFilters.searchText }" <FontAwesomeIcon icon="times-circle" />
+          </button>
+        </li>
+      </ul>
+    }
 
     let filteredProducts = this.state.allProducts.filter( elem => {
       let flag = true
@@ -95,13 +102,7 @@ class Products extends Component {
                 </li>
               </ul>
               <hr />
-              <ul className={searchTextClasses.join(' ')}>
-                <li>
-                  <button onClick={this.clearSearchText.bind(this)}>
-                    "{ this.state.setFilters.searchText }" <FontAwesomeIcon icon="times-circle" />
-                  </button>
-                </li>
-              </ul>
+              { searchTextCancelor }
             </div>
             <div className="listing">
               { filteredProducts }

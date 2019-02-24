@@ -64,7 +64,6 @@ $sizes: (
                 margin: 0.2em 0;
             }
             .search-text {
-                display: none;
                 button {
                     width: 100%;
                     height: auto;
@@ -74,9 +73,6 @@ $sizes: (
                     padding: 0.2em 1em;
                     border-radius: 1em;
                     margin: 0.5em;
-                }
-                &.active {
-                    display: flex;
                 }
             }
             .filter-button {

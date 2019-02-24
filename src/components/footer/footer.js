@@ -56,7 +56,7 @@ class Footer extends Component {
             </ul>
           </div>
           <div className="enquiry">
-            <form name="foo" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+            <form name="contact" method="post" data-netlify="true">
               <ul>
                 <li className="title">Enquiry Form</li>
                 <li>
@@ -87,7 +87,7 @@ class Footer extends Component {
                     <li><textarea name="message" cols="30" rows="5" required></textarea></li>
                   </ul>
                 </li>
-                <li><button>Submit</button></li>
+                <li><button type="submit">Submit</button></li>
               </ul>
             </form>
           </div>

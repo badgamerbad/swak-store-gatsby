@@ -11,6 +11,7 @@ $sizes: (
 );
 
 footer {
+    position: relative;
     background: map-get($map: $colors, $key: footer_background);
     color: map-get($map: $colors, $key: font_color);
     .main-content {

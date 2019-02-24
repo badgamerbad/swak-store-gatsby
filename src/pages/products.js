@@ -51,9 +51,30 @@ class Products extends Component {
       filtersClasses.push("active")
       filtersCloserClasses.push("active")
     }
-    let searchTextClasses = ["hide"]
-    if(this.state.setFilters.searchText.length > 0)
-      searchTextClasses = ["search-text"]
+    let searchTextClasses = ["search-text"]
+    if(this.state.setFilters.searchText.length === 0)
+      searchTextClasses.push("hide")
+
+    let filteredProducts = this.state.allProducts.filter( elem => {
+      let flag = true
+      let stateFiltersObject = this.state.setFilters
+      for(var key in stateFiltersObject) {
+        if(key === "searchText" && stateFiltersObject[key].trim() !== "" && elem.name.toLowerCase().indexOf(stateFiltersObject[key].trim().toLowerCase()) === -1)
+          flag = false
+        else if( key !== "searchText" && stateFiltersObject[key] !== -1 && stateFiltersObject[key] !== elem[key] )
+          flag = false
+      }
+      return flag
+    }).map( (elem, index) => <UpsProduct key={index} index={index} ups={elem} filters={this.allFilters}/> )
+    let filteredProductsLength = filteredProducts.length
+    if(filteredProductsLength === 0) {
+      filteredProducts = <div className="no-results">
+        <div className="icon">
+          <FontAwesomeIcon icon="frown" />
+        </div>
+        <p>We couldn't find any matches</p>
+      </div>
+    }
     return (
       <Layout>
         <SEO title="Products" />
@@ -65,19 +86,7 @@ class Products extends Component {
             <div className="count">
               <ul>
                 <li>
-                  {
-                    this.state.allProducts.filter( elem => {
-                      let flag = true
-                      let stateFiltersObject = this.state.setFilters
-                      for(var key in stateFiltersObject) {
-                        if(key === "searchText" && stateFiltersObject[key].trim() !== "" && elem.name.toLowerCase().indexOf(stateFiltersObject[key].trim().toLowerCase()) === -1)
-                          flag = false
-                        else if( key !== "searchText" && stateFiltersObject[key] !== -1 && stateFiltersObject[key] !== elem[key] )
-                          flag = false
-                      }
-                      return flag
-                    }).map( elem => elem ).length
-                  } Results
+                  { filteredProductsLength } Results
                 </li>
                 <li className="filter-button">
                   <button onClick={ this.openFilters.bind(this) }><FontAwesomeIcon icon="filter" /></button>
@@ -93,19 +102,7 @@ class Products extends Component {
               </ul>
             </div>
             <div className="listing">
-              { 
-                this.state.allProducts.filter( elem => {
-                  let flag = true
-                  let stateFiltersObject = this.state.setFilters
-                  for(var key in stateFiltersObject) {
-                    if(key === "searchText" && stateFiltersObject[key].trim() !== "" && elem.name.toLowerCase().indexOf(stateFiltersObject[key].trim().toLowerCase()) === -1)
-                      flag = false
-                    else if( key !== "searchText" && stateFiltersObject[key] !== -1 && stateFiltersObject[key] !== elem[key] )
-                      flag = false
-                  }
-                  return flag
-                }).map( (elem, index) => <UpsProduct key={index} index={index} ups={elem} filters={this.allFilters}/> ) 
-              }
+              { filteredProducts }
             </div>
             <div className={filtersCloserClasses.join(' ')} onClick={ this.closeFilters.bind(this) }></div>
           </div>

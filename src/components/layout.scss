@@ -9,8 +9,9 @@ body {
   a {
       text-decoration: none;
   }
-  button {
+  button, input {
     background: transparent;
     border: none;
+    outline: none;
   }
 }

@@ -15,6 +15,9 @@ class Header extends React.Component {
       showSearch: false,
     }
   }
+  componentDidUpdate() {
+    document.querySelector(".menu-mobile .searchText input").focus()
+  }
   render() {
     let menuDropDownClasses = ["menu-dropdown"]
     let menuNamesClasses = ["menu-name"]
@@ -110,12 +113,18 @@ class Header extends React.Component {
     this.setState( {active: !this.state.active} )
   }
   openSearch() {
-    this.setState( {showSearch: true} )
+    if(this.state.showSearch){
+      let searhText = document.querySelector(".menu-mobile .searchText input").value.trim()
+      window.location = '/products?searchText=' + searhText
+    }
+    else {
+      this.setState( {showSearch: true} )
+    } 
   }
   closeSearch() {
     this.setState( {showSearch: false} )
   }
-  submitProduct(e) {
+  submitProduct(e) { 
     if(e.key === "Enter") {
       window.location = '/products?searchText=' + e.currentTarget.value.trim()
     }

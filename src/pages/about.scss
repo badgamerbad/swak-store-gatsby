@@ -1,0 +1,11 @@
+$colors: (
+    text_color: #5e5e5e,
+);
+.about {
+    padding-top: calc(35px + 1rem + 1rem);
+    text-align: center;
+    color: map-get($map: $colors, $key: text_color);
+    &> p {
+        padding: 2em;
+    }
+}

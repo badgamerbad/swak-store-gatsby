@@ -1,0 +1,138 @@
+$colors: (
+    font_color: #ffffff,
+    footer_background: #6d6d6d,
+    input_border_color: #333333,
+    dev_link_color: #d4d4d4,
+);
+$sizes: (
+    mobile: 540px,
+    tablet: 1000px,
+    hd: 1500px,
+);
+
+footer {
+    background: map-get($map: $colors, $key: footer_background);
+    color: map-get($map: $colors, $key: font_color);
+    .main-content {
+        display: flex;
+        justify-content: space-between;
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            flex-flow: column;
+        }
+        .title {
+            font-size: 2em;
+            margin: 0 0 0.2em 0;
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                text-align: center;
+            }
+        }
+        .underLine {
+            height: 0.1em;
+            background: map-get($map: $colors, $key: font_color);
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                margin: 0 auto;
+            }
+        }
+        .ul-width-l {
+            width: 13em;
+        }
+        .ul-width-m {
+            width: 10em;
+        }
+        .ul-width-s {
+            width: 3em;
+        }
+        .contact {
+            padding: 2em 1em 2em 2em;
+            ul {
+                padding: 0;
+                margin: 0;
+                .field {
+                    display: flex;
+                    margin: 1em 0 0 0;
+                    li {
+                        &:nth-child(2) {
+                            margin: 0 0 0 1em;
+                        }
+                    }
+                }
+                .social-media-field {
+                    margin: 1em 0 0 0;
+                    .icons {
+                        display: flex;
+                        li {
+                            margin: 0 0.5em 0 0;
+                            font-size: 2em;
+                            a {
+                                color: inherit;
+                            }
+                        }
+                    }
+                }
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                flex: 1;
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                flex-flow: column;
+                padding: 2em;
+            }
+        }
+        .enquiry {
+            padding: 2em 2em 2em 1em;
+            text-align: right;
+            ul {
+                padding: 0;
+                margin: 0;
+                .field {
+                    margin: 1em 0 0 0;
+                    input {
+                        color: inherit;
+                        border-bottom: 1px solid map-get($map: $colors, $key: input_border_color);
+                        width: 100%;
+                    }
+                    textarea {
+                        color: inherit;
+                        border-bottom: 1px solid map-get($map: $colors, $key: input_border_color);
+                        width: 100%;
+                    }
+                }
+                li {
+                    .ul-width-s {
+                        float: right;
+                        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                            float: none;
+                        }
+                    }
+                    &:last-child {
+                        text-align: center;
+                        button {
+                            color: inherit;
+                            background: map-get($map: $colors, $key: input_border_color);
+                            padding: 1em 3em;
+                            margin: 1em 0 0 0;
+                        }
+                    }
+                }
+                
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                flex-flow: column;
+                padding: 2em;
+                text-align: left;
+            }
+        }
+    }
+    .developer {
+        padding: 1em;
+        text-align: center;
+        .content {
+            margin: 1em 5%;
+            padding: 2em;
+            border-top: 1px solid map-get($map: $colors, $key: font_color);
+            a {
+                color: map-get($map: $colors, $key: dev_link_color);
+            }
+        }
+    }
+}

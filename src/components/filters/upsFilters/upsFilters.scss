@@ -1,0 +1,76 @@
+$colors: (
+    button_color: #ffffff,
+    button_font_color: #d4d4d4,
+);
+$sizes: (
+    mobile: 540px,
+    tablet: 1000px,
+    hd: 1500px,
+);
+.ups-filter{
+    margin: 1em;
+    white-space: nowrap;
+    .filters-buttons {
+        display: flex;
+        button {
+            color: map-get($map: $colors, $key: button_font_color);
+            padding: 0.5em 0;
+            width: 50%;
+        }
+        .filterCloser {
+            text-align: right;
+            display: none;
+            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                display: block;
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                display: block;
+            }
+        }
+        .filterReset {
+            text-align: left;
+        }
+    }
+    .radioBox {
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        .label {
+            &> ul {
+                display: flex;
+                justify-content: space-between;
+            }
+            button {
+                color: map-get($map: $colors, $key: button_font_color);
+                margin: 0 0 0 6em;
+            }
+            &.active {
+                & + .values {
+                    display: block;
+                }
+                .angle-up {
+                    display: block;
+                }
+                .angle-down {
+                    display: none;
+                }
+            }
+            .angle-up {
+                display: none;
+            }
+            .angle-up, .angle-down {
+                margin: 0 0 0 6em;
+            }
+        }
+        .values {
+            display: none;
+            &> ul {
+                ul {
+                    display: flex;
+                }
+            }
+        }
+    }
+    
+}

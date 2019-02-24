@@ -9,4 +9,9 @@ body {
   a {
       text-decoration: none;
   }
+  button, input, textarea {
+    background: transparent;
+    border: none;
+    outline: none;
+  }
 }

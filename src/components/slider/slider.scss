@@ -1,5 +1,4 @@
 $colors: (
-    primary: rgb(245, 223, 24),
     font_color: #ffffff,
 );
 $sizes: (
@@ -9,16 +8,16 @@ $sizes: (
 );
 
 .slider {
-    height: 90vh;
+    height: 75vh;
     position: relative;
     overflow: hidden;
     z-index: 0;
-    padding-top: calc(40px + 1rem + 1rem);
+    padding-top: calc(35px + 1rem + 1rem);
     @media only screen and (max-width: map-get($map: $sizes, $key: hd)) {
-        height: 80vh;
+        height: 70vh;
     }
     @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-        height: 75vh;
+        height: 65vh;
     }
     .slide {
         width: 100%;
@@ -29,13 +28,9 @@ $sizes: (
             width: 100%;
             height: auto;
             position: relative;
-            @media only screen and (max-width: map-get($map: $sizes, $key: hd)) {
+            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
                 width: 150%;
                 left: -25%;
-            }
-            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
-                width: 200%;
-                left: -40%;
             }
             @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                 width: 200%;
@@ -115,11 +110,18 @@ $sizes: (
         button {
             z-index: 1;
             position: relative;
-            width: 3em;
-            height: 6em;
-            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-                margin: 1em;
+            color: map-get($map: $colors, $key: font_color);
+            font-size: 4em;
+            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                margin: 0.2em;
             }
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                margin: 0.1em;
+            }
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+            align-items: flex-end;
+            margin: 0;
         }
         @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
             align-items: flex-end;
@@ -139,6 +141,10 @@ $sizes: (
             height: auto;
             padding: 0;
             width: 7em;
+            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                border: 0.3em solid map-get($map: $colors, $key: font_color);
+                width: 4em;
+            }
             @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                 border: 0.3em solid map-get($map: $colors, $key: font_color);
                 width: 3em;
@@ -153,6 +159,11 @@ $sizes: (
                     animation: trigger-highlighter 9s 0s 1 forwards;
                 }
             }
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+            right: 0;
+            width: 100%;
+            justify-content: center;
         }
         @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
             right: 0;

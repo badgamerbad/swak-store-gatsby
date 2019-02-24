@@ -3,7 +3,13 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header/header"
+import Footer from "./footer/footer"
 import "./layout.scss"
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faFilter, faSort, faSearch, faUndo, faWindowClose, faTimesCircle, faAngleRight, faAngleLeft, faAngleDown, faAngleUp, faFrown, faMapMarkedAlt, faPhoneSquare, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+library.add( faFilter, faSort, faSearch, faUndo, faWindowClose, faTimesCircle, faAngleRight, faAngleLeft, faAngleDown, faAngleUp, faFrown, faMapMarkedAlt, faPhoneSquare, faEnvelope, faFacebook, faTwitter )
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -12,6 +18,11 @@ const Layout = ({ children }) => (
         site {
           siteMetadata {
             title
+            contact {
+              address
+              email
+              phone
+            }
           }
         }
       }
@@ -20,11 +31,7 @@ const Layout = ({ children }) => (
       <>
         <Header siteTitle={data.site.siteMetadata.title} />
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <Footer contact={data.site.siteMetadata.contact} />
       </>
     )}
   />

@@ -1,0 +1,76 @@
+$colors: (
+    underline_color: #999999,
+);
+$sizes: (
+    mobile: 540px,
+    tablet: 1000px,
+    hd: 1500px,
+);
+.upsProduct {
+    width: 100%;
+    &> ul {
+        display: flex;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        .image {
+            width: 25%;
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                width: 100%;
+            }
+        }
+        .specification {
+            width: 75%;
+            .name {
+                font-size: 1.2em;
+            }
+            .spec-header {
+                margin: 0.25em 0;
+            }
+            .attribute {
+                display: flex;
+                .title {
+                    width: 100px;
+                }
+                .value {
+                    width: 200px;
+                }
+            }
+            &> ul {
+                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                    padding: 0;
+                }
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                width: 100%;
+            }
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            flex-flow: column;
+        }
+    }
+    .seperator {
+        margin: 1em 0;
+    }
+    @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+        margin: 1em 0;
+    }
+}
+.underline {
+    margin: 0.25em 0;
+    hr {
+        margin: 0;
+        height: 0.1em;
+        background: map-get($map: $colors, $key: underline_color);
+        border: none;
+        &:nth-child(2) {
+            width: 25%;
+        }
+    }
+    &.underline-large {
+        width: 100%;
+    }
+    &.underline-medium {
+        width: 50%;
+    }
+}

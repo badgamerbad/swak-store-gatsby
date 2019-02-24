@@ -1,10 +1,11 @@
 $colors: (
     body_color: #d4d4d4,
-    primary: rgb(245, 223, 24),
     text_color: #5e5e5e,
 );
 $sizes: (
     mobile: 540px,
+    tablet: 1000px,
+    hd: 1500px,
 );
 
 header {
@@ -13,41 +14,224 @@ header {
     justify-content: space-between;
     position: fixed;
     width: 100%;
-    .logo {
-        ul {
-            .logo-li {
-                width: 4rem;
-            }
-        }
-    }
+    background: map-get($map: $colors, $key: body_color);
     .menu {
-        margin: 0 2em 0 0;
-        .menu-bars {
-            padding: 0.5rem 1rem;
-            display: none;
-            div {
-                width: 1.5em;
-                height: 0.1em;
-                background: map-get($map: $colors, $key: text_color);
-                &:nth-child(2) {
-                    margin: 0.4em 0;
+        width: 100%;
+        .menu-body {
+            padding: 1em 0;
+            ul {
+                padding: 0 0 0 1em;
+                margin: 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .logo {
+                    width: 4em;
+                }
+                .menu-items {
+                    .menu-search {
+                        ul {
+                            button {
+                                width: 2.5em;
+                                height: 2.5em;
+                                &.closeButton {
+                                    display: none;
+                                }
+                            }
+                            .searchText {
+                                display: none;
+                                width: 100%;
+                                padding: 0 1em;
+                                input {
+                                    width: 100%;
+                                    height: 2.5em;
+                                    border: 1px solid transparent;
+                                    text-align: right;
+                                }
+                            }
+                        }
+                    }
+                    .menu-name {
+                        ul {
+                            li {
+                                padding: 0.5rem 1rem;
+                                border-bottom: 1px solid transparent;
+                                a {
+                                    color: map-get($map: $colors, $key: text_color);
+                                }
+                                &:hover {
+                                    border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                                }
+                                &:nth-child(1) {
+                                    border-left: 1px solid map-get($map: $colors, $key: text_color);
+                                }
+                            }
+                        }
+                    }
                 }
             }
-            &:hover + .menu-items {
-                display: block;
-            }
-            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-                display: block;
+            &.showSearch {
+                .menu-items {
+                    .menu-search {
+                        ul {
+                            li {
+                                &:nth-child(1) {
+                                    border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                                    align-self: flex-end;
+                                }
+                                &:nth-child(2) {
+                                    border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                                }
+                                .closeButton {
+                                    display: block;
+                                }
+                            }
+                            .searchText {
+                                display: block;
+                            }
+                        }
+                    }
+                }
             }
         }
-        .menu-items {
+        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+            display: none;
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            display: none;
+        }
+    }
+    .menu-mobile {
+        display: none;
+        width: 100%;
+        .menu-body {
+            position: relative;
+            z-index: 1;
+            background: map-get($map: $colors, $key: body_color);
+            padding: 1em 0;
+            &.showSearch {
+                width: 100%;
+                .logo {
+                    display: none;
+                }
+                .menu-items {
+                    width: 100%;
+                    ul {
+                        padding: 0;
+                        .menu-search {
+                            width: 100%;
+                            ul {
+                                li {
+                                    &:nth-child(1) {
+                                        border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                                        align-self: flex-end;
+                                    }
+                                    &:nth-child(2) {
+                                        border-bottom: 1px solid map-get($map: $colors, $key: text_color);
+                                    }
+                                    .closeButton {
+                                        display: block;
+                                    }
+                                }
+                                .searchText {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             ul {
+                padding: 0 0 0 1em;
+                margin: 0;
                 display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .logo {
+                    width: 4em;
+                }
+                .menu-items {
+                    ul {
+                        .menu-search {
+                            padding: 0;
+                            button {
+                                width: 2.5em;
+                                height: 2.5em;
+                                &.closeButton {
+                                    display: none;
+                                }
+                            }
+                            .searchText {
+                                display: none;
+                                width: 100%;
+                                padding: 0 1em;
+                                input {
+                                    width: 100%;
+                                    height: 2.5em;
+                                    border: 1px solid transparent;
+                                    text-align: right;
+                                }
+                            }
+                        }
+                        .menu-name {
+                            padding: 0.5rem 1rem;
+                            display: none;
+                            border-left: 1px solid map-get($map: $colors, $key: text_color);
+                            margin: 0 0 0 0.5em;
+                            div {
+                                width: 1.5em;
+                                height: 0.1em;
+                                background: map-get($map: $colors, $key: text_color);
+                                &:nth-child(2) {
+                                    margin: 0.4em 0;
+                                }
+                            }
+                            &.active  {
+                                div {
+                                    &:nth-child(1) {
+                                        position: absolute;
+                                        animation: move-down 1s 0s 1 forwards;
+                                    }
+                                    &:nth-child(even) {
+                                        animation: anti-clockwise 1s 500ms 1 forwards;
+                                        &:after {
+                                            content: "";
+                                            position: absolute;
+                                            width: 1.5em;
+                                            height: 0.1em;
+                                            background: map-get($map: $colors, $key: text_color);
+                                            animation: clockwise 1s 500ms 1 forwards;
+                                        }
+                                    }
+                                    &:nth-child(3) {
+                                        position: absolute;
+                                        animation: move-up 1s 0s 1 forwards;
+                                    }
+                                }
+                            }
+                            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                                display: block;
+                            }
+                            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .menu-dropdown {
+            position: relative;
+            z-index: 0;
+            ul {
                 padding: 0;
-                background: map-get($map: $colors, $key: body_color);
+                margin: 0;
                 li {
                     padding: 0.5rem 1rem;
                     border-bottom: 1px solid transparent;
+                    background: map-get($map: $colors, $key: body_color);
+                    margin-top: -30%;
+                    position: relative;
                     a {
                         color: map-get($map: $colors, $key: text_color);
                     }
@@ -55,17 +239,60 @@ header {
                         border-bottom: 1px solid map-get($map: $colors, $key: text_color);
                     }
                 }
-                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-                    display: block;
+            }
+            &.active {
+                li {
+                    margin-top: -30%;
+                    z-index: 1;
+                    &:nth-child(1) {
+                        animation: show-menu-dropdown 150ms 0s forwards;
+                    }
+                    &:nth-child(2) {
+                        animation: show-menu-dropdown 150ms 150ms forwards;
+                    }
+                    &:nth-child(3) {
+                        animation: show-menu-dropdown 150ms 300ms forwards;
+                    }
                 }
             }
+            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                position: relative;
+                right: 0;
+                width: 100%;
+                text-align: center;
+            }
             @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-                display: none;
-                position: absolute;
+                position: relative;
                 right: 0;
                 width: 100%;
                 text-align: center;
             }
         }
+        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+            display: block;
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            display: block;
+        }
     }
+}
+@keyframes clockwise {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(90deg); }
+}
+@keyframes anti-clockwise {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-45deg); }
+}
+@keyframes move-down {
+    0% { margin-top: 0; opacity: 1; }
+    100% { margin-top: 0.5em; opacity: 0; }
+}
+@keyframes move-up {
+    0% { margin-top: 0; opacity: 1; }
+    100% { margin-top: -0.5em; opacity: 0; }
+}
+@keyframes show-menu-dropdown {
+    0% { margin-top: -30%; z-index: 0;}
+    100% { margin-top: 0%; z-index: 1; }
 }

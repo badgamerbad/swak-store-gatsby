@@ -3,7 +3,12 @@ module.exports = {
     title: `SWAK`,
     description: `We feel proud in announcing that we are official partners for EATON. We possess a team of skilled professionals who are well versed with the industry knowledge, quality standards, logical and technical skills, which they implement to acquire utmost customer satisfaction.`,
     author: `BadGAMERbaD`,
-    googleSiteVerification: '3CXnajmQF2ySaDl8R4L4UdKagco966VeoX6CRmLumrw'
+    googleSiteVerification: '3CXnajmQF2ySaDl8R4L4UdKagco966VeoX6CRmLumrw',
+    contact: {
+      address: `404/ Vighnharta Tower, Gaondevi, Shivaji path, Thane (west) – 400602, INDIA.`,
+      email: `swakenterprises@gmail.com`,
+      phone: `+91 9920245684`,
+    }
   },
   plugins: [
     `gatsby-plugin-sass`,

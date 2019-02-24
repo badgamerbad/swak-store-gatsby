@@ -8,16 +8,16 @@ $sizes: (
 );
 
 .slider {
-    height: 90vh;
+    height: 75vh;
     position: relative;
     overflow: hidden;
     z-index: 0;
     padding-top: calc(35px + 1rem + 1rem);
     @media only screen and (max-width: map-get($map: $sizes, $key: hd)) {
-        height: 80vh;
+        height: 70vh;
     }
     @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-        height: 75vh;
+        height: 65vh;
     }
     .slide {
         width: 100%;

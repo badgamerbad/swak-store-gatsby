@@ -43,11 +43,11 @@ $sizes: (
     }
     .content {
         width: 100%;
-        padding: 1.5em;
         background: map-get($map: $colors, $key: content_color);
         position: relative;
         .count {
             font-size: 1.5em;
+            padding: 1em;
             &> ul {
                 display: flex;
                 margin: 0;
@@ -85,6 +85,21 @@ $sizes: (
                 }
             }
         }
+        .listing{
+            padding: 1em;
+            .no-results {
+                text-align: center;
+                .icon {
+                    font-size: 10em;
+                    color: map-get($map: $colors, $key: filters_color);
+                    padding: 0.1em;
+                }
+                p {
+                    font-size: 1em;
+                    color: map-get($map: $colors, $key: no_results_font_color);
+                }
+            }
+        }
         .filterCloser {
             display: none;
             position: fixed;
@@ -100,18 +115,6 @@ $sizes: (
                 @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                     display: block;
                 }
-            }
-        }
-        .no-results {
-            text-align: center;
-            .icon {
-                font-size: 10em;
-                color: map-get($map: $colors, $key: filters_color);
-                padding: 0.1em;
-            }
-            p {
-                font-size: 1em;
-                color: map-get($map: $colors, $key: no_results_font_color);
             }
         }
         @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {

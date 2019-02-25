@@ -19,10 +19,11 @@ class Products extends Component {
     const paramsString = props.location.search
     const params = new URLSearchParams(paramsString)
     const searchText = params.get('searchText') ? params.get('searchText') : ""
+    this.phaseSelected = params.get('phase') ? params.get('phase') : false
     this.state = {
       allProducts: [],
       setFilters: {
-        searchText: searchText
+        searchText: searchText,
       },
       showFilters: false,
     }
@@ -88,7 +89,7 @@ class Products extends Component {
         <SEO title="Products" />
         <div className="products">
           <div className={ filtersClasses.join(' ') }>
-            <UpsFilters onChange={this.onChange} resetFilters={this.resetFilters} closeFilters={this.closeFilters} getAllUpsFilters={this.getAllUpsFilters}/>
+            <UpsFilters onChange={this.onChange} resetFilters={this.resetFilters} closeFilters={this.closeFilters} getAllUpsFilters={this.getAllUpsFilters} phaseSelected={this.phaseSelected}/>
           </div>
           <div className="content">
             <div className="count">

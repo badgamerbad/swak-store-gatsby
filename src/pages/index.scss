@@ -1,0 +1,17 @@
+$colors: (
+    font_color: #ffffff,
+    text_color: #5e5e5e,
+);
+$sizes: (
+    mobile: 540px,
+    tablet: 1000px,
+    hd: 1500px,
+);
+
+.products-linker {
+    p {
+        font-size: 2em;
+        color: map-get($map: $colors, $key: text_color);
+        text-align: center;
+    }
+}

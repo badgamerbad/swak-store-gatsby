@@ -1,4 +1,5 @@
 import React, { Component }from "react"
+import { Link } from "gatsby"
 
 import ImageCatElectrical from "../../images/cat_electrical"
 import ImageCatUps from "../../images/cat_ups"
@@ -25,17 +26,21 @@ class Slider extends Component {
   render() {
     return (
     <div className="slider">
-        <div className="slide centered-slide">
-            <div className="image">
-                <ImageCatElectrical />
-            </div>
-            <div className="text">
-            <h1>Welcome to</h1>
-            <h1>SWAK Enterprises</h1>
-            <div className="underLine"/>
-            <div className="underLine ul-width-s"/>
-            </div>
-        </div>
+        <Link to="/about/">
+          <div className="slide centered-slide">
+              <div className="image">
+                  <ImageCatElectrical />
+              </div>
+              <div className="text">
+              <h1>Welcome to</h1>
+              <h1>SWAK Enterprises</h1>
+              <div className="underLine"/>
+              <div className="underLine ul-width-s"/>
+              <button className="button-info">Know More</button>
+              </div>
+          </div>
+        </Link>
+        <Link to="/products/">
         <div className="slide">
             <div className="image">
                 <ImageCatUps />
@@ -45,8 +50,10 @@ class Slider extends Component {
                 <h1>&amp; IT power distribution</h1>
                 <div className="underLine"/>
                 <div className="underLine ul-width-s"/>
+                <button className="button-info">Find Solution</button>
             </div>
         </div>
+        </Link>
         <div className="navigator">
             <button onClick={ () => this.previousSlider() }><FontAwesomeIcon icon="angle-left" /></button>
             <button onClick={ () => this.nextSlider() }><FontAwesomeIcon icon="angle-right" /></button>

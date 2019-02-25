@@ -37,7 +37,7 @@ class Header extends React.Component {
         <div className="menu">
           <div className={menuBodyClasses.join(' ')}>
             <ul>
-              <li className="logo"><ImageLogo /></li>
+              <li className="logo"><Link to="/"><ImageLogo /></Link></li>
               <li className="menu-items">
                 <ul>
                   <li className="menu-search">
@@ -72,7 +72,7 @@ class Header extends React.Component {
         <div className="menu-mobile">
           <div className={menuBodyClasses.join(' ')}>
             <ul>
-              <li className="logo"><ImageLogo /></li>
+              <li className="logo"><Link to="/"><ImageLogo /></Link></li>
               <li className="menu-items">
                 <ul>
                   <li className="menu-search">

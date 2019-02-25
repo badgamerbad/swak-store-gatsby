@@ -17,18 +17,22 @@ const IndexPage = () => (
     <div className="products-linker">
       <p>Find out your Power Solution</p>
       <div className="links">
-        <div className="link">
+        <Link className="link" to={'/products/?phase=0'}>
           <div className="text">
-            <Link to={'/products/?phase=0'}>Single Phase UPS</Link>
+            <p>Single Phase UPS</p>
+            <div className="underLine"/>
+            <div className="underLine ul-width-s"/>
           </div>
           <div className="image"><ImageSinglePhase /></div>
-        </div>
-        <div className="link">
+        </Link>
+        <Link className="link" to={'/products/?phase=1'}>
           <div className="text">
-            <Link to={'/products/?phase=1'}>Three Phase UPS</Link>
+            <p>Three Phase UPS</p>
+            <div className="underLine"/>
+            <div className="underLine ul-width-s"/>
           </div>
           <div className="image"><ImageThreePhase /></div>
-        </div>
+        </Link>
       </div>
     </div>
   </Layout>

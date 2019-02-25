@@ -5,6 +5,10 @@ $colors: (
     search_text_color: #ffffff,
     no_results_font_color: #8d8d8d,
 );
+$calc: (
+    header_height: calc(35px + 1rem + 1rem),
+    elem_100: calc( 100% - (35px + 1rem + 1rem) ),
+);
 $sizes: (
     mobile: 540px,
     tablet: 1000px,
@@ -12,7 +16,7 @@ $sizes: (
 );
 
 .products {
-    padding-top: calc(35px + 1rem + 1rem);
+    padding-top: map-get($map: $calc, $key: header_height);
     display: flex;
     z-index: 0;
     position: relative;
@@ -24,13 +28,13 @@ $sizes: (
             position: fixed;
             display: none;
             overflow: auto;
-            height: calc(100% - ( 35px + 1rem + 1rem) );
+            height: map-get($map: $calc, $key: elem_100);
         }
         @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
             position: fixed;
             display: none;
             overflow: auto;
-            height: calc(100% - ( 35px + 1rem + 1rem) );
+            height: map-get($map: $calc, $key: elem_100);
         }
         &.active {
             @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {

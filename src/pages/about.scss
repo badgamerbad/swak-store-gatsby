@@ -2,6 +2,10 @@ $colors: (
     text_color: #ffffff,
     services_background: #d4d4d4,
 );
+$calc: (
+    header_height: calc(35px + 1rem + 1rem),
+    elem_100: calc( 100% - (35px + 1rem + 1rem) ),
+);
 $sizes: (
     mobile: 540px,
     tablet: 1000px,
@@ -11,7 +15,7 @@ $sizes: (
 .about {
     text-align: center;
     color: map-get($map: $colors, $key: text_color);
-    padding-top: calc(35px + 1rem + 1rem);
+    padding-top: map-get($map: $calc, $key: header_height);
     .main {
         position: relative;
         z-index: 0;

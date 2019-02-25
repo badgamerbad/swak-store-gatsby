@@ -31,8 +31,8 @@ class UpsFilter extends Component {
                     <li className="values">
                         <ul>
                             <li>
-                                <ul>
-                                    <li><input type="radio" value={-1} checked={filter.selected === -1} onChange={this.onChanged.bind(this, -1)} name={filter.name} /></li>
+                                <ul onClick={this.onChanged.bind(this, -1, filter.name)}>
+                                    <li><input type="radio" value={-1} checked={filter.selected === -1} readOnly name={filter.name} /></li>
                                     <li>All</li>
                                 </ul>
                             </li>
@@ -40,8 +40,8 @@ class UpsFilter extends Component {
                                 filter.value.map(
                                     (item, index) =>
                                         <li key={index}>
-                                            <ul>
-                                                <li><input type="radio" value={index} checked={filter.selected === index} onChange={this.onChanged.bind(this, index)} name={filter.name} /></li>
+                                            <ul onClick={this.onChanged.bind(this, index, filter.name)}>
+                                                <li><input type="radio" value={index} checked={filter.selected === index} readOnly name={filter.name} /></li>
                                                 <li>{item}</li>
                                             </ul>
                                         </li>
@@ -69,8 +69,8 @@ class UpsFilter extends Component {
             showRadioValues: !this.state.showRadioValues
         })
     }
-    onChanged(index, e) {
-        this.props.onChange(e.currentTarget.name , index)
+    onChanged(index, name, e) {
+        this.props.onChange(name , index)
         let {filter} = this.state
         filter.selected = index
         this.setState({

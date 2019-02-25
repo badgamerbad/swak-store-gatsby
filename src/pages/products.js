@@ -20,6 +20,7 @@ class Products extends Component {
     const params = new URLSearchParams(paramsString)
     const searchText = params.get('searchText') ? params.get('searchText') : ""
     this.phaseSelected = params.get('phase') ? params.get('phase') : false
+    this.baseState = this.state
     this.state = {
       allProducts: [],
       setFilters: {
@@ -44,6 +45,9 @@ class Products extends Component {
       ),
       setFilters: setFilters
     })
+  }
+  componentWillUnmount() {
+    this.resetFilters()
   }
   render() {
     let filtersClasses = ["filters"]

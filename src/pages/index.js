@@ -15,7 +15,7 @@ const IndexPage = () => (
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <Slider />
     <div className="products-linker">
-      <p>Find out your Power Solution</p>
+      <p>Find your Power Solution</p>
       <div className="links">
         <Link className="link" to={'/products/?phase=0'}>
           <div className="text">

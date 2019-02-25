@@ -23,7 +23,8 @@ const About = () => (
             implement to acquire utmost customer satisfaction.
           </p>
         </div>
-        <div className="background-image"><ServicesImageLoader imageUrl="s4" /></div>
+        <div className="background-image"><ServicesImageLoader imageUrl="about_us" /></div>
+        <div className="background-image-responsive"><ServicesImageLoader imageUrl="about_us_mobile" /></div>
       </div>
       <div className="services">
         <p>Our Services</p>

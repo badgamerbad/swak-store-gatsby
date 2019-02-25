@@ -59,9 +59,9 @@ class Header extends React.Component {
                   </li>
                   <li className="menu-name">
                     <ul>
-                      <li><Link to="/">Home</Link></li>
-                      <li><Link to="/products/">Products</Link></li>
-                      <li><Link to="/about/">About</Link></li>
+                      <Link to="/"><li>Home</li></Link>
+                      <Link to="/products/"><li>Products</li></Link>
+                      <Link to="/about/"><li>About</li></Link>
                     </ul>
                   </li>
                 </ul>
@@ -103,9 +103,9 @@ class Header extends React.Component {
           </div>
           <div className={menuDropDownClasses.join(' ')}>
             <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/products/">Products</Link></li>
-              <li><Link to="/about/">About</Link></li>
+              <Link to="/"><li>Home</li></Link>
+              <Link to="/products/"><li>Products</li></Link>
+              <Link to="/about/"><li>About</li></Link>
             </ul>
           </div>
         </div>

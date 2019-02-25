@@ -53,17 +53,17 @@ header {
                     }
                     .menu-name {
                         ul {
+                            a {
+                                &:nth-child(1) {
+                                    border-left: 1px solid map-get($map: $colors, $key: text_color);
+                                }
+                            }
                             li {
                                 padding: 0.5rem 1rem;
                                 border-bottom: 1px solid transparent;
-                                a {
-                                    color: map-get($map: $colors, $key: text_color);
-                                }
+                                color: map-get($map: $colors, $key: text_color);
                                 &:hover {
                                     border-bottom: 1px solid map-get($map: $colors, $key: text_color);
-                                }
-                                &:nth-child(1) {
-                                    border-left: 1px solid map-get($map: $colors, $key: text_color);
                                 }
                             }
                         }
@@ -232,9 +232,7 @@ header {
                     background: map-get($map: $colors, $key: body_color);
                     margin-top: -30%;
                     position: relative;
-                    a {
-                        color: map-get($map: $colors, $key: text_color);
-                    }
+                    color: map-get($map: $colors, $key: text_color);
                     &:hover {
                         border-bottom: 1px solid map-get($map: $colors, $key: text_color);
                     }
@@ -245,13 +243,13 @@ header {
                     margin-top: -30%;
                     z-index: 1;
                     &:nth-child(1) {
-                        animation: show-menu-dropdown 150ms 0s forwards;
+                        animation: show-menu-dropdown 500ms 0s forwards;
                     }
                     &:nth-child(2) {
-                        animation: show-menu-dropdown 150ms 150ms forwards;
+                        animation: show-menu-dropdown 500ms 500ms forwards;
                     }
                     &:nth-child(3) {
-                        animation: show-menu-dropdown 150ms 300ms forwards;
+                        animation: show-menu-dropdown 500ms 1000ms forwards;
                     }
                 }
             }

@@ -27,11 +27,13 @@ class Products extends Component {
         searchText: searchText,
       },
       showFilters: false,
+      hideGotoTop: true,
     }
     this.onChange = this.onChange.bind(this)
     this.getAllUpsFilters = this.getAllUpsFilters.bind(this)
     this.closeFilters = this.closeFilters.bind(this)
     this.resetFilters = this.resetFilters.bind(this)
+    this.gotoTop = this.gotoTop.bind(this)
     this.allFilters = []
   }
   componentDidMount() {
@@ -45,6 +47,7 @@ class Products extends Component {
       ),
       setFilters: setFilters
     })
+    window.addEventListener('scroll', this.scrollEventHandler.bind(this));
   }
   componentWillUnmount() {
     // this.resetFilters()
@@ -95,6 +98,11 @@ class Products extends Component {
         <p>We couldn't find any matches</p>
       </div>
     }
+
+    let gotoTopClasses = ["goto-top"]
+    if(this.state.hideGotoTop)
+      gotoTopClasses.push('inactive')
+
     return (
       <Layout>
         <SEO title="Products" />
@@ -121,11 +129,10 @@ class Products extends Component {
           </div>
           <div className={filtersCloserClasses.join(' ')} onClick={this.closeFilters.bind(this)}>
             <div className={loaderClasses.join(' ')}>
-              <div></div>
-              <div></div>
-              <div></div>
+              <FontAwesomeIcon icon="hourglass-half" />
             </div>
           </div>
+          <div className={gotoTopClasses.join(' ')} onClick={this.gotoTop.bind(this)}><FontAwesomeIcon icon="angle-up" /></div>
         </div>
       </Layout>
     )
@@ -165,6 +172,68 @@ class Products extends Component {
         animateFade: false
       })
     }, 1000)
+  }
+  scrollEventHandler(e) {
+    this.setState({
+      hideGotoTop: e.currentTarget.pageYOffset < 2 * e.currentTarget.innerHeight ? true : false
+    })
+  }
+  gotoTop() {
+    let startY = this.currentYPosition()
+    let stopY = 0
+    this.smoothScroll(startY, stopY)
+  }
+  currentYPosition() {
+    if(this.pageYOffset) 
+        return this.pageYOffset
+    if(document.documentElement && document.documentElement.scrollTop)
+        return document.documentElement.scrollTop
+    if(document.body.scrollTop) 
+        return document.body.scrollTop
+    return 0
+  }
+  elementYPosition(elementName) {
+      let element = document.getElementsByClassName(elementName);
+      let y = element[0].offsetTop;
+      let node = element;
+      while (node[0].offsetParent && node[0].offsetParent !== document.body) {
+          node = [];
+          node.push( element[0].offsetParent );
+          y += node[0].offsetTop;
+      } 
+      y -= document.querySelector(`header`).offsetHeight;
+      return y;
+  }
+  smoothScroll(startY, stopY){
+    let distance = stopY > startY ? stopY - startY : startY - stopY;
+    if (distance < 100) {
+        window.scrollTo(0, stopY); return;
+    }
+    let speed = Math.round( distance / 100 );
+    if( speed >= 20 ) speed = 20;
+    let step = Math.round( distance / 25 );
+    var leapY = stopY > startY ? startY + step : startY - step;
+    var timer = 0;
+    if( stopY > startY ) {
+        for ( let i = startY; i < stopY; i += step ) {
+            setTimeout( `window.scrollTo(0, ${leapY})`, timer * speed );
+            leapY += step;
+            if (leapY > stopY)
+                leapY = stopY;
+            timer++;
+        }
+        return;
+    }
+    else {
+        for ( let i = startY; i > stopY; i -= step ) {
+            setTimeout( `window.scrollTo(0, ${leapY})`, timer * speed );
+            leapY -= step;
+            if (leapY < stopY)
+                leapY = stopY;
+            timer++;
+        }
+    }
+    return false;
   }
   getAllUpsFilters(data) {
     this.allFilters = data.map( edge => { 

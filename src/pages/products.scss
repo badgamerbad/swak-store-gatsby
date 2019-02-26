@@ -123,18 +123,12 @@ $sizes: (
         top: 0;
         left: 0;
         .loader {
-            margin: 2.5em;
-            div {
-                width: 3em;
-                height: 0.5em;
-                background: map-get($map: $colors, $key: loader_color);
-                margin: 0.5em 0;
-                opacity: 0;
-            }
+            margin: 1.5em;
+            opacity: 0;
+            font-size: 2em;
+            color: map-get($map: $colors, $key: loader_color);
             &.load {
-                div {
-                    animation: loader 1s 0s forwards;
-                }
+                animation: loader 1s 0s forwards;
             }
         }
         &.active {
@@ -148,6 +142,21 @@ $sizes: (
                 justify-content: flex-end;
                 align-items: center;
             }
+        }
+    }
+    .goto-top {
+        position: fixed;
+        color: map-get($map: $colors, $key: filters_font_color);
+        background: map-get($map: $colors, $key: filters_color);
+        bottom: 0;
+        right: 0;
+        padding: 1em;
+        margin: 1em;
+        border-radius: 0.5em;
+        border: 1px solid map-get($map: $colors, $key: filters_font_color);
+        animation: move-in 1s 0s forwards;
+        &.inactive {
+            animation: move-out 1s 0s forwards;
         }
     }
     @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
@@ -167,9 +176,15 @@ $sizes: (
     100% {filter: blur(0)}
 }
 @keyframes loader {
-    0% {opacity: 0; margin: 0.5em 0;}
-    25% {opacity: 1; margin: 0.5em 0;}
-    50% {opacity: 1; margin: 1em 0;}
-    75% {opacity: 1; margin: 0.5em 0;}
-    100% {opacity: 0; margin: 0.5em 0;}
+    0% {opacity: 0; transform: rotate(0deg)}
+    50% {opacity: 1; transform: rotate(360deg)}
+    100% {opacity: 0; transform: rotate(0deg)}
+}
+@keyframes move-in {
+    0% {bottom: -6em}
+    100% {bottom: 0}
+}
+@keyframes move-out {
+    0% {bottom: 0}
+    100% {bottom: -6em}
 }

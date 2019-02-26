@@ -59,8 +59,8 @@ class UpsFilters extends React.Component {
               <>
                 <div className="ups-filter">
                   <div className="filters-buttons">
-                    <button className="filterReset" onClick={ () => this.resetChildFilters() }><FontAwesomeIcon icon="undo"/></button>
-                    <button className="filterCloser" onClick={ () => this.props.closeFilters() }><FontAwesomeIcon icon="window-close"/></button>
+                    <button className="filter-reset" onClick={ () => this.resetChildFilters() }><FontAwesomeIcon icon="undo"/></button>
+                    <button className="filter-closer-button" onClick={ () => this.props.closeFilters() }><FontAwesomeIcon icon="window-close"/></button>
                   </div>
                 </div>
                 {

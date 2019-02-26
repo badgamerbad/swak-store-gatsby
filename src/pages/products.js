@@ -51,7 +51,7 @@ class Products extends Component {
   }
   render() {
     let filtersClasses = ["filters"]
-    let filtersCloserClasses = ["filterCloser"]
+    let filtersCloserClasses = ["filter-closer-div"]
     if(this.state.showFilters) {
       filtersClasses.push("active")
       filtersCloserClasses.push("active")
@@ -68,6 +68,13 @@ class Products extends Component {
       </ul>
     }
 
+    let contentClasses = ["content"]
+    let loaderClasses = ["loader"]
+    if(this.state.animateFade) {
+      contentClasses.push("fade")
+      loaderClasses.push("load")
+    }
+    
     let filteredProducts = this.state.allProducts.filter( elem => {
       let flag = true
       let stateFiltersObject = this.state.setFilters
@@ -95,7 +102,7 @@ class Products extends Component {
           <div className={ filtersClasses.join(' ') }>
             <UpsFilters onChange={this.onChange} resetFilters={this.resetFilters} closeFilters={this.closeFilters} getAllUpsFilters={this.getAllUpsFilters} phaseSelected={this.phaseSelected}/>
           </div>
-          <div className="content">
+          <div className={contentClasses.join(' ')}>
             <div className="count">
               <ul>
                 <li>
@@ -111,7 +118,13 @@ class Products extends Component {
             <div className="listing">
               { filteredProducts }
             </div>
-            <div className={filtersCloserClasses.join(' ')} onClick={ this.closeFilters.bind(this) }></div>
+          </div>
+          <div className={filtersCloserClasses.join(' ')} onClick={this.closeFilters.bind(this)}>
+            <div className={loaderClasses.join(' ')}>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </div>
         </div>
       </Layout>
@@ -129,8 +142,14 @@ class Products extends Component {
       setFilters[key] = -1
     }
     this.setState({
-      setFilters: setFilters
+      setFilters: setFilters,
+      animateFade: true
     })
+    setTimeout(() => {
+      this.setState({
+        animateFade: false
+      })
+    }, 1000)
   }
   onChange(filterName, value) {
     let {setFilters} = this.state
@@ -138,8 +157,14 @@ class Products extends Component {
       setFilters: {
         ...setFilters,
         [filterName]: value
-      }
+      },
+      animateFade: true
     })
+    setTimeout(() => {
+      this.setState({
+        animateFade: false
+      })
+    }, 1000)
   }
   getAllUpsFilters(data) {
     this.allFilters = data.map( edge => { 

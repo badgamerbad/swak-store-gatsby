@@ -14,6 +14,7 @@ footer {
     position: relative;
     background: map-get($map: $colors, $key: footer_background);
     color: map-get($map: $colors, $key: font_color);
+    z-index: 0;
     .main-content {
         display: flex;
         justify-content: space-between;
@@ -54,6 +55,9 @@ footer {
                     li {
                         &:nth-child(2) {
                             margin: 0 0 0 1em;
+                        }
+                        a {
+                            color: inherit;
                         }
                     }
                 }

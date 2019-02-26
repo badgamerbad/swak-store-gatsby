@@ -4,6 +4,7 @@ $colors: (
     filters_font_color: #d4d4d4,
     search_text_color: #ffffff,
     no_results_font_color: #8d8d8d,
+    loader_color: #ffffff,
 );
 $calc: (
     header_height: calc(35px + 1rem + 1rem),
@@ -18,7 +19,7 @@ $sizes: (
 .products {
     padding-top: map-get($map: $calc, $key: header_height);
     display: flex;
-    z-index: 0;
+    z-index: 1;
     position: relative;
     .filters {
         z-index: 1;
@@ -104,25 +105,49 @@ $sizes: (
                 }
             }
         }
-        .filterCloser {
-            display: none;
-            position: fixed;
-            background: rgba(0, 0, 0, 0.5);
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            &.active {
-                @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
-                    display: block;
-                }
-                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-                    display: block;
+        &.fade {
+            animation: fade-in 1s 0s forwards;
+        }
+        animation: fade-out 1s 0s forwards;
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            width: auto;
+        }
+    }
+    .filter-closer-div {
+        padding-top: map-get($map: $calc, $key: header_height);
+        display: none;
+        position: fixed;
+        background: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: map-get($map: $calc, $key: elem_100);
+        top: 0;
+        left: 0;
+        .loader {
+            margin: 2.5em;
+            div {
+                width: 3em;
+                height: 0.5em;
+                background: map-get($map: $colors, $key: loader_color);
+                margin: 0.5em 0;
+                opacity: 0;
+            }
+            &.load {
+                div {
+                    animation: loader 1s 0s forwards;
                 }
             }
         }
-        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-            width: auto;
+        &.active {
+            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
         }
     }
     @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
@@ -131,4 +156,20 @@ $sizes: (
     @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
         display: block;
     }
+}
+
+@keyframes fade-in {
+    0% {filter: blur(0)}
+    100% {filter: blur(1em)}
+}
+@keyframes fade-out {
+    0% {filter: blur(1em)}
+    100% {filter: blur(0)}
+}
+@keyframes loader {
+    0% {opacity: 0; margin: 0.5em 0;}
+    25% {opacity: 1; margin: 0.5em 0;}
+    50% {opacity: 1; margin: 1em 0;}
+    75% {opacity: 1; margin: 0.5em 0;}
+    100% {opacity: 0; margin: 0.5em 0;}
 }

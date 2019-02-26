@@ -8,8 +8,8 @@ import "./layout.scss"
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faFilter, faSort, faSearch, faUndo, faWindowClose, faTimesCircle, faAngleRight, faAngleLeft, faAngleDown, faAngleUp, faFrown, faMapMarkedAlt, faPhoneSquare, faEnvelope } from '@fortawesome/free-solid-svg-icons'
-library.add( faFilter, faSort, faSearch, faUndo, faWindowClose, faTimesCircle, faAngleRight, faAngleLeft, faAngleDown, faAngleUp, faFrown, faMapMarkedAlt, faPhoneSquare, faEnvelope, faFacebook, faTwitter )
+import { faFilter, faSort, faSearch, faUndo, faWindowClose, faTimesCircle, faAngleRight, faAngleLeft, faAngleDown, faAngleUp, faCircle, faFrown, faMapMarkedAlt, faPhoneSquare, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+library.add( faFilter, faSort, faSearch, faUndo, faWindowClose, faTimesCircle, faAngleRight, faAngleLeft, faAngleDown, faAngleUp, faCircle, faFrown, faMapMarkedAlt, faPhoneSquare, faEnvelope, faFacebook, faTwitter )
 
 const Layout = ({ children }) => (
   <StaticQuery

@@ -2,7 +2,6 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
-// import ImageLogo from "../../images/logo"
 import "./header.scss"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

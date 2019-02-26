@@ -2,10 +2,11 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
-import ImageLogo from "../../images/logo"
 import "./header.scss"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import logo from '../../images/logo.svg'
 
 class Header extends React.Component {
   constructor(props, context) {
@@ -37,7 +38,7 @@ class Header extends React.Component {
         <div className="menu">
           <div className={menuBodyClasses.join(' ')}>
             <ul>
-              <li className="logo"><Link to="/"><ImageLogo /></Link></li>
+              <li className="logo"><Link to="/"><img src={logo} alt="SWAK Logo"></img></Link></li>
               <li className="menu-items">
                 <ul>
                   <li className="menu-search">
@@ -59,9 +60,9 @@ class Header extends React.Component {
                   </li>
                   <li className="menu-name">
                     <ul>
-                      <li><Link to="/">Home</Link></li>
-                      <li><Link to="/products/">Products</Link></li>
-                      <li><Link to="/about/">About</Link></li>
+                      <Link to="/"><li>Home</li></Link>
+                      <Link to="/products/"><li>Products</li></Link>
+                      <Link to="/about/"><li>About</li></Link>
                     </ul>
                   </li>
                 </ul>
@@ -72,7 +73,7 @@ class Header extends React.Component {
         <div className="menu-mobile">
           <div className={menuBodyClasses.join(' ')}>
             <ul>
-              <li className="logo"><Link to="/"><ImageLogo /></Link></li>
+              <li className="logo"><Link to="/"><img src={logo} alt="SWAK Logo"></img></Link></li>
               <li className="menu-items">
                 <ul>
                   <li className="menu-search">
@@ -103,9 +104,9 @@ class Header extends React.Component {
           </div>
           <div className={menuDropDownClasses.join(' ')}>
             <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/products/">Products</Link></li>
-              <li><Link to="/about/">About</Link></li>
+              <Link to="/"><li>Home</li></Link>
+              <Link to="/products/"><li>Products</li></Link>
+              <Link to="/about/"><li>About</li></Link>
             </ul>
           </div>
         </div>

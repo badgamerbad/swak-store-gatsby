@@ -96,6 +96,7 @@ $sizes: (
             width: 3em;
         }
         .button-info {
+            cursor: pointer;
             width: 50%;
             color: map-get($map: $colors, $key: button_font_color);
             margin: 1em 0;

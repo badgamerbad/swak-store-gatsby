@@ -47,7 +47,7 @@ class Products extends Component {
     })
   }
   componentWillUnmount() {
-    this.resetFilters()
+    // this.resetFilters()
   }
   render() {
     let filtersClasses = ["filters"]

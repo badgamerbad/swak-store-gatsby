@@ -62,7 +62,8 @@ class Footer extends Component {
                 <div className="underLine" />
                 <div className="underLine ul-width-s" />
               </li>
-              <form name="contact" method="POST" data-netlify="true">
+              <form name="contact" method="POST" data-netlify-honeypot="bot-field" data-netlify="true">
+                <input type="hidden" name="bot-field" />
                 <li>
                   <ul className="field">
                     <li><label>Name</label></li>

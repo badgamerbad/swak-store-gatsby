@@ -2,10 +2,12 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
-import ImageLogo from "../../images/logo"
+// import ImageLogo from "../../images/logo"
 import "./header.scss"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import logo from '../../images/logo.svg'
 
 class Header extends React.Component {
   constructor(props, context) {
@@ -37,7 +39,7 @@ class Header extends React.Component {
         <div className="menu">
           <div className={menuBodyClasses.join(' ')}>
             <ul>
-              <li className="logo"><Link to="/"><ImageLogo /></Link></li>
+              <li className="logo"><Link to="/"><img src={logo} alt="SWAK Logo"></img></Link></li>
               <li className="menu-items">
                 <ul>
                   <li className="menu-search">
@@ -72,7 +74,7 @@ class Header extends React.Component {
         <div className="menu-mobile">
           <div className={menuBodyClasses.join(' ')}>
             <ul>
-              <li className="logo"><Link to="/"><ImageLogo /></Link></li>
+              <li className="logo"><Link to="/"><img src={logo} alt="SWAK Logo"></img></Link></li>
               <li className="menu-items">
                 <ul>
                   <li className="menu-search">

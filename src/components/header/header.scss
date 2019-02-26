@@ -26,7 +26,8 @@ header {
                 justify-content: space-between;
                 align-items: center;
                 .logo {
-                    width: 4em;
+                    width: 3.5em;
+                    height: 2.5em;
                 }
                 .menu-items {
                     .menu-search {
@@ -148,7 +149,10 @@ header {
                 justify-content: space-between;
                 align-items: center;
                 .logo {
-                    width: 4em;
+                    img {
+                        width: 3em;
+                        height: 2.1em;
+                    }
                 }
                 .menu-items {
                     ul {

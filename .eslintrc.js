@@ -52,6 +52,8 @@ module.exports = {
       "max-len": 0,
       "react/prop-types": 0,
       "react/no-unescaped-entities": 0,
+      "no-eval": 1,
+      "no-implied-eval": 1,
     },
     parser: "babel-eslint",
     parserOptions: {
@@ -77,5 +79,9 @@ module.exports = {
         "Hyperlink",
         {"name": "Link", "linkAttribute": "to"}
       ]
+    },
+    "env": {
+      "browser": true,
+      "node": true,
     }
   }

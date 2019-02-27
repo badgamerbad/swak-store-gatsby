@@ -1,3 +1,10 @@
+const {NODE_ENV} = process.env;
+let plugins= [];
+if (NODE_ENV == 'development') {
+  plugins = [
+    `gatsby-plugin-eslint`,
+  ]
+}
 module.exports = {
   siteMetadata: {
     title: `SWAK`,
@@ -11,7 +18,7 @@ module.exports = {
     }
   },
   plugins: [
-    `gatsby-plugin-eslint`,
+    ...plugins,
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     {

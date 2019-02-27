@@ -216,8 +216,7 @@ class Products extends Component {
     let leapY = stopY > startY ? startY + step : startY - step
     let timer = 0
     if( stopY > startY ) {
-      for ( let i = startY; i < stopY; i += step ) {
-            
+      for ( let i = startY; i < stopY; i += step ) {   
         setTimeout( `window.scrollTo(0, ${ leapY })` , timer * speed )
         leapY += step
         if (leapY > stopY)
@@ -227,9 +226,8 @@ class Products extends Component {
       return
     }
     else {
-      for ( let i = startY; i > stopY; i -= step ) {
-        // eslint-disable-next-line          
-            setTimeout( `window.scrollTo(0, ${leapY})` , timer * speed )
+      for ( let i = startY; i > stopY; i -= step ) {          
+        setTimeout( `window.scrollTo(0, ${ leapY })` , timer * speed )
         leapY -= step
         if (leapY < stopY)
           leapY = stopY
@@ -241,7 +239,7 @@ class Products extends Component {
   getAllUpsFilters (data) {
     this.allFilters = data.map( edge => { 
       return { [edge.node.frontmatter.name]: { value: edge.node.frontmatter.value, label: edge.node.frontmatter.label, selected: edge.node.frontmatter.selected } } 
-    }).reduce( (acc, cur, i) => { 
+    }).reduce( (acc, cur) => { 
       return {...acc, ...cur} 
     } )
   }

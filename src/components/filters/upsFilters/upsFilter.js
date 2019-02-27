@@ -72,7 +72,7 @@ class UpsFilter extends Component {
       showRadioValues: !this.state.showRadioValues
     })
   }
-  onChanged (index, name, e) {
+  onChanged (index, name) {
     this.props.onChange(name , index)
     let {filter} = this.state
     filter.selected = index

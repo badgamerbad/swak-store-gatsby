@@ -9,69 +9,69 @@ import "./slider.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Slider extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.imageNumber = 0
     this.timerPointer = null
     this.timeInterval = 9000
   }
-  componentDidMount() {
+  componentDidMount () {
     this.slideArray = document.getElementsByClassName('slide')
     this.imgDivArray = document.getElementsByClassName('img-div')
     this.sliderTimer()
   }
-  componentWillUnmount() {
+  componentWillUnmount () {
     clearInterval(this.timerPointer)
   }
-  render() {
+  render () {
     return (
-    <div className="slider">
+      <div className="slider">
         <Link to="/about/">
           <div className="slide centered-slide">
-              <div className="image">
-                  <ImageCatElectrical />
-              </div>
-              <div className="text">
+            <div className="image">
+              <ImageCatElectrical />
+            </div>
+            <div className="text">
               <h1>Welcome to</h1>
               <h1>SWAK Enterprises</h1>
               <div className="underLine"/>
               <div className="underLine ul-width-s"/>
               <button className="button-info">Know More</button>
-              </div>
+            </div>
           </div>
         </Link>
         <Link to="/products/">
-        <div className="slide">
+          <div className="slide">
             <div className="image">
-                <ImageCatUps />
+              <ImageCatUps />
             </div>
             <div className="text">
-                <h1>Backup power, UPS, surge</h1>
-                <h1>&amp; IT power distribution</h1>
-                <div className="underLine"/>
-                <div className="underLine ul-width-s"/>
-                <button className="button-info">Find Solution</button>
+              <h1>Backup power, UPS, surge</h1>
+              <h1>&amp; IT power distribution</h1>
+              <div className="underLine"/>
+              <div className="underLine ul-width-s"/>
+              <button className="button-info">Find Solution</button>
             </div>
-        </div>
+          </div>
         </Link>
         <div className="navigator">
-            <button onClick={ () => this.previousSlider() }><FontAwesomeIcon icon="angle-left" /></button>
-            <button onClick={ () => this.nextSlider() }><FontAwesomeIcon icon="angle-right" /></button>
+          <button onClick={ () => this.previousSlider() }><FontAwesomeIcon icon="angle-left" /></button>
+          <button onClick={ () => this.nextSlider() }><FontAwesomeIcon icon="angle-right" /></button>
         </div>
         <div className="highlighter">
-            <button className="image" onClick={ () => this.setSlider(0) }>
-              <div className="img-div"/>
-              <ImageCatElectrical /> 
-            </button>
-            <button className="image" onClick={ () => this.setSlider(1) }>
-              <div className="img-div"/>
-              <ImageCatUps />
-            </button>
+          <button className="image" onClick={ () => this.setSlider(0) }>
+            <div className="img-div"/>
+            <ImageCatElectrical /> 
+          </button>
+          <button className="image" onClick={ () => this.setSlider(1) }>
+            <div className="img-div"/>
+            <ImageCatUps />
+          </button>
         </div>
-    </div>
+      </div>
     )
   }
-  previousSlider() {
+  previousSlider () {
     let centeredSlide = document.querySelector('.centered-slide')
     centeredSlide.classList.remove('centered-slide', 'move-right-center', 'move-left-center')
     centeredSlide.classList.add('move-center-right')
@@ -89,7 +89,7 @@ class Slider extends Component {
     clearInterval(this.timerPointer)
     this.sliderTimer()
   }
-  nextSlider() {
+  nextSlider () {
     let centeredSlide = document.querySelector('.centered-slide')
     centeredSlide.classList.remove('centered-slide', 'move-left-center', 'move-right-center')
     centeredSlide.classList.add('move-center-left')
@@ -106,31 +106,31 @@ class Slider extends Component {
     clearInterval(this.timerPointer)
     this.sliderTimer()
   }
-  setSlider(index) {
-    let selectedIndex = parseInt(index);
-    let currentIndex = this.imageNumber;
+  setSlider (index) {
+    let selectedIndex = parseInt(index)
+    let currentIndex = this.imageNumber
   
     if( selectedIndex > currentIndex ) {
-        for (let i = currentIndex; i < selectedIndex; i++) {
-            this.nextSlider();
-        }
+      for (let i = currentIndex; i < selectedIndex; i++) {
+        this.nextSlider()
+      }
     }
     else {
-        for (let i = selectedIndex; i < currentIndex; i++) {
-            this.previousSlider();
-        }
+      for (let i = selectedIndex; i < currentIndex; i++) {
+        this.previousSlider()
+      }
     }
   
     clearInterval(this.timerPointer)
     this.sliderTimer()
   }
-  setHighlighter() {
+  setHighlighter () {
     for(let i = 0; i < this.imgDivArray.length; i++) {
       this.imgDivArray[i].classList.remove('active')
     }
     this.imgDivArray[this.imageNumber].classList.add('active')
   }
-  sliderTimer(){
+  sliderTimer (){
     this.timerPointer = setInterval( () => {
       this.nextSlider()
     }, this.timeInterval )

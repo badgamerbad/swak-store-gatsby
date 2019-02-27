@@ -7,13 +7,13 @@ import "./footer.scss"
 
 
 class Footer extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       date: new Date().getFullYear()
     }
   }
-  render() {
+  render () {
     return (
       <footer className="footer">
         <div className="main-content">
@@ -39,7 +39,7 @@ class Footer extends Component {
               <li>
                 <ul className="field">
                   <li><FontAwesomeIcon icon="phone-square" /></li>
-                  <li><a href={`tel:${this.props.contact.phone}`}>{this.props.contact.phone}</a></li>
+                  <li><a href={`tel:${ this.props.contact.phone }`}>{this.props.contact.phone}</a></li>
                 </ul>
               </li>
               <li>

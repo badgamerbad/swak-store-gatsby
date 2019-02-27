@@ -8,16 +8,16 @@ import UpsFilter from "./upsFilter"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class UpsFilters extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {}
     this.resetOnce = false
     this.readPhaseSelected = true
   }
-  componentDidUpdate() {
+  componentDidUpdate () {
     this.resetOnce = false
   }
-  render() {
+  render () {
     return (
       <StaticQuery
         query={graphql`
@@ -77,7 +77,7 @@ class UpsFilters extends React.Component {
       />
     )
   }
-  resetChildFilters() {
+  resetChildFilters () {
     this.props.resetFilters()
     this.resetOnce = true
     this.setState()

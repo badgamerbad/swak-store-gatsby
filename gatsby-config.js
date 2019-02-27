@@ -11,6 +11,7 @@ module.exports = {
     }
   },
   plugins: [
+    `gatsby-plugin-eslint`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     {
@@ -42,7 +43,7 @@ module.exports = {
         name: `files`,
         path: `${__dirname}/src`
       }
-    }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',

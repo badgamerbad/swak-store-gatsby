@@ -38,7 +38,7 @@ class Products extends Component {
   }
   componentDidMount() {
     let {setFilters} = this.state
-    for(var key in this.allFilters) {
+    for(let key in this.allFilters) {
       setFilters[key] = this.allFilters[key].selected
     }
     this.setState({
@@ -47,7 +47,7 @@ class Products extends Component {
       ),
       setFilters: setFilters
     })
-    window.addEventListener('scroll', this.scrollEventHandler.bind(this));
+    window.addEventListener('scroll', this.scrollEventHandler.bind(this))
   }
   componentWillUnmount() {
     // this.resetFilters()
@@ -81,7 +81,7 @@ class Products extends Component {
     let filteredProducts = this.state.allProducts.filter( elem => {
       let flag = true
       let stateFiltersObject = this.state.setFilters
-      for(var key in stateFiltersObject) {
+      for(let key in stateFiltersObject) {
         if(key === "searchText" && stateFiltersObject[key].trim() !== "" && elem.name.toLowerCase().indexOf(stateFiltersObject[key].trim().toLowerCase()) === -1)
           flag = false
         else if( key !== "searchText" && stateFiltersObject[key] !== -1 && stateFiltersObject[key] !== elem[key] )
@@ -145,7 +145,7 @@ class Products extends Component {
   }
   resetFilters() {
     let {setFilters} = this.state
-    for(var key in this.allFilters) {
+    for(let key in this.allFilters) {
       setFilters[key] = -1
     }
     this.setState({
@@ -193,47 +193,50 @@ class Products extends Component {
     return 0
   }
   elementYPosition(elementName) {
-      let element = document.getElementsByClassName(elementName);
-      let y = element[0].offsetTop;
-      let node = element;
+      let element = document.getElementsByClassName(elementName)
+      let y = element[0].offsetTop
+      let node = element
       while (node[0].offsetParent && node[0].offsetParent !== document.body) {
-          node = [];
-          node.push( element[0].offsetParent );
-          y += node[0].offsetTop;
+          node = []
+          node.push( element[0].offsetParent )
+          y += node[0].offsetTop
       } 
-      y -= document.querySelector(`header`).offsetHeight;
-      return y;
+      y -= document.querySelector(`header`).offsetHeight
+      return y
   }
   smoothScroll(startY, stopY){
-    let distance = stopY > startY ? stopY - startY : startY - stopY;
+    let distance = stopY > startY ? stopY - startY : startY - stopY
     if (distance < 100) {
-        window.scrollTo(0, stopY); return;
+      window.scrollTo(0, stopY) 
+      return
     }
-    let speed = Math.round( distance / 100 );
-    if( speed >= 20 ) speed = 20;
-    let step = Math.round( distance / 25 );
-    var leapY = stopY > startY ? startY + step : startY - step;
-    var timer = 0;
+    let speed = Math.round( distance / 100 )
+    if( speed >= 20 ) speed = 20
+    let step = Math.round( distance / 25 )
+    let leapY = stopY > startY ? startY + step : startY - step
+    var timer = 0
     if( stopY > startY ) {
         for ( let i = startY; i < stopY; i += step ) {
-            setTimeout( `window.scrollTo(0, ${leapY})`, timer * speed );
-            leapY += step;
+            
+            setTimeout( `window.scrollTo(0, ${leapY})` , timer * speed )
+            leapY += step
             if (leapY > stopY)
-                leapY = stopY;
-            timer++;
+                leapY = stopY
+            timer++
         }
-        return;
+        return
     }
     else {
         for ( let i = startY; i > stopY; i -= step ) {
-            setTimeout( `window.scrollTo(0, ${leapY})`, timer * speed );
-            leapY -= step;
+            // eslint-disable-next-line          
+            setTimeout( `window.scrollTo(0, ${leapY})` , timer * speed )
+            leapY -= step
             if (leapY < stopY)
-                leapY = stopY;
-            timer++;
+                leapY = stopY
+            timer++
         }
     }
-    return false;
+    return false
   }
   getAllUpsFilters(data) {
     this.allFilters = data.map( edge => { 

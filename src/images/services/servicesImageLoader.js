@@ -14,11 +14,11 @@ import Img from "gatsby-image"
  */
 
 class ServicesImageLoader extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {}
   }
-  render() {
+  render () {
     return (
       <StaticQuery 
         query={graphql`

@@ -9,20 +9,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import logo from '../../images/logo.svg'
 
 class Header extends React.Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
     this.state = {
       active: false,
       showSearch: false,
     }
   }
-  componentDidUpdate() {
+  componentDidUpdate () {
     if(document.body.offsetWidth < 1000) 
       document.querySelector(".menu-mobile .searchText input").focus()
     else
       document.querySelector(".menu .searchText input").focus()
   }
-  render() {
+  render () {
     let menuDropDownClasses = ["menu-dropdown"]
     let menuNamesClasses = ["menu-name"]
     let menuBodyClasses = ["menu-body"]
@@ -113,10 +113,10 @@ class Header extends React.Component {
       </header>
     )
   }
-  toggle() {
+  toggle () {
     this.setState( {active: !this.state.active} )
   }
-  openSearch() {
+  openSearch () {
     if(this.state.showSearch){
       let searhText = document.querySelector(".menu-mobile .searchText input").value.trim()
       window.location = '/products?searchText=' + searhText
@@ -125,10 +125,10 @@ class Header extends React.Component {
       this.setState( {showSearch: true} )
     } 
   }
-  closeSearch() {
+  closeSearch () {
     this.setState( {showSearch: false} )
   }
-  submitProduct(e) { 
+  submitProduct (e) { 
     if(e.key === "Enter") {
       window.location = '/products?searchText=' + e.currentTarget.value.trim()
     }

@@ -14,7 +14,7 @@ import UpsFilters from "../components/filters/upsFilters/upsFilters"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Products extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     const paramsString = props.location.search
     const params = new URLSearchParams(paramsString)
@@ -36,7 +36,7 @@ class Products extends Component {
     this.gotoTop = this.gotoTop.bind(this)
     this.allFilters = []
   }
-  componentDidMount() {
+  componentDidMount () {
     let {setFilters} = this.state
     for(let key in this.allFilters) {
       setFilters[key] = this.allFilters[key].selected
@@ -49,10 +49,10 @@ class Products extends Component {
     })
     window.addEventListener('scroll', this.scrollEventHandler.bind(this))
   }
-  componentWillUnmount() {
+  componentWillUnmount () {
     // this.resetFilters()
   }
-  render() {
+  render () {
     let filtersClasses = ["filters"]
     let filtersCloserClasses = ["filter-closer-div"]
     if(this.state.showFilters) {
@@ -137,13 +137,13 @@ class Products extends Component {
       </Layout>
     )
   }
-  openFilters() {
+  openFilters () {
     this.setState( {showFilters: true} )
   }
-  closeFilters() {
+  closeFilters () {
     this.setState( {showFilters: false} )
   }
-  resetFilters() {
+  resetFilters () {
     let {setFilters} = this.state
     for(let key in this.allFilters) {
       setFilters[key] = -1
@@ -158,7 +158,7 @@ class Products extends Component {
       })
     }, 1000)
   }
-  onChange(filterName, value) {
+  onChange (filterName, value) {
     let {setFilters} = this.state
     this.setState({ 
       setFilters: {
@@ -173,38 +173,38 @@ class Products extends Component {
       })
     }, 1000)
   }
-  scrollEventHandler(e) {
+  scrollEventHandler (e) {
     this.setState({
       hideGotoTop: e.currentTarget.pageYOffset < 2 * e.currentTarget.innerHeight ? true : false
     })
   }
-  gotoTop() {
+  gotoTop () {
     let startY = this.currentYPosition()
     let stopY = 0
     this.smoothScroll(startY, stopY)
   }
-  currentYPosition() {
+  currentYPosition () {
     if(this.pageYOffset) 
-        return this.pageYOffset
+      return this.pageYOffset
     if(document.documentElement && document.documentElement.scrollTop)
-        return document.documentElement.scrollTop
+      return document.documentElement.scrollTop
     if(document.body.scrollTop) 
-        return document.body.scrollTop
+      return document.body.scrollTop
     return 0
   }
-  elementYPosition(elementName) {
-      let element = document.getElementsByClassName(elementName)
-      let y = element[0].offsetTop
-      let node = element
-      while (node[0].offsetParent && node[0].offsetParent !== document.body) {
-          node = []
-          node.push( element[0].offsetParent )
-          y += node[0].offsetTop
-      } 
-      y -= document.querySelector(`header`).offsetHeight
-      return y
+  elementYPosition (elementName) {
+    let element = document.getElementsByClassName(elementName)
+    let y = element[0].offsetTop
+    let node = element
+    while (node[0].offsetParent && node[0].offsetParent !== document.body) {
+      node = []
+      node.push( element[0].offsetParent )
+      y += node[0].offsetTop
+    } 
+    y -= document.querySelector(`header`).offsetHeight
+    return y
   }
-  smoothScroll(startY, stopY){
+  smoothScroll (startY, stopY){
     let distance = stopY > startY ? stopY - startY : startY - stopY
     if (distance < 100) {
       window.scrollTo(0, stopY) 
@@ -214,38 +214,38 @@ class Products extends Component {
     if( speed >= 20 ) speed = 20
     let step = Math.round( distance / 25 )
     let leapY = stopY > startY ? startY + step : startY - step
-    var timer = 0
+    let timer = 0
     if( stopY > startY ) {
-        for ( let i = startY; i < stopY; i += step ) {
+      for ( let i = startY; i < stopY; i += step ) {
             
-            setTimeout( `window.scrollTo(0, ${leapY})` , timer * speed )
-            leapY += step
-            if (leapY > stopY)
-                leapY = stopY
-            timer++
-        }
-        return
+        setTimeout( `window.scrollTo(0, ${ leapY })` , timer * speed )
+        leapY += step
+        if (leapY > stopY)
+          leapY = stopY
+        timer++
+      }
+      return
     }
     else {
-        for ( let i = startY; i > stopY; i -= step ) {
-            // eslint-disable-next-line          
+      for ( let i = startY; i > stopY; i -= step ) {
+        // eslint-disable-next-line          
             setTimeout( `window.scrollTo(0, ${leapY})` , timer * speed )
-            leapY -= step
-            if (leapY < stopY)
-                leapY = stopY
-            timer++
-        }
+        leapY -= step
+        if (leapY < stopY)
+          leapY = stopY
+        timer++
+      }
     }
     return false
   }
-  getAllUpsFilters(data) {
+  getAllUpsFilters (data) {
     this.allFilters = data.map( edge => { 
       return { [edge.node.frontmatter.name]: { value: edge.node.frontmatter.value, label: edge.node.frontmatter.label, selected: edge.node.frontmatter.selected } } 
     }).reduce( (acc, cur, i) => { 
       return {...acc, ...cur} 
     } )
   }
-  clearSearchText() {
+  clearSearchText () {
     let {setFilters} = this.state
     setFilters.searchText = "" 
     this.setState({

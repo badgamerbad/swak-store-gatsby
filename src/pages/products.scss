@@ -9,6 +9,7 @@ $colors: (
 $calc: (
     header_height: calc(35px + 1rem + 1rem),
     elem_100: calc( 100% - (35px + 1rem + 1rem) ),
+    loader_margin_left: calc(100px + 4em),
 );
 $sizes: (
     mobile: 540px,
@@ -123,7 +124,7 @@ $sizes: (
         top: 0;
         left: 0;
         .loader {
-            margin: 1.5em;
+            margin-left: map-get($map: $calc, $key: loader_margin_left);
             opacity: 0;
             font-size: 2em;
             color: map-get($map: $colors, $key: loader_color);
@@ -134,12 +135,12 @@ $sizes: (
         &.active {
             @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
                 display: flex;
-                justify-content: flex-end;
+                justify-content: center;
                 align-items: center;
             }
             @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                 display: flex;
-                justify-content: flex-end;
+                justify-content: center;
                 align-items: center;
             }
         }

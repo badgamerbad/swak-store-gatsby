@@ -118,8 +118,12 @@ class Header extends React.Component {
   }
   openSearch () {
     if(this.state.showSearch){
-      let searhText = document.querySelector(".menu-mobile .searchText input").value.trim()
-      window.location = '/products?searchText=' + searhText
+      let searchText
+      if(document.body.offsetWidth < 1000) 
+        searchText = document.querySelector(".menu-mobile .searchText input").value.trim()
+      else
+        searchText = document.querySelector(".menu .searchText input").value.trim()
+      window.location = '/products?searchText=' + searchText
     }
     else {
       this.setState( {showSearch: true} )

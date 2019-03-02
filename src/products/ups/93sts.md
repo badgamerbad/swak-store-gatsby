@@ -11,5 +11,5 @@ frequency: 1
 frequencyLabel: 50/60hz
 formFactor: 0
 topology: 2
-imageUrl: 9E-IN-6-10K.jpg
+imageUrl: 93-STS_15-500kva.jpg
 ---

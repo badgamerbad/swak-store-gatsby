@@ -17,9 +17,9 @@ const About = () => (
           <p>
             We feel proud in announcing that we are official partners for EATON. Our association
             with EATON is itself a certification of our commitment towards our work. We possess a
-            team of skilled professionals who are well versed with the industry knowledge and qual-
-            ity standards. This enables us to meet the requirements and specification of our cus-
-            tomers. Our personnel possess a perfect blend of logical and technical skills, which they
+            team of skilled professionals who are well versed with the industry knowledge and quality 
+            standards. This enables us to meet the requirements and specification of our customers. 
+            Our personnel possess a perfect blend of logical and technical skills, which they
             implement to acquire utmost customer satisfaction.
           </p>
         </div>
@@ -86,7 +86,8 @@ const About = () => (
           <li className="cell">
             <div className="text">
               <p>Installation commisioning</p>
-              <p>installation &amp; maintainace</p>
+              <p>&amp; repairing of drives</p>
+              <p>&amp; electronic cards</p>
             </div>
             <div className="image">
               <ServicesImageLoader imageUrl="s7" />

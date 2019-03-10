@@ -1,5 +1,4 @@
 import React, { Component }from "react"
-import { Link } from "gatsby"
 
 import ImageCatElectrical from "../../images/cat_electrical"
 import ImageCatUps from "../../images/cat_ups"
@@ -26,7 +25,7 @@ class Slider extends Component {
   render () {
     return (
       <div className="slider">
-        <Link to="/about/">
+        <a href="/about/">
           <div className="slide centered-slide">
             <div className="image">
               <ImageCatElectrical />
@@ -39,8 +38,8 @@ class Slider extends Component {
               <button className="button-info">Know More</button>
             </div>
           </div>
-        </Link>
-        <Link to="/products/">
+        </a>
+        <a href="/products/">
           <div className="slide">
             <div className="image">
               <ImageCatUps />
@@ -53,7 +52,7 @@ class Slider extends Component {
               <button className="button-info">Find Solution</button>
             </div>
           </div>
-        </Link>
+        </a>
         <div className="navigator">
           <button onClick={ () => this.previousSlider() }><FontAwesomeIcon icon="angle-left" /></button>
           <button onClick={ () => this.nextSlider() }><FontAwesomeIcon icon="angle-right" /></button>

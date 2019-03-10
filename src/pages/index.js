@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Slider from "../components/slider/slider"
 
@@ -17,22 +16,22 @@ const IndexPage = () => (
     <div className="products-linker">
       <p>Find your Power Solution</p>
       <div className="links">
-        <Link className="link" to={'/products/?phase=0'}>
+        <a className="link" href={'/products/?phase=0'}>
           <div className="text">
             <p>Single Phase UPS</p>
             <div className="underLine"/>
             <div className="underLine ul-width-s"/>
           </div>
           <div className="image"><ImageSinglePhase /></div>
-        </Link>
-        <Link className="link" to={'/products/?phase=1'}>
+        </a>
+        <a className="link" href={'/products/?phase=1'}>
           <div className="text">
             <p>Three Phase UPS</p>
             <div className="underLine"/>
             <div className="underLine ul-width-s"/>
           </div>
           <div className="image"><ImageThreePhase /></div>
-        </Link>
+        </a>
       </div>
     </div>
   </Layout>

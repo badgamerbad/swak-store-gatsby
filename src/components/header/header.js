@@ -1,4 +1,3 @@
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
@@ -38,7 +37,7 @@ class Header extends React.Component {
         <div className="menu">
           <div className={menuBodyClasses.join(' ')}>
             <ul>
-              <li className="logo"><Link to="/"><img src={logo} alt="SWAK Logo"></img></Link></li>
+              <li className="logo"><a href="/"><img src={logo} alt="SWAK Logo"></img></a></li>
               <li className="menu-items">
                 <ul>
                   <li className="menu-search">
@@ -60,9 +59,9 @@ class Header extends React.Component {
                   </li>
                   <li className="menu-name">
                     <ul>
-                      <Link to="/"><li>Home</li></Link>
-                      <Link to="/products/"><li>Products</li></Link>
-                      <Link to="/about/"><li>About</li></Link>
+                      <a href="/"><li>Home</li></a>
+                      <a href="/products/"><li>Products</li></a>
+                      <a href="/about/"><li>About</li></a>
                     </ul>
                   </li>
                 </ul>
@@ -73,7 +72,7 @@ class Header extends React.Component {
         <div className="menu-mobile">
           <div className={menuBodyClasses.join(' ')}>
             <ul>
-              <li className="logo"><Link to="/"><img src={logo} alt="SWAK Logo"></img></Link></li>
+              <li className="logo"><a href="/"><img src={logo} alt="SWAK Logo"></img></a></li>
               <li className="menu-items">
                 <ul>
                   <li className="menu-search">
@@ -104,9 +103,9 @@ class Header extends React.Component {
           </div>
           <div className={menuDropDownClasses.join(' ')}>
             <ul>
-              <Link to="/"><li>Home</li></Link>
-              <Link to="/products/"><li>Products</li></Link>
-              <Link to="/about/"><li>About</li></Link>
+              <a href="/"><li>Home</li></a>
+              <a href="/products/"><li>Products</li></a>
+              <a href="/about/"><li>About</li></a>
             </ul>
           </div>
         </div>

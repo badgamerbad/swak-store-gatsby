@@ -1,5 +1,7 @@
 $colors: (
     content_color: #ffffff,
+    font_color: #ffffff,
+    text_color: #5e5e5e,
 );
 $calc: (
     header_height: calc(35px + 1rem + 1rem),
@@ -13,4 +15,108 @@ $sizes: (
 .products {
     padding-top: map-get($map: $calc, $key: header_height);
     background: map-get($map: $colors, $key: content_color);
+    .products-linker {
+        p {
+            font-size: 2em;
+            color: map-get($map: $colors, $key: text_color);
+            text-align: center;
+            @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                font-size: 1.5em;
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                font-size: 1em;
+            }
+        }
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 0 2em 0;
+            .link {
+                position: relative;
+                overflow: hidden;
+                flex: 0 0 40%;
+                z-index: 0;
+                &:hover {
+                    &>.image {
+                        animation: zoom-in 1s 0s forwards;
+                    }
+                    &>.text .ul-width-s {
+                        animation: zoom-in-large 1s 0s forwards;
+                    }
+                }
+                .text {
+                    position: relative;
+                    z-index: 1;
+                    padding: 6em;
+                    text-align: center;
+                    p {
+                        color: map-get($map: $colors, $key: font_color);
+                        font-size: 1.5em;
+                    }
+                    .underLine {
+                        height: 0.1em;
+                        background: map-get($map: $colors, $key: font_color);
+                        margin: 0 auto;
+                    }
+                    .ul-width-l {
+                        width: 13em;
+                    }
+                    .ul-width-m {
+                        width: 10em;
+                    }
+                    .ul-width-s {
+                        width: 3em;
+                        animation: zoom-out-large 1s 0s forwards;
+                    }
+                    @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                        padding: 3em;
+                    }
+                    @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                        padding: 3em;
+                    }
+                }
+                .image {
+                    position: absolute;
+                    z-index: 0;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.5);
+                    }
+                    animation: zoom-out 1s 0s forwards;
+                }
+                @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+                    flex: 0 0 50%;
+                }
+                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                    flex: 0 0 90%;
+                }
+            }
+        }
+    }
+}
+
+@keyframes zoom-in {
+    0% {transform: scale(1)}
+    100% {transform: scale(1.2)}
+}
+@keyframes zoom-out {
+    0% {transform: scale(1.2)}
+    100% {transform: scale(1)}
+}
+@keyframes zoom-in-large {
+    0% {transform: scale(1)}
+    100% {transform: scale(2)}
+}
+@keyframes zoom-out-large {
+    0% {transform: scale(2)}
+    100% {transform: scale(1)}
 }

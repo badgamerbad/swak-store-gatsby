@@ -1,7 +1,7 @@
 import React, { Component }from "react"
 
-import ImageCatElectrical from "../../images/cat_electrical"
-import ImageCatUps from "../../images/cat_ups"
+import ImageAboutUs from "../../images/imageAboutUs"
+import ImageProducts from "../../images/imageProducts"
 
 import "./slider.scss"
 
@@ -28,7 +28,7 @@ class Slider extends Component {
         <a href="/about/">
           <div className="slide centered-slide">
             <div className="image">
-              <ImageCatElectrical />
+              <ImageAboutUs />
             </div>
             <div className="text">
               <h1>Welcome to</h1>
@@ -42,11 +42,11 @@ class Slider extends Component {
         <a href="/products/">
           <div className="slide">
             <div className="image">
-              <ImageCatUps />
+              <ImageProducts />
             </div>
             <div className="text">
-              <h1>Backup power, UPS, surge</h1>
-              <h1>&amp; IT power distribution</h1>
+              <h1>Backup power, UPS</h1>
+              <h1>&amp; Surge</h1>
               <div className="underLine"/>
               <div className="underLine ul-width-s"/>
               <button className="button-info">Find Solution</button>
@@ -60,11 +60,11 @@ class Slider extends Component {
         <div className="highlighter">
           <button className="image" onClick={ () => this.setSlider(0) }>
             <div className="img-div"/>
-            <ImageCatElectrical /> 
+            <ImageAboutUs /> 
           </button>
           <button className="image" onClick={ () => this.setSlider(1) }>
             <div className="img-div"/>
-            <ImageCatUps />
+            <ImageProducts />
           </button>
         </div>
       </div>

@@ -1,0 +1,48 @@
+$colors: (
+    content_color: #ffffff,
+);
+$calc: (
+    header_height: calc(35px + 1rem + 1rem),
+    elem_100: calc( 100% - (35px + 1rem + 1rem) ),
+);
+$sizes: (
+    mobile: 540px,
+    tablet: 1000px,
+    hd: 1500px,
+);
+
+.ats-products {
+    padding-top: map-get($map: $calc, $key: header_height);
+    background: map-get($map: $colors, $key: content_color);
+    .content { 
+        .count {
+            font-size: 1.5em;
+            padding: 1em;
+            &> ul {
+                display: flex;
+                margin: 0;
+                padding: 0;
+                justify-content: space-between;
+                align-items: center;
+            }
+            hr {
+                margin: 0.2em 0;
+            }
+        }
+        .listing{
+            padding: 1em;
+            .no-results {
+                text-align: center;
+                .icon {
+                    font-size: 10em;
+                    color: map-get($map: $colors, $key: filters_color);
+                    padding: 0.1em;
+                }
+                p {
+                    font-size: 1em;
+                    color: map-get($map: $colors, $key: no_results_font_color);
+                }
+            }
+        }
+    }
+}

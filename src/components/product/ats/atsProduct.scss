@@ -6,7 +6,8 @@ $sizes: (
     tablet: 1000px,
     hd: 1500px,
 );
-.ups-product {
+
+.ats-product {
     width: 100%;
     &> ul {
         display: flex;
@@ -30,7 +31,7 @@ $sizes: (
             .attribute {
                 display: flex;
                 .title {
-                    width: 100px;
+                    width: 150px;
                 }
                 .value {
                     width: 200px;

@@ -13,11 +13,11 @@ import Img from "gatsby-image"
  * - `StaticQuery`: https://gatsby.app/staticquery
  */
 
-const Image_cat_ups = () => (
+const ImageAts = () => (
   <StaticQuery
     query={graphql`
       query {
-        placeholderImage: file(relativePath: { eq: "cat_ups.jpg" }) {
+        placeholderImage: file(relativePath: { eq: "imageAts.jpg" }) {
           childImageSharp {
             sizes(maxWidth: 1280) {
               ...GatsbyImageSharpSizes
@@ -29,4 +29,4 @@ const Image_cat_ups = () => (
     render={data => <Img sizes={data.placeholderImage.childImageSharp.sizes} />}
   />
 )
-export default Image_cat_ups
+export default ImageAts

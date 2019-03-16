@@ -13,11 +13,11 @@ import Img from "gatsby-image"
  * - `StaticQuery`: https://gatsby.app/staticquery
  */
 
-const ImageThreePhase = () => (
+const ImageAboutUs = () => (
   <StaticQuery
     query={graphql`
       query {
-        placeholderImage: file(relativePath: { eq: "link-3-phase.jpg" }) {
+        placeholderImage: file(relativePath: { eq: "imageAboutUs.jpg" }) {
           childImageSharp {
             sizes(maxWidth: 1280) {
               ...GatsbyImageSharpSizes
@@ -29,4 +29,4 @@ const ImageThreePhase = () => (
     render={data => <Img sizes={data.placeholderImage.childImageSharp.sizes} />}
   />
 )
-export default ImageThreePhase
+export default ImageAboutUs

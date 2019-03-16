@@ -6,8 +6,8 @@ import SEO from "../components/seo"
 
 import './index.scss'
 
-import ImageSinglePhase from '../images/1-phase'
-import ImageThreePhase from '../images/3-phase'
+import ImageUps from '../images/imageUps'
+import ImageAts from '../images/imageAts'
 
 const IndexPage = () => (
   <Layout>
@@ -16,21 +16,21 @@ const IndexPage = () => (
     <div className="products-linker">
       <p>Find your Power Solution</p>
       <div className="links">
-        <a className="link" href={'/products/?phase=0'}>
+        <a className="link" href={'/upsProducts/'}>
           <div className="text">
-            <p>Single Phase UPS</p>
+            <p>UPS</p>
             <div className="underLine"/>
             <div className="underLine ul-width-s"/>
           </div>
-          <div className="image"><ImageSinglePhase /></div>
+          <div className="image"><ImageUps /></div>
         </a>
-        <a className="link" href={'/products/?phase=1'}>
+        <a className="link" href={'/atsProducts/'}>
           <div className="text">
-            <p>Three Phase UPS</p>
+            <p>ATS</p>
             <div className="underLine"/>
             <div className="underLine ul-width-s"/>
           </div>
-          <div className="image"><ImageThreePhase /></div>
+          <div className="image"><ImageAts /></div>
         </a>
       </div>
     </div>

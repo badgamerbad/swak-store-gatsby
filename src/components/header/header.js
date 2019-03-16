@@ -122,7 +122,7 @@ class Header extends React.Component {
         searchText = document.querySelector(".menu-mobile .searchText input").value.trim()
       else
         searchText = document.querySelector(".menu .searchText input").value.trim()
-      window.location = '/products?searchText=' + searchText
+      window.location = '/upsProducts/?searchText=' + searchText
     }
     else {
       this.setState( {showSearch: true} )
@@ -133,7 +133,7 @@ class Header extends React.Component {
   }
   submitProduct (e) { 
     if(e.key === "Enter") {
-      window.location = '/products?searchText=' + e.currentTarget.value.trim()
+      window.location = '/upsProducts/?searchText=' + e.currentTarget.value.trim()
     }
   }
 }

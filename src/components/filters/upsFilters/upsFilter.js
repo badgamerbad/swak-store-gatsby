@@ -24,7 +24,7 @@ class UpsFilter extends Component {
         <ul>
           <li className={radioValuesClasses.join(' ')} onClick={ this.showRadioValues.bind(this)}>
             <ul>
-              <li><label>{ filter.label }{ filterDot }</label></li>
+              <li className="title"><label>{ filter.label }{ filterDot }</label></li>
               <li>
                 <div className="angle-down"><FontAwesomeIcon icon="angle-down" /></div>
                 <div className="angle-up"><FontAwesomeIcon icon="angle-up" /></div>

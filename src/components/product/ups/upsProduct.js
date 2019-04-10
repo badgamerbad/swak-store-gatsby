@@ -13,7 +13,7 @@ class UpsProduct extends React.Component {
     let ups = this.props.ups
     let filters = this.props.filters
     return (
-      <div className="upsProduct">
+      <div className="ups-product">
         <ul>
           <li className="image"><UpsImageLoader imageUrl={ups.imageUrl}/></li>
           <li className="specification">

@@ -35,7 +35,7 @@ const About = () => (
               <p>installation &amp; maintainace</p>
             </div>
             <div className="image">
-              <ServicesImageLoader imageUrl="s1" />
+              <ServicesImageLoader imageUrl="service1" />
             </div>
           </li>
           <li className="cell">
@@ -44,7 +44,7 @@ const About = () => (
               <p>commissioning</p>
             </div>
             <div className="image">
-              <ServicesImageLoader imageUrl="s2" />
+              <ServicesImageLoader imageUrl="service2" />
             </div>
           </li>
           <li className="cell">
@@ -53,7 +53,7 @@ const About = () => (
               <p>wiring</p>
             </div>
             <div className="image">
-              <ServicesImageLoader imageUrl="s3" />
+              <ServicesImageLoader imageUrl="service3" />
             </div>
           </li>
           <li className="cell">
@@ -62,17 +62,15 @@ const About = () => (
               <p>designing</p>
             </div>
             <div className="image">
-              <ServicesImageLoader imageUrl="s4" />
+              <ServicesImageLoader imageUrl="service4" />
             </div>
           </li>
           <li className="cell">
             <div className="text">
-              <p>CCTV cameras &amp;</p>
-              <p>repairing of drives &amp;</p>
-              <p>electronic cards</p>
+              <p>Surveillance System</p>
             </div>
             <div className="image">
-              <ServicesImageLoader imageUrl="s5" />
+              <ServicesImageLoader imageUrl="service5" />
             </div>
           </li>
           <li className="cell">
@@ -80,7 +78,7 @@ const About = () => (
               <p>Turnkey Solutions</p>
             </div>
             <div className="image">
-              <ServicesImageLoader imageUrl="s6" />
+              <ServicesImageLoader imageUrl="service6" />
             </div>
           </li>
           <li className="cell">
@@ -90,7 +88,7 @@ const About = () => (
               <p>&amp; electronic cards</p>
             </div>
             <div className="image">
-              <ServicesImageLoader imageUrl="s7" />
+              <ServicesImageLoader imageUrl="service7" />
             </div>
           </li>
           <li className="cell">
@@ -98,7 +96,7 @@ const About = () => (
               <p>PLC solution</p>
             </div>
             <div className="image">
-              <ServicesImageLoader imageUrl="s8" />
+              <ServicesImageLoader imageUrl="service8" />
             </div>
           </li>
         </ul>

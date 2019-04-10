@@ -217,8 +217,11 @@ class Products extends Component {
     let timer = 0
     if( stopY > startY ) {
       for ( let i = startY; i < stopY; i += step ) {
-        // eslint-disable-next-line 
-        setTimeout( `window.scrollTo(0, ${ leapY })` , timer * speed )
+        (function (leapY) {
+          setTimeout( function () {
+            window.scrollTo(0, leapY)
+          } , timer * speed )
+        })(leapY)
         leapY += step
         if (leapY > stopY)
           leapY = stopY
@@ -228,8 +231,11 @@ class Products extends Component {
     }
     else {
       for ( let i = startY; i > stopY; i -= step ) {
-        // eslint-disable-next-line       
-        setTimeout( `window.scrollTo(0, ${ leapY })` , timer * speed )
+        (function (leapY) {
+          setTimeout( function () {
+            window.scrollTo(0, leapY)
+          } , timer * speed )
+        })(leapY)
         leapY -= step
         if (leapY < stopY)
           leapY = stopY

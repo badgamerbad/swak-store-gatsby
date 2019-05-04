@@ -1,0 +1,44 @@
+$colors: (
+    text_color: #ffffff,
+    services_background: #d4d4d4,
+);
+$calc: (
+    header_height: calc(35px + 1rem + 1rem),
+    elem_100: calc( 100% - (35px + 1rem + 1rem) ),
+);
+$sizes: (
+    mobile: 540px,
+    tablet: 1000px,
+    hd: 1500px,
+);
+
+.container {
+    padding-top: map-get($map: $calc, $key: header_height);
+    .title {
+        padding: 0 10em;
+        & > p {
+            margin: 0.5em;
+            font-size: 2em;
+            text-align: center;
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: tablet)) {
+            padding: 0 2em;    
+        }
+    }
+    .clients {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        .client {
+            margin: 1em 1em 1em 1em;
+            flex: 0 0 10%;
+            .image {
+                width: 15em;
+            }
+            .text {
+                margin: 0.5em 0.5em 0 0.5em;
+                text-align: center;
+            }
+        }
+    }
+}

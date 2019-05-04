@@ -3,9 +3,9 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import './about.scss'
+import "./about.scss"
 
-import ServicesImageLoader from '../images/services/servicesImageLoader'
+import ServicesImageLoader from "../images/services/servicesImageLoader"
 
 const About = () => (
   <Layout>

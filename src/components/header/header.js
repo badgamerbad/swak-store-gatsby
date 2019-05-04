@@ -61,6 +61,7 @@ class Header extends React.Component {
                     <ul>
                       <a href="/"><li>Home</li></a>
                       <a href="/products/"><li>Products</li></a>
+                      <a href="/clients/"><li>Our Clients</li></a>
                       <a href="/about/"><li>About</li></a>
                     </ul>
                   </li>
@@ -105,6 +106,7 @@ class Header extends React.Component {
             <ul>
               <a href="/"><li>Home</li></a>
               <a href="/products/"><li>Products</li></a>
+              <a href="/clients/"><li>Our Clients</li></a>
               <a href="/about/"><li>About</li></a>
             </ul>
           </div>

@@ -12,7 +12,7 @@ class UpsFilters extends React.Component {
     super(props)
     this.state = {}
     this.resetOnce = false
-    this.readPhaseSelected = true
+    this.readPreselectedFilters = true
   }
   componentDidUpdate () {
     this.resetOnce = false
@@ -50,10 +50,22 @@ class UpsFilters extends React.Component {
         render={ 
           data => {
             let allFilters = get(data, "allMarkdownRemark.edges")
-            if(this.props.phaseSelected && this.readPhaseSelected) {
-              allFilters[0].node.frontmatter.selected = parseInt(this.props.phaseSelected)
-              this.readPhaseSelected = false
+
+            if( this.readPreselectedFilters ) {
+              let preselectedFilters = this.props.preselectedFilters
+              for( let key in preselectedFilters ) {
+                if(preselectedFilters[key]) {
+                  for( let i=0; i < allFilters.length; ++i ) {
+                    if( allFilters[i].node.frontmatter.name == key ) {
+                      allFilters[i].node.frontmatter.selected = parseInt( preselectedFilters[key] )
+                    }
+                  }
+                }
+              }
+              
+              this.readPreselectedFilters = false
             }
+
             this.props.getAllUpsFilters( allFilters )
             return (
               <>

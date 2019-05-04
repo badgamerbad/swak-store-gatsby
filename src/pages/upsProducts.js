@@ -4,6 +4,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import UpsProduct from "../components/product/ups/upsProduct"
+import AtsProduct from "../components/product/ats/atsProduct"
+import MdcProduct from "../components/product/mdc/mdcProduct"
 import './upsProducts.scss'
 
 import { graphql } from "gatsby"
@@ -19,7 +21,11 @@ class Ups extends Component {
     const paramsString = props.location.search
     const params = new URLSearchParams(paramsString)
     const searchText = params.get('searchText') ? params.get('searchText') : ""
-    this.phaseSelected = params.get('phase') ? params.get('phase') : false
+    // These keys should match the name attribute in filters markdown
+    this.preselectedFilters = {
+      type: params.get('type') ? params.get('type') : false,
+      phase: params.get('phase') ? params.get('phase') : false,
+    }
     this.baseState = this.state
     this.state = {
       allProducts: [],
@@ -88,7 +94,14 @@ class Ups extends Component {
           flag = false
       }
       return flag
-    }).map( (elem, index) => <UpsProduct key={index} index={index} ups={elem} filters={this.allFilters}/> )
+    }).map( (elem, index) => {
+      if(elem.type === 0)
+        return <UpsProduct key={index} index={index} ups={elem} filters={this.allFilters}/>
+      else if(elem.type === 1)
+        return <AtsProduct key={index} index={index} ats={elem} filters={this.allFilters}/>
+      else
+        return <MdcProduct key={index} index={index} mdc={elem} filters={this.allFilters}/>
+    })
     let filteredProductsLength = filteredProducts.length
     if(filteredProductsLength === 0) {
       filteredProducts = <div className="no-results">
@@ -108,7 +121,13 @@ class Ups extends Component {
         <SEO title="UPS" />
         <div className="ups-products">
           <div className={ filtersClasses.join(' ') }>
-            <UpsFilters onChange={this.onChange} resetFilters={this.resetFilters} closeFilters={this.closeFilters} getAllUpsFilters={this.getAllUpsFilters} phaseSelected={this.phaseSelected}/>
+            <UpsFilters 
+              onChange={this.onChange} 
+              resetFilters={this.resetFilters} 
+              closeFilters={this.closeFilters} 
+              getAllUpsFilters={this.getAllUpsFilters} 
+              preselectedFilters={this.preselectedFilters}
+            />
           </div>
           <div className={contentClasses.join(' ')}>
             <div className="count">
@@ -143,6 +162,7 @@ class Ups extends Component {
   closeFilters () {
     this.setState( {showFilters: false} )
   }
+  // Reset parent (upsProducts.js) filters, child filter reset happens at upsFilter.js -> resetChildFilters
   resetFilters () {
     let {setFilters} = this.state
     for(let key in this.allFilters) {
@@ -274,6 +294,7 @@ export const pageQuery = graphql`
           }
           frontmatter {
             id
+            type
             name
             phase
             application
@@ -286,6 +307,9 @@ export const pageQuery = graphql`
             formFactor
             topology
             imageUrl
+            current
+            weight
+            switchingTime
           }
         }
       }

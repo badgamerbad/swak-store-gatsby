@@ -1,6 +1,6 @@
 ---
-id: 7
-type: radio
+id: 8
+type: 1
 name: formFactor
 label: 'Form Factor'
 value: ['Tower', 'Rackmount', 'Rack or Tower']

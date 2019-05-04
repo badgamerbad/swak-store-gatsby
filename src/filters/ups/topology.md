@@ -1,6 +1,6 @@
 ---
-id: 8
-type: radio
+id: 9
+type: 1
 name: topology
 label: Topology
 value: ['Line Interactive', 'Double Convention', 'Static Transfer Switch', 'Non-Modular', 'Modular']

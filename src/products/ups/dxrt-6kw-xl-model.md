@@ -1,5 +1,6 @@
 ---
-id: 14
+id: 16
+type: 0
 name: Eaton DX-RT 6kVA/6kW 1x1 (XL Model)
 phase: 0
 application: 1

@@ -14,7 +14,7 @@ class UpsFilter extends Component {
     let filter = this.state.filter
     let html
     let filterDot = ""
-    if(filter.type === "radio") {
+    if(filter.type === 1) {
       let radioValuesClasses = ["label"]
       if(this.state.showRadioValues)
         radioValuesClasses.push("active")

@@ -4,10 +4,11 @@ import Slider from "../components/slider/slider"
 
 import SEO from "../components/seo"
 
-import './index.scss'
+import "./index.scss"
 
-import ImageUps from '../images/imageUps'
-import ImageAts from '../images/imageAts'
+import ImageUps from "../images/imageUps"
+import ImageAts from "../images/imageAts"
+import ImageMdc from "../images/imageMdc"
 
 const IndexPage = () => (
   <Layout>
@@ -16,7 +17,7 @@ const IndexPage = () => (
     <div className="products-linker">
       <p>Find your Power Solution</p>
       <div className="links">
-        <a className="link" href={'/upsProducts/'}>
+        <a className="link" href={'/upsProducts/?type=0'}>
           <div className="text">
             <p>UPS</p>
             <div className="underLine"/>
@@ -24,13 +25,21 @@ const IndexPage = () => (
           </div>
           <div className="image"><ImageUps /></div>
         </a>
-        <a className="link" href={'/atsProducts/'}>
+        <a className="link" href={'/upsProducts/?type=1'}>
           <div className="text">
             <p>ATS</p>
             <div className="underLine"/>
             <div className="underLine ul-width-s"/>
           </div>
           <div className="image"><ImageAts /></div>
+        </a>
+        <a className="link" href={'/upsProducts/?type=2'}>
+          <div className="text">
+            <p>Micro Data Center</p>
+            <div className="underLine"/>
+            <div className="underLine ul-width-s"/>
+          </div>
+          <div className="image"><ImageMdc /></div>
         </a>
       </div>
     </div>

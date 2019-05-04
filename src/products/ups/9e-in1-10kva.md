@@ -1,5 +1,6 @@
 ---
 id: 1
+type: 0
 name: Eaton 9E-IN 1-10KVA Online Double Conversion UPS
 phase: 0
 application: 1

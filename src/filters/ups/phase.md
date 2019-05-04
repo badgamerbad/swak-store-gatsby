@@ -1,6 +1,6 @@
 ---
-id: 2
-type: radio
+id: 3
+type: 1
 name: phase
 label: Phase
 value: ['Single', 'Three']

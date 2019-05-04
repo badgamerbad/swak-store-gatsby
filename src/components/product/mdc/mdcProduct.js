@@ -57,6 +57,11 @@ class MdcProduct extends React.Component {
                   <li className="value">{mdc.weight}</li>
                 </ul>
               </li>
+              <li>
+                <ul className="attribute">
+                  <a href={mdc.url} target="_blank" tilte="SWAK | Facebook" rel="noopener noreferrer"><li className="button">More Details</li></a>
+                </ul>
+              </li>
             </ul>
           </li>
         </ul>

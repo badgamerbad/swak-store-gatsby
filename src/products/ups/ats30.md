@@ -9,5 +9,6 @@ voltage: 0
 voltageLabel: 220/230/240V
 weight: 5 Kg
 switchingTime: 8ms
+url: http://powerquality.eaton.in/emea/products-services/power-distribution/ats30-ats16.asp?cx=36
 imageUrl: ats-30.jpg
 ---

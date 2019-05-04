@@ -11,5 +11,6 @@ frequency: 1
 frequencyLabel: 50/60hz
 formFactor: 2
 imageUrl: mdc-3kv.jpg
+url: http://powerquality.eaton.com/Products-Services/backup-power-ups/Micro-Data-Center.aspx?cx=22&GUID=31505DA2-535A-400C-822A-225B09463975
 weight: 1500kg
 ---

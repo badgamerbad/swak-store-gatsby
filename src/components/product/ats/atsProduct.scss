@@ -1,5 +1,6 @@
 $colors: (
     underline_color: #999999,
+    button_text: #ffffff,
 );
 $sizes: (
     mobile: 540px,
@@ -35,6 +36,16 @@ $sizes: (
                 }
                 .value {
                     width: 200px;
+                }
+                .button {
+                    margin: 0.4em 0em;
+                    padding: 0.3em 1em;
+                    background: map-get($map: $colors, $key: underline_color);
+                    color: map-get($map: $colors, $key: button_text);
+                }
+                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                    padding: 0;
+                    justify-content: center;
                 }
             }
             &> ul {

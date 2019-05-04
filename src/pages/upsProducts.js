@@ -310,6 +310,7 @@ export const pageQuery = graphql`
             current
             weight
             switchingTime
+            url
           }
         }
       }

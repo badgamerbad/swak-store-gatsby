@@ -57,6 +57,11 @@ class AtsProduct extends React.Component {
                   <li className="value">{ats.switchingTime}</li>
                 </ul>
               </li>
+              <li>
+                <ul className="attribute">
+                  <a href={ats.url} target="_blank" tilte="SWAK | Facebook" rel="noopener noreferrer"><li className="button">More Details</li></a>
+                </ul>
+              </li>
             </ul>
           </li>
         </ul>

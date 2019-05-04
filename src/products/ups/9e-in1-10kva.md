@@ -5,7 +5,7 @@ name: Eaton 9E-IN 1-10KVA Online Double Conversion UPS
 phase: 0
 application: 1
 powerRating: 1
-powerRatingLabel: 6-10 kVA
+powerRatingLabel: 6-10 KVA
 voltage: 0
 voltageLabel: 220-240 V
 frequency: 2

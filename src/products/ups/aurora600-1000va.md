@@ -5,7 +5,7 @@ name: Eaton Aurora 600-1000 VA Line Interactive UPS
 phase: 0
 application: 0
 powerRating: 0
-powerRatingLabel: 0.6-1 kVA
+powerRatingLabel: 0.6-1 KVA
 voltage: 0
 voltageLabel: 220-240 V
 frequency: 0

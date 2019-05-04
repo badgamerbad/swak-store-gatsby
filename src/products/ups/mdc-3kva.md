@@ -4,7 +4,7 @@ type: 2
 name: Eaton Micro Data Center
 application: 1
 powerRating: 1
-powerRatingLabel: 3 kVA
+powerRatingLabel: 3 KVA
 voltage: 0
 voltageLabel: 230 V
 frequency: 1

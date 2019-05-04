@@ -1,11 +1,11 @@
 ---
 id: 2
 type: 0
-name: Eaton 9PX 1-6 kVA Rack and Tower Convertible Online Double Conversion UPS
+name: Eaton 9PX 1-6 KVA Rack and Tower Convertible Online Double Conversion UPS
 phase: 0
 application: 1
 powerRating: 1
-powerRatingLabel: 1-6 kVA
+powerRatingLabel: 1-6 KVA
 voltage: 0
 voltageLabel: 200-240 V
 frequency: 1

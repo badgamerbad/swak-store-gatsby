@@ -25,7 +25,7 @@ class Slider extends Component {
   render () {
     return (
       <div className="slider">
-        <a href="/about/">
+        <a href="/about/" title="Know More">
           <div className="slide centered-slide">
             <div className="image">
               <ImageAboutUs />
@@ -39,7 +39,7 @@ class Slider extends Component {
             </div>
           </div>
         </a>
-        <a href="/products/">
+        <a href="http://www.eaton.in/EatonIN/ProductsServices/Electrical/index.htm" target="_blank" title="Eaton | Electrical" rel="noopener noreferrer">
           <div className="slide">
             <div className="image">
               <ImageProducts />

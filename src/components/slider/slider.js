@@ -45,8 +45,7 @@ class Slider extends Component {
               <ImageProducts />
             </div>
             <div className="text">
-              <h1>Backup power, UPS</h1>
-              <h1>&amp; Surge</h1>
+              <h1>EATON | Electrical</h1>
               <div className="underLine"/>
               <div className="underLine ul-width-s"/>
               <button className="button-info">Find Solution</button>

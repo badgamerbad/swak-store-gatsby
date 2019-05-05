@@ -20,7 +20,7 @@ const Client = () => (
           <div className="image">
             <ClientsImageLoader imageUrl="airport" />
           </div>
-          <div className="text">Chatrapati Shivaji International Airport</div>
+          <div className="text">Chhatrapati Shivaji International Airport</div>
         </div>
         <div className="client">
           <div className="image">

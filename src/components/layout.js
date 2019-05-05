@@ -7,9 +7,9 @@ import Footer from "./footer/footer"
 import "./layout.scss"
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faFilter, faSort, faSearch, faUndo, faWindowClose, faTimesCircle, faAngleRight, faAngleLeft, faAngleDown, faAngleUp, faCircle, faHourglassHalf, faFrown, faMapMarkedAlt, faPhoneSquare, faMobileAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
-library.add( faFilter, faSort, faSearch, faUndo, faWindowClose, faTimesCircle, faAngleRight, faAngleLeft, faAngleDown, faAngleUp, faCircle, faHourglassHalf, faFrown, faMapMarkedAlt, faPhoneSquare, faMobileAlt, faEnvelope, faFacebook, faTwitter )
+import { faFacebook, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { faFilter, faSort, faSearch, faUndo, faWindowClose, faTimesCircle, faAngleRight, faAngleLeft, faAngleDown, faAngleUp, faCircle, faHourglassHalf, faFrown, faMapMarkedAlt, faPhoneSquare, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+library.add( faFilter, faSort, faSearch, faUndo, faWindowClose, faTimesCircle, faAngleRight, faAngleLeft, faAngleDown, faAngleUp, faCircle, faHourglassHalf, faFrown, faMapMarkedAlt, faPhoneSquare, faEnvelope, faFacebook, faTwitter, faWhatsapp )
 
 const Layout = ({ children }) => (
   <StaticQuery

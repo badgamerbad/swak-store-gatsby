@@ -31,7 +31,7 @@ class Products extends Component {
               </a>
               <a className="link" href={'/upsProducts/?type=1'}>
                 <div className="text">
-                  <p>ATS</p>
+                  <p>Transfer Switch</p>
                   <div className="underLine"/>
                   <div className="underLine ul-width-s"/>
                 </div>

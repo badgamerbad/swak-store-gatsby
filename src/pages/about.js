@@ -32,7 +32,7 @@ const About = () => (
           <li className="cell">
             <div className="text">
               <p>Fire alarm system</p>
-              <p>installation &amp; maintainace</p>
+              <p>installation &amp; maintainance</p>
             </div>
             <div className="image">
               <ServicesImageLoader imageUrl="service1" />

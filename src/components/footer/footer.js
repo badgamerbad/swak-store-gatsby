@@ -39,7 +39,13 @@ class Footer extends Component {
               <li>
                 <ul className="field">
                   <li><FontAwesomeIcon icon="phone-square" /></li>
-                  <li><a href={`tel:${ this.props.contact.phone }`}>{this.props.contact.phone}</a></li>
+                  <li><a href={`tel:${ this.props.contact.phone0 }`}>{this.props.contact.phone0}</a></li>
+                </ul>
+              </li>
+              <li>
+                <ul className="field">
+                  <li><FontAwesomeIcon icon="mobile-alt" /></li>
+                  <li><a href={`tel:${ this.props.contact.phone1 }`}>{this.props.contact.phone1}</a></li>
                 </ul>
               </li>
               <li>

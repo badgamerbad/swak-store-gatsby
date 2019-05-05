@@ -14,7 +14,8 @@ module.exports = {
     contact: {
       address: `404/ Vighnharta Tower, Gaondevi, Shivaji path, Thane (west) – 400602, INDIA.`,
       email: `swakenterprises@gmail.com`,
-      phone: `+91 9920245684`,
+      phone0: `+91 9920245684`,
+      phone1: `+91-8369754771`,
     }
   },
   plugins: [

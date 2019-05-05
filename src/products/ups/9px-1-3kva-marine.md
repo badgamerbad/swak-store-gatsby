@@ -2,7 +2,7 @@
 id: 15
 type: 0
 name: Eaton 9PX Marine
-phase: 1
+phase: 0
 application: 3
 powerRating: 1
 powerRatingLabel: 1500 -3000 W

@@ -3,7 +3,7 @@ id: 14
 type: 1
 name: Eaton ATS 30
 frequency: 1
-frequencyLabel: 50/60hz
+frequencyLabel: 50/60Hz
 current: 30A
 voltage: 0
 voltageLabel: 220/230/240V

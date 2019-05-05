@@ -2,10 +2,10 @@
 id: 15
 type: 0
 name: Eaton 9130 Marine
-phase: 1
+phase: 0
 application: 3
 powerRating: 1
-powerRatingLabel: 0.7 - 6 KVA
+powerRatingLabel: 1 - 3 KVA
 voltage: 0
 voltageLabel: 220-240 V
 frequency: 1

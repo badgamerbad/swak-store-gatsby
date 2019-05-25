@@ -12,7 +12,7 @@ module.exports = {
     author: `BadGAMERbaD`,
     googleSiteVerification: '3CXnajmQF2ySaDl8R4L4UdKagco966VeoX6CRmLumrw',
     contact: {
-      address: `404/ Vighnharta Tower, Gaondevi, Shivaji path, Thane (west) – 400602, INDIA.`,
+      address: `404/ Vighnaharta Tower, Gaondevi, Shivaji path, Thane (west) – 400602, INDIA.`,
       email: `swakenterprises@gmail.com`,
       phone0: `+91 9920245684`,
       phone1: `+91-8369754771`,

@@ -2,7 +2,7 @@
 id: 8
 type: 1
 name: formFactor
-label: 'Form Factor'
-value: ['Tower', 'Rackmount', 'Rack or Tower']
+label: 'Configuration'
+value: ['Tower', 'Rackmount', 'Rack or Tower', 'Rack']
 selected: -1
 ---

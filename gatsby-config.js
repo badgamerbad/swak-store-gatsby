@@ -1,10 +1,18 @@
-const {NODE_ENV} = process.env;
+const { NODE_ENV } = process.env;
+
+/**
+ * In case there is a need to add plugins only in dev
+ * envirnmnent
+ * @example
+ * plugins = [
+ *   `gatsby-plugin-eslint`,
+ * ]
+ */
 let plugins= [];
 if (NODE_ENV == 'development') {
-  plugins = [
-    `gatsby-plugin-eslint`,
-  ]
+  plugins = []
 }
+
 module.exports = {
   siteMetadata: {
     title: `SWAK`,

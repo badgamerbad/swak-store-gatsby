@@ -14,12 +14,14 @@ class UpsFilter extends Component {
     let filter = this.state.filter
     let html
     let filterDot = ""
-    if(filter.type === 1) {
+    if(filter.type === '1') {
       let radioValuesClasses = ["label"]
       if(this.state.showRadioValues)
         radioValuesClasses.push("active")
-      if(filter.selected !== -1)
+      
+      if(filter.selected !== '-1')
         filterDot = <span className="dot-selected"><FontAwesomeIcon icon="circle" /></span>
+      
       html = <div className="radioBox">
         <ul>
           <li className={radioValuesClasses.join(' ')} onClick={ this.showRadioValues.bind(this)}>
@@ -34,8 +36,8 @@ class UpsFilter extends Component {
           <li className="values">
             <ul>
               <li>
-                <ul onClick={this.onChanged.bind(this, -1, filter.name)}>
-                  <li><input type="radio" value={-1} checked={filter.selected === -1} readOnly name={filter.name} /></li>
+                <ul onClick={this.onChanged.bind(this, '-1', filter.name)}>
+                  <li><input type="radio" value={'-1'} checked={filter.selected === '-1'} readOnly name={filter.name} /></li>
                   <li>All</li>
                 </ul>
               </li>

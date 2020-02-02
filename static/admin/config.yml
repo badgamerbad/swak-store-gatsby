@@ -19,15 +19,16 @@ collections:
     identifier_field: name
     slug: "{{slug}}"
     fields:
-      - { name: id, label: ID, widget: "number" }
+      - { name: type, label: Type, widget: "hidden", default: '0' }
       - { name: name, label: "Name of the UPS", widget: "string" }
-      - { name: phase, label: Phase, widget: "select", options: [ { label: "Single", value: 0 }, { label: "Three", value: 1 } ] }
-      - { name: application, label: Application, widget: "select", options: [ { label: "Home", value: 0 }, { label: "Network and server", value: 1 }, { label: "Data Center", value: 2 } ] }
-      - { name: powerRating , label: "Power Rating", widget: "select", options: [ { label: "0-1 kVA", value: 0 }, { label: "1-10 kVA", value: 1 }, { label: "10-50 kVA", value: 2 }, { label: "50-500 kVA", value: 3 }, { label: "500 - 2000 kVA", value: 4 } ] }
-      - { name: voltage, label: "Voltage", widget: "select", options: [ { label: "220-240V", value: 0 }, { label: "300-1000V", value: 1 } ] }
+      - { name: phase, label: Phase, widget: "select", options: [ { label: "Single", value: '0' }, { label: "Three", value: '1' } ] }
+      - { name: application, label: Application, widget: "select", options: [ { label: "Home", value: '0' }, { label: "Network and server", value: '1' }, { label: "Data Center", value: '2' }, { label: "Marine", value: '3' } ] }
+      - { name: powerRating , label: "Power Rating", widget: "select", options: [ { label: "0-1 kVA", value: '0' }, { label: "1-10 kVA", value: '1' }, { label: "10-50 kVA", value: '2' }, { label: "50-500 kVA", value: '3' }, { label: "500 - 2000 kVA", value: '4' } ] }
       - { name: powerRatingLabel, label: "Power Label", widget: "string" }
+      - { name: voltage, label: "Voltage", widget: "select", options: [ { label: "220-240V", value: '0' }, { label: "300-1000V", value: '1' } ] }
       - { name: voltageLabel, label: "Voltage Label", widget: "string" }
-      - { name: frequency, label: "Frequency", widget: "select", options: [ { label: "50Hz", value: 0 }, { label: "50/60Hz", value: 1 }, { label: "40/70hz", value: 2 } ] }
+      - { name: frequency, label: "Frequency", widget: "select", options: [ { label: "50Hz", value: '0' }, { label: "50/60Hz", value: '1' }, { label: "40/70hz", value: '2' } ] }
       - { name: frequencyLabel, label: "Frequency Label", widget: "string" }
-      - { name: formFactor, label: "Form Factor", widget: "select", options: [ { label: "Tower", value: 0 }, { label: "Rackmount", value: 1 }, { label: "Rack/Tower", value: 2 } ] }
-      - { name: topology, label: "Topology", widget: "select", options: [{ label: "Line interactive", value: 0 }, { label: "Double convention", value: 1 }, { label: "Static Transfer Switch", value: 2 } ] }
+      - { name: formFactor, label: "Form Factor", widget: "select", options: [ { label: "Tower", value: '0' }, { label: "Rackmount", value: '1' }, { label: "Rack/Tower", value: '2' } ] }
+      - { name: topology, label: "Topology", widget: "select", options: [{ label: "Line interactive", value: '0' }, { label: "Double convention", value: '1' }, { label: "Static Transfer Switch", value: '2' } ] }
+      - { name: imageUrl, label: "Image URL", widget: "image", media_library: { config: {  multiple: false } } }

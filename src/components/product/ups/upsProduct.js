@@ -12,10 +12,18 @@ class UpsProduct extends React.Component {
   render () {
     let ups = this.props.ups
     let filters = this.props.filters
+
+    let upsUrl = ups.imageUrl;
+
+    // when the file is uploaded from the netlify CMS
+    // it gets uploaded in static/images/
+    // and the ups md file url contains the prefix /static/images/
+    upsUrl = upsUrl.replace("/static/images/", "")
+
     return (
       <div className="ups-product">
         <ul>
-          <li className="image"><UpsImageLoader imageUrl={ups.imageUrl}/></li>
+          <li className="image"><UpsImageLoader imageUrl={upsUrl}/></li>
           <li className="specification">
             <ul>
               <li className="name">{ups.name}</li>

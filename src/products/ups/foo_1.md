@@ -1,6 +1,5 @@
 ---
-id: 50
-type: 2
+type: 0
 name: foo_1
 phase: 1
 application: 1

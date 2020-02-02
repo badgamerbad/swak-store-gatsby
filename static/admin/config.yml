@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: badgamerbad/swak-store-gatsby
-  branch: cms-data
+  branch: master
 publish_mode: editorial_workflow
 media_folder: static/images
 slug:

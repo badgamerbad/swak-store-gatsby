@@ -78,7 +78,7 @@ class UpsFilters extends React.Component {
                 {
                   allFilters.map( (filter, index) => {
                     if(this.resetOnce)
-                      filter.node.frontmatter.selected = -1
+                      filter.node.frontmatter.selected = '-1'
                     return <UpsFilter key={index} filter={filter} onChange={this.props.onChange} />
                   })
                 }

@@ -21,11 +21,13 @@ class Ups extends Component {
     const paramsString = props.location.search
     const params = new URLSearchParams(paramsString)
     const searchText = params.get('searchText') ? params.get('searchText') : ""
+
     // These keys should match the name attribute in filters markdown
     this.preselectedFilters = {
       type: params.get('type') ? params.get('type') : false,
       phase: params.get('phase') ? params.get('phase') : false,
     }
+
     this.baseState = this.state
     this.state = {
       allProducts: [],
@@ -88,16 +90,16 @@ class Ups extends Component {
       let flag = true
       let stateFiltersObject = this.state.setFilters
       for(let key in stateFiltersObject) {
-        if(key === "searchText" && stateFiltersObject[key].trim() !== "" && elem.name.toLowerCase().indexOf(stateFiltersObject[key].trim().toLowerCase()) === -1)
+        if(key === "searchText" && stateFiltersObject[key].trim() !== "" && elem.name.toLowerCase().indexOf(stateFiltersObject[key].trim().toLowerCase()) === '-1')
           flag = false
-        else if( key !== "searchText" && stateFiltersObject[key] !== -1 && stateFiltersObject[key] !== elem[key] )
+        else if( key !== "searchText" && stateFiltersObject[key] !== '-1' && stateFiltersObject[key] !== parseInt(elem[key]) )
           flag = false
       }
       return flag
     }).map( (elem, index) => {
-      if(elem.type === 0)
+      if(elem.type === '0')
         return <UpsProduct key={index} index={index} ups={elem} filters={this.allFilters}/>
-      else if(elem.type === 1)
+      else if(elem.type === '1')
         return <AtsProduct key={index} index={index} ats={elem} filters={this.allFilters}/>
       else
         return <MdcProduct key={index} index={index} mdc={elem} filters={this.allFilters}/>
@@ -166,7 +168,7 @@ class Ups extends Component {
   resetFilters () {
     let {setFilters} = this.state
     for(let key in this.allFilters) {
-      setFilters[key] = -1
+      setFilters[key] = '-1'
     }
     this.setState({
       setFilters: setFilters,
